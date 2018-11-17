@@ -1,5 +1,6 @@
 package com.example.khong.term4_java1d;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,10 +18,13 @@ public class Washer extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_dryer:
                     // mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
+                    Intent intent = new Intent(Washer.this, Dryer.class);
+                    startActivity(intent);
+
+                    break;
+                case R.id.navigation_washer:
                     // mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
@@ -39,6 +43,11 @@ public class Washer extends AppCompatActivity {
         // mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
     }
 
 }
