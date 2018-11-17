@@ -24,6 +24,9 @@
         <activity
             android:name=".Dryer"
             android:label="@string/title_activity_dryer" />
+        <activity
+            android:name=".Notifications"
+            android:label="@string/title_activity_notifications"></activity>
     </application>
 
 </manifest>

@@ -15,5 +15,7 @@
     <string name="dryer2nd_name">Dryer 3</string>
     <string name="dryer3rd_name">Dryer 6</string>
     <string name="title_activity_notifications">Notifications</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
 
 </resources>
