@@ -14,8 +14,13 @@
     <string name="dryer1st_name">Dryer 4</string>
     <string name="dryer2nd_name">Dryer 3</string>
     <string name="dryer3rd_name">Dryer 6</string>
+
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
+
     <string name="title_activity_notifications">Notifications</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+
 
 </resources>
