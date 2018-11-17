@@ -8,9 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class Dryer extends AppCompatActivity {
-
-    private TextView mTextMessage;
+public class Notifications extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -20,33 +18,34 @@ public class Dryer extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_dryer:
                     // mTextMessage.setText(R.string.title_home);
+                    Intent intentToDryer = new Intent(Notifications.this, Dryer.class);
+                    startActivity(intentToDryer);
                     return true;
                 case R.id.navigation_washer:
                     // mTextMessage.setText(R.string.title_dashboard);
-                    Intent intent = new Intent(Dryer.this, Washer.class);
-                    startActivity(intent);
-                    break;
-                case R.id.navigation_notifications:
-                    Intent intentToNotification = new Intent(Dryer.this, Notifications.class);
-                    startActivity(intentToNotification);
+                    Intent intentToWasher = new Intent(Notifications.this, Washer.class);
+                    startActivity(intentToWasher);
                     break;
                 case R.id.navigation_main:
-                    Intent intentToMain = new Intent(Dryer.this, MainActivity.class);
+                    Intent intentToMain = new Intent(Notifications.this, MainActivity.class);
                     startActivity(intentToMain);
                     break;
+                case R.id.navigation_notifications:
+                    return true;
             }
             return false;
         }
     };
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dryer);
+        setContentView(R.layout.activity_notifications);
 
-        // mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setSelectedItemId(R.id.navigation_dryer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
     @Override
@@ -54,5 +53,4 @@ public class Dryer extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(0,0);
     }
-
 }
