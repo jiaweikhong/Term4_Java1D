@@ -3,4 +3,15 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_washer">Washer</string>
+    <string name="title_activity_dryer">Dryer</string>
+
+    <string name="washer1st_name">Washer 2</string>
+    <string name="washer2nd_name">Washer 5</string>
+    <string name="washer3rd_name">Washer 3</string>
+
+    <string name="dryer1st_name">Dryer 4</string>
+    <string name="dryer2nd_name">Dryer 3</string>
+    <string name="dryer3rd_name">Dryer 6</string>
+
 </resources>
