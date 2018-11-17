@@ -1,5 +1,6 @@
 package com.example.khong.term4_java1d;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -46,6 +47,9 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO 2.1 for Pengfei; link this to register
+                Intent intentToMain = new Intent(Login.this, MainActivity.class);
+                startActivity(intentToMain);
+
             }
         });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
