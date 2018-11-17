@@ -1,5 +1,6 @@
 package com.example.khong.term4_java1d;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +18,7 @@ public class Register extends AppCompatActivity {
     String blockNumber = "";
     EditText editTextUserNameRegister;
     EditText editTextUserPasswordRegister;
-    TextView textViewRegister;
+    TextView textViewRegister1;
     String userName;
     String userPassword;
 
@@ -52,8 +53,8 @@ public class Register extends AppCompatActivity {
         // TODO 2: Register button
         editTextUserNameRegister = findViewById(R.id.editTextUserNameRegister);
         editTextUserPasswordRegister = findViewById(R.id.editTextUserPasswordRegister);
-        textViewRegister = findViewById(R.id.textViewRegister);
-        textViewRegister.setOnClickListener(new View.OnClickListener() {
+        textViewRegister1 = findViewById(R.id.Register);
+        textViewRegister1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO 2.1 for Tim: adding the information to the fire base
