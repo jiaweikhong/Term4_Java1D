@@ -66,7 +66,9 @@ public class Register extends AppCompatActivity {
                 //done
 
                 //TODO 2.3 for Pengfei: create another intent and move to main activity.
-                Toast.makeText(Register.this, "blankText warning",Toast.LENGTH_LONG).show();
+                Toast.makeText(Register.this, "Your account has been created, Welcome User!",Toast.LENGTH_LONG).show();
+                Intent intentToMain = new Intent(Register.this, MainActivity.class);
+                startActivity(intentToMain);
             }
         });
 

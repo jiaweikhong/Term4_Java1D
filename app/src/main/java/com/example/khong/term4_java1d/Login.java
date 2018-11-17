@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -42,9 +43,9 @@ public class Login extends AppCompatActivity {
                     // TODO 1.2 for Pengfei: link this to the new intent -- activity main
                     Intent intentToMain = new Intent(Login.this, MainActivity.class);
                     startActivity(intentToMain);
+                } else {
+                    Toast.makeText(Login.this, "Your account have not been created",Toast.LENGTH_LONG).show();
                 }
-
-                Log.i("Logcat", " also wrong2");
             }
         });
 
