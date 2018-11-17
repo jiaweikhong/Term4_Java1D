@@ -12,13 +12,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sackcentury.shinebuttonlib.ShineButton;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private ImageButton gotoWashersImgBtn;
     private ImageButton gotoDryersImgBtn;
-    private ImageButton washersNotifAllImgBtn;
-    private ImageButton dryersNotifAllImgBtn;
+    private ShineButton washersNotifAllImgBtn;
+    private ShineButton dryersNotifAllImgBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

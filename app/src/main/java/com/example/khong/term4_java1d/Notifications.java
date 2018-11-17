@@ -26,6 +26,10 @@ public class Notifications extends AppCompatActivity {
                     Intent intentToWasher = new Intent(Notifications.this, Washer.class);
                     startActivity(intentToWasher);
                     break;
+                case R.id.navigation_main:
+                    Intent intentToMain = new Intent(Notifications.this, MainActivity.class);
+                    startActivity(intentToMain);
+                    break;
                 case R.id.navigation_notifications:
                     return true;
             }
