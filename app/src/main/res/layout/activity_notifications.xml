@@ -23,6 +23,7 @@
             android:paddingHorizontal="15dp"
             android:paddingVertical="15dp"
             android:text="Hello! This is an example notification. Looks like Washer 3 is empty now!" />
+
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView

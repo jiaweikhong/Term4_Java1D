@@ -25,12 +25,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/goToWashersImgBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/washing_machine4" />
+        <com.sackcentury.shinebuttonlib.ShineButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:src="@android:color/darker_gray"
+            android:id="@+id/po_image2"
+            app:btn_color="@android:color/darker_gray"
+            app:btn_fill_color="@android:color/holo_green_dark"
+            app:allow_random_color="false"
+            app:siShape="@raw/smile"/>
+
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
