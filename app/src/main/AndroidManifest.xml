@@ -20,11 +20,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khong.term4_java1d.MainActivity" />
         </activity>
+
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
             android:parentActivityName=".Login"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"/>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khong.term4_java1d.Login" />
