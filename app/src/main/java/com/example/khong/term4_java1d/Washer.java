@@ -28,8 +28,9 @@ public class Washer extends AppCompatActivity {
                     // mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    // mTextMessage.setText(R.string.title_notifications);
-                    return true;
+                    Intent intentToNotification = new Intent(Washer.this, Notifications.class);
+                    startActivity(intentToNotification);
+                    break;
             }
             return false;
         }

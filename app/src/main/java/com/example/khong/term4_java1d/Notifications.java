@@ -18,14 +18,15 @@ public class Notifications extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_dryer:
                     // mTextMessage.setText(R.string.title_home);
+                    Intent intentToDryer = new Intent(Notifications.this, Dryer.class);
+                    startActivity(intentToDryer);
                     return true;
                 case R.id.navigation_washer:
                     // mTextMessage.setText(R.string.title_dashboard);
-                    Intent intent = new Intent(Notifications.this, Washer.class);
-                    startActivity(intent);
+                    Intent intentToWasher = new Intent(Notifications.this, Washer.class);
+                    startActivity(intentToWasher);
                     break;
                 case R.id.navigation_notifications:
-                    // mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
             return false;
@@ -43,5 +44,9 @@ public class Notifications extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
+    }
 }

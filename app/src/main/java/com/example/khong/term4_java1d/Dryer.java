@@ -27,8 +27,9 @@ public class Dryer extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.navigation_notifications:
-                    // mTextMessage.setText(R.string.title_notifications);
-                    return true;
+                    Intent intentToNotification = new Intent(Dryer.this, Notifications.class);
+                    startActivity(intentToNotification);
+                    break;
             }
             return false;
         }
