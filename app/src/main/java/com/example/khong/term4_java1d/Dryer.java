@@ -30,6 +30,10 @@ public class Dryer extends AppCompatActivity {
                     Intent intentToNotification = new Intent(Dryer.this, Notifications.class);
                     startActivity(intentToNotification);
                     break;
+                case R.id.navigation_main:
+                    Intent intentToMain = new Intent(Dryer.this, MainActivity.class);
+                    startActivity(intentToMain);
+                    break;
             }
             return false;
         }

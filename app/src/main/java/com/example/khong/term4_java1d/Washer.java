@@ -31,6 +31,10 @@ public class Washer extends AppCompatActivity {
                     Intent intentToNotification = new Intent(Washer.this, Notifications.class);
                     startActivity(intentToNotification);
                     break;
+                case R.id.navigation_main:
+                    Intent intentToMain = new Intent(Washer.this, MainActivity.class);
+                    startActivity(intentToMain);
+                    break;
             }
             return false;
         }
