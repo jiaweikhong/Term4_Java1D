@@ -46,6 +46,7 @@ public class Notifications extends AppCompatActivity {
         setContentView(R.layout.activity_notifications);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_notifications);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
     @Override
