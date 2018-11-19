@@ -69,12 +69,6 @@ public class Dryer extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            //Write the intent here
-            Intent intent = new Intent(Dryer.this, Login.class);
-            startActivity(intent);
-            return true;
-        }
 
         if (id == R.id.LoginPage) {
             //Write the intent here
