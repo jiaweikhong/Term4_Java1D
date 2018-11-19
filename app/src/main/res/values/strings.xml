@@ -7,17 +7,28 @@
     <string name="title_activity_washer">Washer</string>
     <string name="title_activity_dryer">Dryer</string>
 
+    <!-- Strings related to activity_washer.xml -->
     <string name="washer_notif_state">Notifications Enabled</string>
     <string name="washer_avail">6/12</string>
-    <string name="washer1st_name">Washer 2</string>
-    <string name="washer2nd_name">Washer 5</string>
-    <string name="washer3rd_name">Washer 3</string>
+    <string name="washer1st_name">W02</string>
+    <string name="washer1st_time_value">2:35:02</string>
+    <string name="washer1st_time_status">Elapsed Time</string>
+    <string name="washer2nd_name">W05</string>
+    <string name="washer2nd_time_value">1:13:05</string>
+    <string name="washer2nd_time_status">Elapsed Time</string>
+    <string name="washer3rd_name">W03</string>
+    <string name="washer3rd_time_value">10:05</string>
+    <string name="washer3rd_time_status">Remaining Time</string>
 
+    <!-- Strings related to activity_dryer.xml -->
     <string name="dryer_notif_state">Notifications Disabled</string>
     <string name="dryer_avail">5/9</string>
-    <string name="dryer1st_name">Dryer 4</string>
-    <string name="dryer2nd_name">Dryer 3</string>
-    <string name="dryer3rd_name">Dryer 6</string>
+    <string name="dryer1st_name">D04</string>
+    <string name="dryer1st_time_value">53:10</string>
+    <string name="dryer1st_time_status">Elapsed Time</string>
+    <string name="dryer2nd_name">D03</string>
+    <string name="dryer2ndt_time_value">10:06</string>
+    <string name="dryer2ndt_time_status">Remaining Time</string>
 
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">Register</string>

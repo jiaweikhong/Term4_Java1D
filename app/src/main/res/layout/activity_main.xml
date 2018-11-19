@@ -60,6 +60,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/washer_avail"
                         android:textAlignment="center"
+                        android:textColor="@android:color/white"
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
@@ -68,7 +69,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="available washers"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -111,6 +113,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/washer_notif_state"
                     android:textAlignment="center"
+                    android:textColor="@android:color/white"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -170,6 +173,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/dryer_avail"
                         android:textAlignment="center"
+                        android:textColor="@android:color/white"
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
@@ -178,7 +182,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="available dryers"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -221,6 +226,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/dryer_notif_state"
                     android:textAlignment="center"
+                    android:textColor="@android:color/white"
                     android:textSize="10sp" />
             </LinearLayout>
 

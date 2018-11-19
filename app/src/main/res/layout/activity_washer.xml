@@ -20,9 +20,9 @@
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/Washer1st"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/colorAccent">
+                android:background="@color/option">
 
                 <ImageView
                     android:id="@+id/Washer1st_status"
@@ -44,6 +44,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/washer1st_name"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/Washer1st_status"
                     app:layout_constraintTop_toTopOf="parent"
@@ -62,14 +63,37 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_assets_lightbluebell" />
+
+                <TextView
+                    android:id="@+id/Washer1st_timevalue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/washer1st_time_value"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/Washer1st_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/Washer1st_timestatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/washer1st_time_status"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Washer1st_name" />
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/Washer2nd"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/colorAccent">
+                android:background="@color/option">
 
                 <ImageView
                     android:id="@+id/Washer2nd_status"
@@ -91,6 +115,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/washer2nd_name"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/Washer2nd_status"
                     app:layout_constraintTop_toTopOf="parent"
@@ -109,14 +134,36 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_assets_lightbluebell" />
+
+                <TextView
+                    android:id="@+id/Washer2nd_timevalue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/washer2nd_time_value"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/Washer2nd_name"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/Washer2nd_timestatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/washer2nd_time_status"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Washer2nd_name" />
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/Washer3rd"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/colorAccent">
+                android:background="@color/option">
 
                 <ImageView
                     android:id="@+id/Washer3rd_status"
@@ -138,6 +185,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/washer3rd_name"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/Washer3rd_status"
                     app:layout_constraintTop_toTopOf="parent"
@@ -156,6 +204,28 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_assets_lightbluebell" />
+
+                <TextView
+                    android:id="@+id/Washer3rd_timevalue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/washer3rd_time_value"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/Washer3rd_name"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/Washer3rd_timestatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/washer3rd_time_status"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Washer3rd_name" />
             </android.support.constraint.ConstraintLayout>
 
         </LinearLayout>
@@ -169,6 +239,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation" >
+
+    </android.support.design.widget.BottomNavigationView>
 
 </android.support.constraint.ConstraintLayout>
