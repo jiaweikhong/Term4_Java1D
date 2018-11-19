@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
                 // TODO 1.1 for Tim: check whether the information is correct
                 Log.i("Logcat", userName);
                 Log.i("Logcat", password);
-                if (userName.equals("Pengfei") && password.equals("1234")) {
+                if (userName.equals("i") && password.equals("i")) {
                     // TODO 1.2 for Pengfei: link this to the new intent -- activity main
                     Intent intentToMain = new Intent(Login.this, MainActivity.class);
                     startActivity(intentToMain);
