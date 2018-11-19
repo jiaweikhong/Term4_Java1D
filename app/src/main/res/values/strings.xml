@@ -8,8 +8,8 @@
     <string name="title_activity_dryer">Dryer</string>
 
     <!-- Strings related to activity_washer.xml -->
-    <string name="washer_notif_state">Notifications Enabled</string>
-    <string name="washer_avail">6/12</string>
+    <string name="notification_enabled">Notifications Enabled</string>
+    <string name="washer_avail">0/12</string>
     <string name="washer1st_name">W02</string>
     <string name="washer1st_time_value">2:35:02</string>
     <string name="washer1st_time_status">Elapsed Time</string>
@@ -21,7 +21,9 @@
     <string name="washer3rd_time_status">Remaining Time</string>
 
     <!-- Strings related to activity_dryer.xml -->
-    <string name="dryer_notif_state">Notifications Disabled</string>
+    <string name="notification_disabled">Notifications Disabled</string>
+
+    <string name="notification_unavailable">Notifications Unavailable</string>
     <string name="dryer_avail">5/9</string>
     <string name="dryer1st_name">D04</string>
     <string name="dryer1st_time_value">53:10</string>
