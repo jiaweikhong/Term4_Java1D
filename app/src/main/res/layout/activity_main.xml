@@ -38,11 +38,11 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/goToWashersImgBtn"
+                <ImageView
+                    android:id="@+id/WasherImg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="3"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/ic_assets_washingmachinedark" />
@@ -151,11 +151,11 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/goToDryersImgBtn"
+                <ImageView
+                    android:id="@+id/DryerImg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="3"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/ic_assets_dryerdark" />

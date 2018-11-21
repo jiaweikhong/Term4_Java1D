@@ -18,14 +18,15 @@ import com.sackcentury.shinebuttonlib.ShineButton;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private CardView gotoWashersImgBtn;
-    private CardView gotoDryersImgBtn;
+    private CardView gotoWashers;
+    private CardView gotoDryers;
     private ShineButton washersNotifAllImgBtn;
     private ShineButton dryersNotifAllImgBtn;
     private TextView washerNotifState;
     private  TextView dryerNotifState;
     private boolean washerNotifStatus= false;
     private boolean dryerNotifStatus=true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         washerNotifState = findViewById(R.id.washerNotifState);
         dryerNotifState = findViewById(R.id.dryerNotifState);
 
-        gotoWashersImgBtn = findViewById(R.id.goToWashers);
-        gotoWashersImgBtn.setOnClickListener(new View.OnClickListener() {
+        gotoWashers = findViewById(R.id.goToWashers);
+        gotoWashers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Washer.class);
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        gotoDryersImgBtn = findViewById(R.id.goToDryers);
-        gotoDryersImgBtn.setOnClickListener(new View.OnClickListener() {
+        gotoDryers = findViewById(R.id.goToDryers);
+        gotoDryers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Dryer.class);
