@@ -10,7 +10,7 @@ import com.sackcentury.shinebuttonlib.ShineButton;
  */
 
 public class CustomShineButton extends ShineButton {
-    
+
     public CustomShineButton(Context context, AttributeSet attrs) {
 
         super(context, attrs);
