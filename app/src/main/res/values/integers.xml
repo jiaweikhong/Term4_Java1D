@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="disablednotif">0xFFFF4444</integer>
+</resources>

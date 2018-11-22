@@ -94,7 +94,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.sackcentury.shinebuttonlib.ShineButton
+                <com.example.khong.term4_java1d.CustomShineButton
                     android:id="@+id/washersNotifAllImgBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -103,7 +103,7 @@
                     android:scaleType="fitCenter"
                     android:src="@android:color/darker_gray"
                     app:allow_random_color="false"
-                    app:btn_color="@android:color/holo_red_light"
+                    app:btn_color="@android:color/white"
                     app:btn_fill_color="@android:color/holo_green_light"
                     app:siShape="@drawable/ic_assets_whitebell" />
 
