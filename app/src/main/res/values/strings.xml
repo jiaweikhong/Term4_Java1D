@@ -1,11 +1,19 @@
 <resources>
-    <string name="app_name">Term4_Java1D</string>
+
+    <!-- Strings related to titles -->
+    <string name="app_name">INSERT APP NAME HERE</string>
     <string name="title_washing">Washing</string>
     <string name="title_dryer">Dryer</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_main">Main Activity</string>
     <string name="title_activity_washer">Washer</string>
     <string name="title_activity_dryer">Dryer</string>
+    <string name="title_activity_chooseblock">Select block</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_notifications">Notifications</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
 
     <!-- Strings related to activity_washer.xml -->
     <string name="notification_enabled">Notifications Enabled</string>
@@ -31,13 +39,6 @@
     <string name="dryer2nd_name">D03</string>
     <string name="dryer2ndt_time_value">10:06</string>
     <string name="dryer2ndt_time_status">Remaining Time</string>
-
-    <string name="title_activity_login">Login</string>
-    <string name="title_activity_register">Register</string>
-
-    <string name="title_activity_notifications">Notifications</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
 
 
 </resources>

@@ -62,6 +62,8 @@ public class Dryer extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_top_bar, menu);
         return true;
     }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -77,6 +79,11 @@ public class Dryer extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.ChooseBlock) {
+            Intent intent = new Intent(Dryer.this, ChooseBlock.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
