@@ -207,7 +207,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.sackcentury.shinebuttonlib.ShineButton
+                <com.example.khong.term4_java1d.CustomShineButton
                     android:id="@+id/dryersNotifAllImgBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"

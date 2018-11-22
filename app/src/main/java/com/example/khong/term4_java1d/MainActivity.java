@@ -22,11 +22,10 @@ public class MainActivity extends AppCompatActivity {
     private CardView gotoWashers;
     private CardView gotoDryers;
     private CustomShineButton washersNotifAllImgBtn;
-    private ShineButton dryersNotifAllImgBtn;
+    private CustomShineButton dryersNotifAllImgBtn;
     private TextView washerNotifState;
     private TextView dryerNotifState;
     private boolean washerNotifStatus = false;
-    private boolean dryerNotifStatus = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
             }
             }
         });
-        dryersNotifAllImgBtn = findViewById(R.id.dryersNotifAllImgBtn);
-        if(dryerNotifStatus){
+        dryersNotifAllImgBtn =(CustomShineButton) findViewById(R.id.dryersNotifAllImgBtn);
+        if(dryersNotifAllImgBtn.NotifStatus){
             dryerNotifState.setText(R.string.notification_unavailable);
             dryersNotifAllImgBtn.setBtnFillColor(0xFFFF4444);
             dryersNotifAllImgBtn.setShapeResource(R.drawable.ic_assets_disabledbell);
@@ -79,15 +78,15 @@ public class MainActivity extends AppCompatActivity {
         dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dryerNotifStatus){
+                if(dryersNotifAllImgBtn.NotifStatus){
                     dryersNotifAllImgBtn.setChecked(true);
                     Toast.makeText(MainActivity.this, "There are available dryers", Toast.LENGTH_LONG).show();
                 }
-                if(dryersNotifAllImgBtn.isChecked()&&!dryerNotifStatus) {
+                if(dryersNotifAllImgBtn.isChecked()&&!dryersNotifAllImgBtn.NotifStatus) {
                     Toast.makeText(MainActivity.this, "You will now be notified when next dryer is available", Toast.LENGTH_LONG).show();
                     dryerNotifState.setText(R.string.notification_enabled);
                 }
-                else if(!dryerNotifStatus){
+                else if(!dryersNotifAllImgBtn.NotifStatus){
                     Toast.makeText(MainActivity.this, "You have remove notification for dryer", Toast.LENGTH_LONG).show();
                     dryerNotifState.setText(R.string.notification_disabled);
                 }

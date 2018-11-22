@@ -10,6 +10,7 @@ import com.sackcentury.shinebuttonlib.ShineButton;
  */
 
 public class CustomShineButton extends ShineButton {
+    public boolean NotifStatus = true;
 
     public CustomShineButton(Context context, AttributeSet attrs) {
 
