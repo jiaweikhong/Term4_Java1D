@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/LoginPage"
-        android:title="@string/title_activity_login"
+        android:id="@+id/Logout"
+        android:title="@string/title_activity_logout"
        />
     <item
         android:id="@+id/ChooseBlock"

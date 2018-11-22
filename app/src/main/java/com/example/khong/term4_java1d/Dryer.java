@@ -72,7 +72,7 @@ public class Dryer extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
-        if (id == R.id.LoginPage) {
+        if (id == R.id.Logout) {
             //Write the intent here
             Intent intent = new Intent(Dryer.this, Login.class);
             startActivity(intent);

@@ -10,6 +10,7 @@
     <string name="title_activity_dryer">Dryer</string>
     <string name="title_activity_chooseblock">Select block</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_logout">Logout</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_notifications">Notifications</string>
     <string name="title_home">Home</string>

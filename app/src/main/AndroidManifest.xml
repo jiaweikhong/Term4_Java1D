@@ -25,11 +25,12 @@
             android:label="@string/title_activity_register"
             android:screenOrientation="portrait"
             android:parentActivityName=".Login"
-            android:theme="@style/AppTheme.NoActionBar" />
-
+            android:theme="@style/AppTheme.NoActionBar"/>
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.example.khong.term4_java1d.Login" />
+
+
 
         <activity
             android:name=".MainActivity"

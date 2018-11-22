@@ -68,7 +68,7 @@ public class Washer extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.LoginPage) {
+        if (id == R.id.Logout) {
             Intent intent = new Intent(Washer.this, Login.class);
             startActivity(intent);
             return true;

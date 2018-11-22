@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private CardView gotoWashers;
     private CardView gotoDryers;
-    private ShineButton washersNotifAllImgBtn;
+    private CustomShineButton washersNotifAllImgBtn;
     private ShineButton dryersNotifAllImgBtn;
     private TextView washerNotifState;
     private TextView dryerNotifState;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        washersNotifAllImgBtn = findViewById(R.id.washersNotifAllImgBtn);
+        washersNotifAllImgBtn =(CustomShineButton)findViewById(R.id.washersNotifAllImgBtn);
         washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         dryersNotifAllImgBtn = findViewById(R.id.dryersNotifAllImgBtn);
         if(dryerNotifStatus){
             dryerNotifState.setText(R.string.notification_unavailable);
-            dryersNotifAllImgBtn.setBtnFillColor(R.color.colorPrimary);
+            dryersNotifAllImgBtn.setBtnFillColor(0xFFFF4444);
             dryersNotifAllImgBtn.setShapeResource(R.drawable.ic_assets_disabledbell);
             dryersNotifAllImgBtn.setChecked(true);
         }
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.LoginPage) {
+        if (id == R.id.Logout) {
             Intent intent = new Intent(MainActivity.this, Login.class);
             startActivity(intent);
             return true;
