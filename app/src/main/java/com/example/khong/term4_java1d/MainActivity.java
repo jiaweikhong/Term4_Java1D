@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private ShineButton washersNotifAllImgBtn;
     private ShineButton dryersNotifAllImgBtn;
     private TextView washerNotifState;
-    private  TextView dryerNotifState;
-    private boolean washerNotifStatus= false;
-    private boolean dryerNotifStatus=true;
+    private TextView dryerNotifState;
+    private boolean washerNotifStatus = false;
+    private boolean dryerNotifStatus = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,18 +80,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(dryerNotifStatus){
                     dryersNotifAllImgBtn.setChecked(true);
-
                     Toast.makeText(MainActivity.this, "There are available dryers", Toast.LENGTH_LONG).show();
-
                 }
                 if(dryersNotifAllImgBtn.isChecked()&&!dryerNotifStatus) {
-
                     Toast.makeText(MainActivity.this, "You will now be notified when next dryer is available", Toast.LENGTH_LONG).show();
                     dryerNotifState.setText(R.string.notification_enabled);
                 }
                 else if(!dryerNotifStatus){
                     Toast.makeText(MainActivity.this, "You have remove notification for dryer", Toast.LENGTH_LONG).show();
-
                     dryerNotifState.setText(R.string.notification_disabled);
                 }
             }
