@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.sackcentury.shinebuttonlib.ShineButton;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Random randomno = new Random();
+
+        // get next next boolean value 
         washerNotifState = findViewById(R.id.washerNotifState);
         dryerNotifState = findViewById(R.id.dryerNotifState);
 
@@ -54,28 +59,43 @@ public class MainActivity extends AppCompatActivity {
         });
 
         washersNotifAllImgBtn =(CustomShineButton)findViewById(R.id.washersNotifAllImgBtn);
+
+        washersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();//set to random, it should be firebase      
+if(washersNotifAllImgBtn.NotifStatus){
+            washerNotifState.setText(R.string.notification_unavailable);
+            washersNotifAllImgBtn.setBtnFillColor(0xFFA0A0A0);
+            washersNotifAllImgBtn.setShapeResource(R.drawable.ic_assets_disabledbell);
+            washersNotifAllImgBtn.setChecked(true);
+        }
+
         washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(washersNotifAllImgBtn.isChecked()) {
+                if(washersNotifAllImgBtn.NotifStatus){
+                    washersNotifAllImgBtn.setChecked(true);
+                    Toast.makeText(MainActivity.this, "There are available washers", Toast.LENGTH_LONG).show();
+                }
+                if(washersNotifAllImgBtn.isChecked()&&!washersNotifAllImgBtn.NotifStatus) {
                     Toast.makeText(MainActivity.this, "You will now be notified when next washer is available", Toast.LENGTH_LONG).show();
                     washerNotifState.setText(R.string.notification_enabled);
                 }//TODO move to strings.xml
                 //
-                else{
+                else if(!washersNotifAllImgBtn.NotifStatus) {
                 Toast.makeText(MainActivity.this, "You have remove notification for washer", Toast.LENGTH_LONG).show();
                     washerNotifState.setText(R.string.notification_disabled);
             }
             }
         });
         dryersNotifAllImgBtn =(CustomShineButton) findViewById(R.id.dryersNotifAllImgBtn);
+
+        dryersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();
         if(dryersNotifAllImgBtn.NotifStatus){
             dryerNotifState.setText(R.string.notification_unavailable);
-            dryersNotifAllImgBtn.setBtnFillColor(0xFFFF4444);
+            dryersNotifAllImgBtn.setBtnFillColor(0xFFA0A0A0);
             dryersNotifAllImgBtn.setShapeResource(R.drawable.ic_assets_disabledbell);
             dryersNotifAllImgBtn.setChecked(true);
         }
-        dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
+        dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {    
             @Override
             public void onClick(View v) {
                 if(dryersNotifAllImgBtn.NotifStatus){
