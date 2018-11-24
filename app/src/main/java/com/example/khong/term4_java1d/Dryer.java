@@ -110,7 +110,7 @@ public class Dryer extends AppCompatActivity {
 
         if (id == R.id.Logout) {
             //Write the intent here
-            Intent intent = new Intent(Dryer.this, Login.class);
+            Intent intent = new Intent(Dryer.this, LogoutActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             Dryer.this.finish();

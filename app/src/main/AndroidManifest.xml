@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.khong.term4_java1d">
 
     <application
@@ -8,11 +9,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".Login"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,22 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Register"
-            android:label="@string/title_activity_register"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Login"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.khong.term4_java1d.Login" />
-
-
-
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".Washer"
             android:label="@string/title_activity_washer"
@@ -48,7 +33,13 @@
             android:name=".ChooseBlock"
             android:label="ChooseBlock"
             android:screenOrientation="portrait" />
-        <service android:name=".Notifications">
+        <activity
+            android:name=".LogoutActivity"
+            android:label="@string/title_activity_logout"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".NotificationsService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

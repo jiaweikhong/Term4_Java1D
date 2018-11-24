@@ -1,11 +1,15 @@
 <resources>
 
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">204038700515929</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb204038700515929</string>
+
     <!-- Strings related to titles -->
-    <string name="app_name">INSERT APP NAME HERE</string>
+    <string name="app_name">LaundryApp</string>
     <string name="title_washing">Washing</string>
     <string name="title_dryer">Dryer</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_activity_main">Main Activity</string>
+    <string name="title_activity_main">Dashboard</string>
     <string name="title_activity_washer">Washer</string>
     <string name="title_activity_dryer">Dryer</string>
     <string name="title_activity_chooseblock">Select block</string>
@@ -16,12 +20,16 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
 
+    <!-- String related to login/logout -->
+    <string name="logout_prompt">Sure you want to logout?</string>
+    <string name="logout_confirm_btn">Yes</string>
+
     <!-- Strings related to mainActivity.java -->
     <string name="disabled_washer_toast_display">There are available washers</string>
-    <string name= "activated_washer_toast_display">You will now be notified when next washer is available</string>
+    <string name="activated_washer_toast_display">You will now be notified when next washer is available</string>
     <string name="deactivated_washer_toast_display">You have remove notification for washer</string>
     <string name="disabled_dryer_toast_display">There are available dryers</string>
-    <string name= "activated_dryer_toast_display">You will now be notified when next dryer is available</string>
+    <string name="activated_dryer_toast_display">You will now be notified when next dryer is available</string>
     <string name="deactivated_dryer_toast_display">You have remove notification for dryer</string>
 
 
