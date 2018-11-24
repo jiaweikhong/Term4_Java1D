@@ -7,11 +7,15 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Washer extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private ImageView Washer1st_notif;
+    private Boolean Washer1st_notifstatus = false;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,6 +54,22 @@ public class Washer extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_washer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Washer Notifications
+        Washer1st_notif = findViewById(R.id.Washer1st_notif);
+        Washer1st_notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Washer1st_notifstatus == true) {
+                    Washer1st_notif.setImageResource(R.drawable.ic_assets_darkbluebell);
+                    Washer1st_notifstatus = false;
+                } else {
+                    Washer1st_notif.setImageResource(R.drawable.ic_assets_lightbluebell);
+                    Washer1st_notifstatus = true;
+                }
+            }
+        });
+
     }
     @Override
     protected void onPause() {
