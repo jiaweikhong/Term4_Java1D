@@ -27,6 +27,7 @@ public class Washer extends AppCompatActivity {
                     // mTextMessage.setText(R.string.title_home);
                     Intent intent = new Intent(Washer.this, Dryer.class);
                     startActivity(intent);
+                    Washer.this.finish();
 
                     break;
                 case R.id.navigation_washer:
@@ -35,6 +36,8 @@ public class Washer extends AppCompatActivity {
                 case R.id.navigation_main:
                     Intent intentToMain = new Intent(Washer.this, MainActivity.class);
                     startActivity(intentToMain);
+                    Washer.this.finish();
+
                     break;
             }
             return false;
@@ -120,13 +123,18 @@ public class Washer extends AppCompatActivity {
 
         if (id == R.id.Logout) {
             Intent intent = new Intent(Washer.this, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            Washer.this.finish();
+
             return true;
         }
 
         if (id == R.id.ChooseBlock) {
             Intent intent = new Intent(Washer.this, ChooseBlock.class);
             startActivity(intent);
+            Washer.this.finish();
+
             return true;
         }
         return super.onOptionsItemSelected(item);

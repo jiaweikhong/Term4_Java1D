@@ -6,8 +6,8 @@ import android.widget.ImageView;
 
 public class DryerClass {
 
-    ImageView notifImage;
-    Boolean notifStatus;
+    public ImageView notifImage;
+    public Boolean notifStatus;
 
     public DryerClass () {
         this.notifStatus = false;

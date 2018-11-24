@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
         // get next next boolean value
 
         washersNotifAllImgBtn =(CustomShineButton)findViewById(R.id.washersNotifAllImgBtn);
+        washersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();//set to random, it should be firebase
+        washersNotifAllImgBtn.NotifState = findViewById(R.id.washerNotifState);
+
         dryersNotifAllImgBtn =(CustomShineButton) findViewById(R.id.dryersNotifAllImgBtn);
         dryersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();
-        washersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();//set to random, it should be firebase
-
-        washersNotifAllImgBtn.NotifState = findViewById(R.id.washerNotifState);
         dryersNotifAllImgBtn.NotifState = findViewById(R.id.dryerNotifState);
 
         gotoWashers = findViewById(R.id.goToWashers);
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Dryer.class);
                 startActivity(intent);
+
             }
         });
 
@@ -95,7 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.Logout) {
             Intent intent = new Intent(MainActivity.this, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            MainActivity.this.finish();
             return true;
         }
 

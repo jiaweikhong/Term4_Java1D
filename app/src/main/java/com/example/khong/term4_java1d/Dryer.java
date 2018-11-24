@@ -27,10 +27,12 @@ public class Dryer extends AppCompatActivity {
                     // mTextMessage.setText(R.string.title_dashboard);
                     Intent intent = new Intent(Dryer.this, Washer.class);
                     startActivity(intent);
+                    Dryer.this.finish();
                     break;
                 case R.id.navigation_main:
                     Intent intentToMain = new Intent(Dryer.this, MainActivity.class);
                     startActivity(intentToMain);
+                    Dryer.this.finish();
                     break;
             }
             return false;
@@ -109,13 +111,16 @@ public class Dryer extends AppCompatActivity {
         if (id == R.id.Logout) {
             //Write the intent here
             Intent intent = new Intent(Dryer.this, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            Dryer.this.finish();
             return true;
         }
 
         if (id == R.id.ChooseBlock) {
             Intent intent = new Intent(Dryer.this, ChooseBlock.class);
             startActivity(intent);
+            Dryer.this.finish();
             return true;
         }
 
