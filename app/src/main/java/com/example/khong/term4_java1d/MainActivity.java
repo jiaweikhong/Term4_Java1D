@@ -20,14 +20,10 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private CardView gotoWashers;
     private CardView gotoDryers;
     private CustomShineButton washersNotifAllImgBtn;
     private CustomShineButton dryersNotifAllImgBtn;
-    private TextView washerNotifState;
-    private TextView dryerNotifState;
-    private boolean washerNotifStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +31,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Random randomno = new Random();
+        // get next next boolean value
 
-        // get next next boolean value 
-        washerNotifState = findViewById(R.id.washerNotifState);
-        dryerNotifState = findViewById(R.id.dryerNotifState);
+        washersNotifAllImgBtn =(CustomShineButton)findViewById(R.id.washersNotifAllImgBtn);
+        dryersNotifAllImgBtn =(CustomShineButton) findViewById(R.id.dryersNotifAllImgBtn);
+        dryersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();
+        washersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();//set to random, it should be firebase
+
+        washersNotifAllImgBtn.NotifState = findViewById(R.id.washerNotifState);
+        dryersNotifAllImgBtn.NotifState = findViewById(R.id.dryerNotifState);
 
         gotoWashers = findViewById(R.id.goToWashers);
         gotoWashers.setOnClickListener(new View.OnClickListener() {
@@ -58,58 +59,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        washersNotifAllImgBtn =(CustomShineButton)findViewById(R.id.washersNotifAllImgBtn);
 
-        washersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();//set to random, it should be firebase      
-        if(washersNotifAllImgBtn.NotifStatus){
-            washerNotifState.setText(R.string.notification_unavailable);
-            washersNotifAllImgBtn.setBtnFillColor(0xFFA0A0A0);
-            washersNotifAllImgBtn.setShapeResource(R.drawable.ic_assets_disabledbell);
-            washersNotifAllImgBtn.setChecked(true);
-        }
+        washersNotifAllImgBtn.setUnavailable();
+        dryersNotifAllImgBtn.setUnavailable();
 
         washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(washersNotifAllImgBtn.NotifStatus){
-                    washersNotifAllImgBtn.setChecked(true);
-                    Toast.makeText(MainActivity.this, "There are available washers", Toast.LENGTH_LONG).show();
-                }
-                if(washersNotifAllImgBtn.isChecked()&&!washersNotifAllImgBtn.NotifStatus) {
-                    Toast.makeText(MainActivity.this, "You will now be notified when next washer is available", Toast.LENGTH_LONG).show();
-                    washerNotifState.setText(R.string.notification_enabled);
-                }//TODO move to strings.xml
-                //
-                else if(!washersNotifAllImgBtn.NotifStatus) {
-                Toast.makeText(MainActivity.this, "You have remove notification for washer", Toast.LENGTH_LONG).show();
-                    washerNotifState.setText(R.string.notification_disabled);
-            }
+                washersNotifAllImgBtn.WasherOnClickFunction();
             }
         });
-        dryersNotifAllImgBtn =(CustomShineButton) findViewById(R.id.dryersNotifAllImgBtn);
 
-        dryersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();
-        if(dryersNotifAllImgBtn.NotifStatus){
-            dryerNotifState.setText(R.string.notification_unavailable);
-            dryersNotifAllImgBtn.setBtnFillColor(0xFFA0A0A0);
-            dryersNotifAllImgBtn.setShapeResource(R.drawable.ic_assets_disabledbell);
-            dryersNotifAllImgBtn.setChecked(true);
-        }
+
+
         dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {    
             @Override
             public void onClick(View v) {
-                if(dryersNotifAllImgBtn.NotifStatus){
-                    dryersNotifAllImgBtn.setChecked(true);
-                    Toast.makeText(MainActivity.this, "There are available dryers", Toast.LENGTH_LONG).show();
-                }
-                if(dryersNotifAllImgBtn.isChecked()&&!dryersNotifAllImgBtn.NotifStatus) {
-                    Toast.makeText(MainActivity.this, "You will now be notified when next dryer is available", Toast.LENGTH_LONG).show();
-                    dryerNotifState.setText(R.string.notification_enabled);
-                }
-                else if(!dryersNotifAllImgBtn.NotifStatus){
-                    Toast.makeText(MainActivity.this, "You have remove notification for dryer", Toast.LENGTH_LONG).show();
-                    dryerNotifState.setText(R.string.notification_disabled);
-                }
+                dryersNotifAllImgBtn.DryerOnClickFunction();
+
             }
         });
 

@@ -15,7 +15,12 @@
     <string name="title_activity_notifications">Notifications</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-
+    <string name="disabled_washer_toast_display">There are available washers</string>
+    <string name= "activated_washer_toast_display">You will now be notified when next washer is available</string>
+    <string name="deactivated_washer_toast_display">You have remove notification for washer</string>
+    <string name="disabled_dryer_toast_display">There are available dryers</string>
+    <string name= "activated_dryer_toast_display">You will now be notified when next dryer is available</string>
+    <string name="deactivated_dryer_toast_display">You have remove notification for dryer</string>
     <!-- Strings related to activity_washer.xml -->
     <string name="notification_enabled">Notifications Enabled</string>
     <string name="washer_avail">0/12</string>
