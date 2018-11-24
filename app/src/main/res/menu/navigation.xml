@@ -7,12 +7,12 @@
         android:title="@string/title_activity_main" />
     <item
         android:id="@+id/navigation_washer"
-        android:icon="@drawable/ic_assets_washingmachinedark"
+        android:icon="@drawable/washing_machine4"
         android:title="@string/title_activity_washer" />
 
     <item
         android:id="@+id/navigation_dryer"
-        android:icon="@drawable/ic_assets_dryerdark"
+        android:icon="@drawable/tumble_dryer"
         android:title="@string/title_dryer" />
 
 </menu>
