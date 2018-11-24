@@ -28,10 +28,6 @@ public class Dryer extends AppCompatActivity {
                     Intent intent = new Intent(Dryer.this, Washer.class);
                     startActivity(intent);
                     break;
-                case R.id.navigation_notifications:
-                    Intent intentToNotification = new Intent(Dryer.this, Notifications.class);
-                    startActivity(intentToNotification);
-                    break;
                 case R.id.navigation_main:
                     Intent intentToMain = new Intent(Dryer.this, MainActivity.class);
                     startActivity(intentToMain);
@@ -50,6 +46,44 @@ public class Dryer extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_dryer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Instantiate all washers here.
+        DryerClass D01 = new DryerClass();
+        D01.notifImage = findViewById(R.id.Dryer1st_notif);
+        D01.notifImage.setOnClickListener(D01.dryerOnClickListener);
+
+        DryerClass D02 = new DryerClass();
+        D02.notifImage = findViewById(R.id.Dryer2nd_notif);
+        D02.notifImage.setOnClickListener(D02.dryerOnClickListener);
+
+        DryerClass D03 = new DryerClass();
+        D03.notifImage = findViewById(R.id.Dryer3rd_notif);
+        D03.notifImage.setOnClickListener(D03.dryerOnClickListener);
+
+        DryerClass D04 = new DryerClass();
+        D04.notifImage = findViewById(R.id.Dryer4th_notif);
+        D04.notifImage.setOnClickListener(D04.dryerOnClickListener);
+
+        DryerClass D05 = new DryerClass();
+        D05.notifImage = findViewById(R.id.Dryer5th_notif);
+        D05.notifImage.setOnClickListener(D05.dryerOnClickListener);
+
+        DryerClass D06 = new DryerClass();
+        D06.notifImage = findViewById(R.id.Dryer6th_notif);
+        D06.notifImage.setOnClickListener(D06.dryerOnClickListener);
+
+        DryerClass D07 = new DryerClass();
+        D07.notifImage = findViewById(R.id.Dryer7th_notif);
+        D07.notifImage.setOnClickListener(D07.dryerOnClickListener);
+
+        DryerClass D08 = new DryerClass();
+        D08.notifImage = findViewById(R.id.Dryer8th_notif);
+        D08.notifImage.setOnClickListener(D08.dryerOnClickListener);
+
+        DryerClass D09 = new DryerClass();
+        D09.notifImage = findViewById(R.id.Dryer9th_notif);
+        D09.notifImage.setOnClickListener(D09.dryerOnClickListener);
+
     }
     @Override
     protected void onPause() {

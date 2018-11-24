@@ -32,10 +32,6 @@ public class Washer extends AppCompatActivity {
                 case R.id.navigation_washer:
                     // mTextMessage.setText(R.string.title_dashboard);
                     return true;
-                case R.id.navigation_notifications:
-                    Intent intentToNotification = new Intent(Washer.this, Notifications.class);
-                    startActivity(intentToNotification);
-                    break;
                 case R.id.navigation_main:
                     Intent intentToMain = new Intent(Washer.this, MainActivity.class);
                     startActivity(intentToMain);
@@ -55,20 +51,54 @@ public class Washer extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.navigation_washer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        // Washer Notifications
-        Washer1st_notif = findViewById(R.id.Washer1st_notif);
-        Washer1st_notif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Washer1st_notifstatus == true) {
-                    Washer1st_notif.setImageResource(R.drawable.ic_assets_darkbluebell);
-                    Washer1st_notifstatus = false;
-                } else {
-                    Washer1st_notif.setImageResource(R.drawable.ic_assets_lightbluebell);
-                    Washer1st_notifstatus = true;
-                }
-            }
-        });
+        // Instantiate all washers here.
+        WasherClass W01 = new WasherClass();
+        W01.notifImage = findViewById(R.id.Washer1st_notif);
+        W01.notifImage.setOnClickListener(W01.washerOnClickListener);
+
+        WasherClass W02 = new WasherClass();
+        W02.notifImage = findViewById(R.id.Washer2nd_notif);
+        W02.notifImage.setOnClickListener(W02.washerOnClickListener);
+
+        WasherClass W03 = new WasherClass();
+        W03.notifImage = findViewById(R.id.Washer3rd_notif);
+        W03.notifImage.setOnClickListener(W03.washerOnClickListener);
+
+        WasherClass W04 = new WasherClass();
+        W04.notifImage = findViewById(R.id.Washer4th_notif);
+        W04.notifImage.setOnClickListener(W04.washerOnClickListener);
+
+        WasherClass W05 = new WasherClass();
+        W05.notifImage = findViewById(R.id.Washer5th_notif);
+        W05.notifImage.setOnClickListener(W05.washerOnClickListener);
+
+        WasherClass W06 = new WasherClass();
+        W06.notifImage = findViewById(R.id.Washer6th_notif);
+        W06.notifImage.setOnClickListener(W06.washerOnClickListener);
+
+        WasherClass W07 = new WasherClass();
+        W07.notifImage = findViewById(R.id.Washer7th_notif);
+        W07.notifImage.setOnClickListener(W07.washerOnClickListener);
+
+        WasherClass W08 = new WasherClass();
+        W08.notifImage = findViewById(R.id.Washer8th_notif);
+        W08.notifImage.setOnClickListener(W08.washerOnClickListener);
+
+        WasherClass W09 = new WasherClass();
+        W09.notifImage = findViewById(R.id.Washer9th_notif);
+        W09.notifImage.setOnClickListener(W09.washerOnClickListener);
+
+        WasherClass W10 = new WasherClass();
+        W10.notifImage = findViewById(R.id.Washer10th_notif);
+        W10.notifImage.setOnClickListener(W10.washerOnClickListener);
+
+        WasherClass W11 = new WasherClass();
+        W11.notifImage = findViewById(R.id.Washer11th_notif);
+        W11.notifImage.setOnClickListener(W11.washerOnClickListener);
+
+        WasherClass W12 = new WasherClass();
+        W12.notifImage = findViewById(R.id.Washer12th_notif);
+        W12.notifImage.setOnClickListener(W12.washerOnClickListener);
 
     }
     @Override

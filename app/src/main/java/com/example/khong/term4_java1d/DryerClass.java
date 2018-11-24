@@ -4,16 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class WasherClass extends AppCompatActivity{
+public class DryerClass {
 
     ImageView notifImage;
     Boolean notifStatus;
 
-    public WasherClass () {
+    public DryerClass () {
         this.notifStatus = false;
     }
 
-    View.OnClickListener washerOnClickListener = new View.OnClickListener() {
+    View.OnClickListener dryerOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (notifStatus == true) {

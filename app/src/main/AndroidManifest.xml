@@ -45,10 +45,6 @@
             android:label="@string/title_activity_dryer"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Notifications"
-            android:label="@string/title_activity_notifications"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ChooseBlock"
             android:label="ChooseBlock"
             android:screenOrientation="portrait" />

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         washersNotifAllImgBtn =(CustomShineButton)findViewById(R.id.washersNotifAllImgBtn);
 
         washersNotifAllImgBtn.NotifStatus = randomno.nextBoolean();//set to random, it should be firebase      
-if(washersNotifAllImgBtn.NotifStatus){
+        if(washersNotifAllImgBtn.NotifStatus){
             washerNotifState.setText(R.string.notification_unavailable);
             washersNotifAllImgBtn.setBtnFillColor(0xFFA0A0A0);
             washersNotifAllImgBtn.setShapeResource(R.drawable.ic_assets_disabledbell);
