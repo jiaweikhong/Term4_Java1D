@@ -59,71 +59,79 @@ public class Washer extends AppCompatActivity {
         MachineClass W01 = new MachineClass(10000);
         W01.notifImage = findViewById(R.id.Washer1st_notif);
         W01.notifImage.setOnClickListener(W01.machineOnClickListener);
-        W01.Machine_timevalue = findViewById(R.id.Washer1st_timevalue);
+        W01.machine_timevalue = findViewById(R.id.Washer1st_timevalue);
+        W01.machine_timestatus = findViewById(R.id.Washer1st_timestatus);
         //
 
         MachineClass W02 = new MachineClass();
         W02.notifImage = findViewById(R.id.Washer2nd_notif);
         W02.notifImage.setOnClickListener(W02.machineOnClickListener);
-        W02.Machine_timevalue = findViewById(R.id.Washer2nd_timevalue);
+        W02.machine_timevalue = findViewById(R.id.Washer2nd_timevalue);
+        W02.machine_timestatus = findViewById(R.id.Washer2nd_timestatus);
 
 
-        MachineClass W03 = new MachineClass();
+        MachineClass W03 = new MachineClass(10000);
         W03.notifImage = findViewById(R.id.Washer3rd_notif);
         W03.notifImage.setOnClickListener(W03.machineOnClickListener);
-
-        W03.Machine_timevalue = findViewById(R.id.Washer3rd_timevalue);
+        W03.machine_timevalue = findViewById(R.id.Washer3rd_timevalue);
+        W03.machine_timestatus = findViewById(R.id.Washer3rd_timestatus);
 
         MachineClass W04 = new MachineClass();
         W04.notifImage = findViewById(R.id.Washer4th_notif);
         W04.notifImage.setOnClickListener(W04.machineOnClickListener);
-
-        W04.Machine_timevalue = findViewById(R.id.Washer4th_timevalue);
+        W04.machine_timevalue = findViewById(R.id.Washer4th_timevalue);
+        W04.machine_timestatus = findViewById(R.id.Washer4th_timestatus);
 
         MachineClass W05 = new MachineClass();
         W05.notifImage = findViewById(R.id.Washer5th_notif);
         W05.notifImage.setOnClickListener(W05.machineOnClickListener);
-        W05.Machine_timevalue = findViewById(R.id.Washer5th_timevalue);
+        W05.machine_timevalue = findViewById(R.id.Washer5th_timevalue);
+        W05.machine_timestatus = findViewById(R.id.Washer5th_timestatus);
 
 
         MachineClass W06 = new MachineClass();
         W06.notifImage = findViewById(R.id.Washer6th_notif);
         W06.notifImage.setOnClickListener(W06.machineOnClickListener);
-
-        W06.Machine_timevalue = findViewById(R.id.Washer6th_timevalue);
+        W06.machine_timevalue = findViewById(R.id.Washer6th_timevalue);
+        W06.machine_timestatus = findViewById(R.id.Washer6th_timestatus);
 
         MachineClass W07 = new MachineClass();
         W07.notifImage = findViewById(R.id.Washer7th_notif);
         W07.notifImage.setOnClickListener(W07.machineOnClickListener);
-
-        W07.Machine_timevalue = findViewById(R.id.Washer7th_timevalue);
+        W07.machine_timevalue = findViewById(R.id.Washer7th_timevalue);
+        W07.machine_timestatus = findViewById(R.id.Washer7th_timestatus);
 
         MachineClass W08 = new MachineClass();
         W08.notifImage = findViewById(R.id.Washer8th_notif);
         W08.notifImage.setOnClickListener(W08.machineOnClickListener);
-        W08.Machine_timevalue = findViewById(R.id.Washer8th_timevalue);
+        W08.machine_timevalue = findViewById(R.id.Washer8th_timevalue);
+        W08.machine_timestatus = findViewById(R.id.Washer8th_timestatus);
 
 
         MachineClass W09 = new MachineClass();
         W09.notifImage = findViewById(R.id.Washer9th_notif);
         W09.notifImage.setOnClickListener(W09.machineOnClickListener);
-        W09.Machine_timevalue = findViewById(R.id.Washer9th_timevalue);
+        W09.machine_timevalue = findViewById(R.id.Washer9th_timevalue);
+        W09.machine_timestatus = findViewById(R.id.Washer9th_timestatus);
 
 
         MachineClass W10 = new MachineClass();
         W10.notifImage = findViewById(R.id.Washer10th_notif);
         W10.notifImage.setOnClickListener(W10.machineOnClickListener);
-        W10.Machine_timevalue = findViewById(R.id.Washer10th_timevalue);
+        W10.machine_timevalue = findViewById(R.id.Washer10th_timevalue);
+        W10.machine_timestatus = findViewById(R.id.Washer10th_timestatus);
 
         MachineClass W11 = new MachineClass();
         W11.notifImage = findViewById(R.id.Washer11th_notif);
         W11.notifImage.setOnClickListener(W11.machineOnClickListener);
-        W11.Machine_timevalue = findViewById(R.id.Washer11th_timevalue);
+        W11.machine_timevalue = findViewById(R.id.Washer11th_timevalue);
+        W11.machine_timestatus = findViewById(R.id.Washer11th_timestatus);
 
         MachineClass W12 = new MachineClass();
         W12.notifImage = findViewById(R.id.Washer12th_notif);
         W12.notifImage.setOnClickListener(W12.machineOnClickListener);
-        W12.Machine_timevalue = findViewById(R.id.Washer12th_timevalue);
+        W12.machine_timevalue = findViewById(R.id.Washer12th_timevalue);
+        W12.machine_timestatus = findViewById(R.id.Washer12th_timestatus);
 
     }
     @Override
