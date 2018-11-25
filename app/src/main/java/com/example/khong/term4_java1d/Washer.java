@@ -32,20 +32,7 @@ public class Washer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_washer);
         //testing out setting a countdowntimer
-        Washer1st_timevalue = findViewById(R.id.Washer1st_timevalue);
-        washerCountdownTimer = new CountDownTimer(startTimeInMillis,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                startTimeInMillis=millisUntilFinished;
-                updateCountdownText();
-            }
 
-            @Override
-            public void onFinish() {
-
-            }
-
-        }.start();
 
         //these are for swiperefresh
         refreshWasher = findViewById(R.id.refreshWasher);
@@ -69,50 +56,69 @@ public class Washer extends AppCompatActivity {
         WasherClass W01 = new WasherClass();
         W01.notifImage = findViewById(R.id.Washer1st_notif);
         W01.notifImage.setOnClickListener(W01.washerOnClickListener);
+        W01.Washer_timevalue = findViewById(R.id.Washer1st_timevalue);
 
         WasherClass W02 = new WasherClass();
         W02.notifImage = findViewById(R.id.Washer2nd_notif);
         W02.notifImage.setOnClickListener(W02.washerOnClickListener);
+        W02.Washer_timevalue = findViewById(R.id.Washer2nd_timevalue);
 
         WasherClass W03 = new WasherClass();
         W03.notifImage = findViewById(R.id.Washer3rd_notif);
         W03.notifImage.setOnClickListener(W03.washerOnClickListener);
 
+        W03.Washer_timevalue = findViewById(R.id.Washer3rd_timevalue);
+
         WasherClass W04 = new WasherClass();
         W04.notifImage = findViewById(R.id.Washer4th_notif);
         W04.notifImage.setOnClickListener(W04.washerOnClickListener);
 
+        W04.Washer_timevalue = findViewById(R.id.Washer4th_timevalue);
+
         WasherClass W05 = new WasherClass();
         W05.notifImage = findViewById(R.id.Washer5th_notif);
         W05.notifImage.setOnClickListener(W05.washerOnClickListener);
+        W05.Washer_timevalue = findViewById(R.id.Washer5th_timevalue);
+
 
         WasherClass W06 = new WasherClass();
         W06.notifImage = findViewById(R.id.Washer6th_notif);
         W06.notifImage.setOnClickListener(W06.washerOnClickListener);
 
+        W06.Washer_timevalue = findViewById(R.id.Washer6th_timevalue);
+
         WasherClass W07 = new WasherClass();
         W07.notifImage = findViewById(R.id.Washer7th_notif);
         W07.notifImage.setOnClickListener(W07.washerOnClickListener);
 
+        W07.Washer_timevalue = findViewById(R.id.Washer7th_timevalue);
+
         WasherClass W08 = new WasherClass();
         W08.notifImage = findViewById(R.id.Washer8th_notif);
         W08.notifImage.setOnClickListener(W08.washerOnClickListener);
+        W08.Washer_timevalue = findViewById(R.id.Washer8th_timevalue);
+
 
         WasherClass W09 = new WasherClass();
         W09.notifImage = findViewById(R.id.Washer9th_notif);
         W09.notifImage.setOnClickListener(W09.washerOnClickListener);
+        W09.Washer_timevalue = findViewById(R.id.Washer9th_timevalue);
+
 
         WasherClass W10 = new WasherClass();
         W10.notifImage = findViewById(R.id.Washer10th_notif);
         W10.notifImage.setOnClickListener(W10.washerOnClickListener);
+        W10.Washer_timevalue = findViewById(R.id.Washer10th_timevalue);
 
         WasherClass W11 = new WasherClass();
         W11.notifImage = findViewById(R.id.Washer11th_notif);
         W11.notifImage.setOnClickListener(W11.washerOnClickListener);
+        W11.Washer_timevalue = findViewById(R.id.Washer11th_timevalue);
 
         WasherClass W12 = new WasherClass();
         W12.notifImage = findViewById(R.id.Washer12th_notif);
         W12.notifImage.setOnClickListener(W12.washerOnClickListener);
+        W12.Washer_timevalue = findViewById(R.id.Washer12th_timevalue);
 
     }
     @Override
