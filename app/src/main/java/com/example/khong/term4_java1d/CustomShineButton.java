@@ -36,7 +36,7 @@ public class CustomShineButton extends ShineButton {
         }
     }
 
-    public void DryerOnClickFunction(String block) {
+    public void dryerOnClickFunction(String block) {
         if (this.isChecked()) {
             this.NotifState.setText(R.string.notification_enabled);
             for (int i = 0; i < 13; i++) {
@@ -53,7 +53,7 @@ public class CustomShineButton extends ShineButton {
 
     }
 
-    public void WasherOnClickFunction(String block) {
+    public void washerOnClickFunction(String block) {
         if (this.isChecked()) {
             this.NotifState.setText(R.string.notification_enabled);
             for (int i = 0; i < 13; i++) {

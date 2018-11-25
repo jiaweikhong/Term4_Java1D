@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            washersNotifAllImgBtn.WasherOnClickFunction(userBlockChoice);
+                            washersNotifAllImgBtn.washerOnClickFunction(userBlockChoice);
                         }
                     });
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            dryersNotifAllImgBtn.DryerOnClickFunction(userBlockChoice);
+                            dryersNotifAllImgBtn.dryerOnClickFunction(userBlockChoice);
 
                         }
                     });

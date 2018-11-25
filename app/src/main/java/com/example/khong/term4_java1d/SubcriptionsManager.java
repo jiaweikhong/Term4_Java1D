@@ -13,10 +13,7 @@ public class SubcriptionsManager {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Subscribed to "+topic_name;
-                        if (!task.isSuccessful()) {
-                            msg = "Subscribe failed";
-                        }
+                        // success
                     }
                 });
     }
@@ -26,10 +23,7 @@ public class SubcriptionsManager {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Unsubscribed from "+topic_name;
-                        if (!task.isSuccessful()) {
-                            msg = "Unsubscribe failed";
-                        }
+                        // failure
                     }
                 });
     }
