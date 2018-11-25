@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,7 +67,48 @@ public class MainActivity extends AppCompatActivity {
      */
     public void setupApp() {
 
+        // Navigation to other machine list
+
+        gotoWashers = findViewById(R.id.goToWashers);
+        gotoWashers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Washer.class);
+                startActivity(intent);
+            }
+        });
+
+        gotoDryers = findViewById(R.id.goToDryers);
+        gotoDryers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Dryer.class);
+                startActivity(intent);
+
+            }
+        });
+
+        washersNotifAllImgBtn = findViewById(R.id.washersNotifAllImgBtn);
+        dryersNotifAllImgBtn = findViewById(R.id.dryersNotifAllImgBtn);
+
+        washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                washersNotifAllImgBtn.WasherOnClickFunction();
+            }
+        });
+
+
+        dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dryersNotifAllImgBtn.DryerOnClickFunction();
+
+            }
+        });
+
         // Firebase
+
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
 
@@ -97,59 +137,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         userBlockChoiceRef.addValueEventListener(blockChoiceListener);
-
-        // Others
-
-        Random randomNumber = new Random();
-        // get next next boolean value
-
-        washersNotifAllImgBtn = findViewById(R.id.washersNotifAllImgBtn);
-        washersNotifAllImgBtn.NotifStatus = randomNumber.nextBoolean();
-        washersNotifAllImgBtn.NotifState = findViewById(R.id.washerNotifState);
-
-        dryersNotifAllImgBtn = findViewById(R.id.dryersNotifAllImgBtn);
-        dryersNotifAllImgBtn.NotifStatus = randomNumber.nextBoolean();
-        dryersNotifAllImgBtn.NotifState = findViewById(R.id.dryerNotifState);
-
-        washersNotifAllImgBtn.setUnavailable();
-        dryersNotifAllImgBtn.setUnavailable();
-
-        // Navigation to other machine list
-
-        gotoWashers = findViewById(R.id.goToWashers);
-        gotoWashers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Washer.class);
-                startActivity(intent);
-            }
-        });
-
-        gotoDryers = findViewById(R.id.goToDryers);
-        gotoDryers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Dryer.class);
-                startActivity(intent);
-
-            }
-        });
-
-        washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                washersNotifAllImgBtn.WasherOnClickFunction();
-            }
-        });
-
-
-        dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dryersNotifAllImgBtn.DryerOnClickFunction();
-
-            }
-        });
 
     }
 
@@ -199,6 +186,24 @@ public class MainActivity extends AppCompatActivity {
                 dryersCountNo++;
             }
         }
+
+
+        if (washersCountNo > 0) {
+            washersNotifAllImgBtn.NotifStatus = false;
+        } else {
+            washersNotifAllImgBtn.NotifStatus = true;
+        }
+        washersNotifAllImgBtn.NotifState = findViewById(R.id.washerNotifState);
+
+        if (dryersCountNo > 0) {
+            dryersNotifAllImgBtn.NotifStatus = false;
+        } else {
+            dryersNotifAllImgBtn.NotifStatus = true;
+        }
+        dryersNotifAllImgBtn.NotifState = findViewById(R.id.dryerNotifState);
+
+        washersNotifAllImgBtn.setUnavailable();
+        dryersNotifAllImgBtn.setUnavailable();
 
         washersCount.setText(Integer.toString(washersCountNo) + "/12");
         dryersCount.setText(Integer.toString(dryersCountNo) + "/9");

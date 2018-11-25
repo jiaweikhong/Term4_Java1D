@@ -21,11 +21,12 @@ public class CustomShineButton extends ShineButton {
 
     }
     public void setUnavailable(){
-        if(this.NotifStatus){
+        if(!this.NotifStatus){
             this.NotifState.setText(R.string.notification_unavailable);
             this.setBtnFillColor(0xFFA0A0A0);
             this.setShapeResource(R.drawable.ic_assets_disabledbell);
             this.setChecked(true);
+            this.setClickable(false);
         }
     }
     public void DryerOnClickFunction(){
