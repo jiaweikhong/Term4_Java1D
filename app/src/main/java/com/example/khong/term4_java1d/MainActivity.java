@@ -68,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void setupApp() {
 
-        userBlockChoice = "block_XX"; // Placeholder to prevent error
-
         // Firebase
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
@@ -78,12 +76,18 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener blockChoiceListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                userBlockChoice = dataSnapshot.getValue().toString();
-                // Welcome Text
-                lblWelcome = findViewById(R.id.lblWelcome);
-                user_displayName = auth.getCurrentUser().getDisplayName();
-                lblWelcome.setText(userBlockChoice.replace("_", " ") + " welcomes " + user_displayName);
-                setupBlockDatabase();
+                if (dataSnapshot.getValue() == null) {
+                    Intent intent = new Intent(MainActivity.this, ChooseBlock.class);
+                    startActivity(intent);
+                } else {
+                    userBlockChoice = dataSnapshot.getValue().toString();
+                    // Welcome Text
+                    lblWelcome = findViewById(R.id.lblWelcome);
+                    user_displayName = auth.getCurrentUser().getDisplayName();
+                    String welcomeText = userBlockChoice.replace("_", " ") + " welcomes " + user_displayName;
+                    lblWelcome.setText(welcomeText);
+                    setupBlockDatabase();
+                }
             }
 
             @Override
@@ -100,12 +104,17 @@ public class MainActivity extends AppCompatActivity {
         // get next next boolean value
 
         washersNotifAllImgBtn = findViewById(R.id.washersNotifAllImgBtn);
-        washersNotifAllImgBtn.NotifStatus = randomNumber.nextBoolean();//set to random, it should be firebase
+        washersNotifAllImgBtn.NotifStatus = randomNumber.nextBoolean();
         washersNotifAllImgBtn.NotifState = findViewById(R.id.washerNotifState);
 
         dryersNotifAllImgBtn = findViewById(R.id.dryersNotifAllImgBtn);
         dryersNotifAllImgBtn.NotifStatus = randomNumber.nextBoolean();
         dryersNotifAllImgBtn.NotifState = findViewById(R.id.dryerNotifState);
+
+        washersNotifAllImgBtn.setUnavailable();
+        dryersNotifAllImgBtn.setUnavailable();
+
+        // Navigation to other machine list
 
         gotoWashers = findViewById(R.id.goToWashers);
         gotoWashers.setOnClickListener(new View.OnClickListener() {
@@ -125,9 +134,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        washersNotifAllImgBtn.setUnavailable();
-        dryersNotifAllImgBtn.setUnavailable();
 
         washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override

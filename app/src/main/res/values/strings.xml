@@ -38,7 +38,7 @@
     <string name="occupied_time_status">Remaining Time</string>
     <string name="available_time_status">Elapsed Time</string>
     <string name="notification_enabled">Notifications Enabled</string>
-    <string name="washer_avail">0/12</string>
+    <string name="washer_avail">.../12</string>
     <string name="washer1st_name">W01</string>
     <string name="washer1st_time_value">2:35:02</string>
     <string name="washer1st_time_status">Elapsed Time</string>
@@ -80,7 +80,7 @@
     <!-- Strings related to activity_dryer.xml -->
     <string name="notification_disabled">Notifications Disabled</string>
     <string name="notification_unavailable">Notifications Unavailable</string>
-    <string name="dryer_avail">5/9</string>
+    <string name="dryer_avail">.../9</string>
     <string name="dryer1st_name">D01</string>
     <string name="dryer1st_time_value">53:10</string>
     <string name="dryer1st_time_status">Elapsed Time</string>

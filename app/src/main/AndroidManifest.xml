@@ -31,7 +31,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ChooseBlock"
-            android:label="ChooseBlock"
+            android:label="@string/title_activity_chooseblock"
             android:screenOrientation="portrait" />
         <activity
             android:name=".LogoutActivity"
