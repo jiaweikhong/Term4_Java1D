@@ -15,6 +15,8 @@ public class CustomShineButton extends ShineButton {
     public boolean NotifStatus = true;
     public TextView NotifState;
 
+    private SubcriptionsManager subcriptionsManager = new SubcriptionsManager();
+
     public CustomShineButton(Context context, AttributeSet attrs) {
 
         super(context, attrs);
@@ -28,35 +30,42 @@ public class CustomShineButton extends ShineButton {
             this.setShapeResource(R.drawable.ic_assets_disabledbell);
             this.setChecked(true);
             this.setClickable(false);
+        } else {
+            this.setShapeResource(R.drawable.ic_assets_whitebell);
+            this.setClickable(true);
         }
     }
 
-    public void DryerOnClickFunction() {
-        if (this.NotifStatus) {
-            this.setChecked(true);
-            Toast.makeText(getContext(), R.string.disabled_dryer_toast_display, Toast.LENGTH_LONG).show();
-        }
-        if (this.isChecked() && !this.NotifStatus) {
-            Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_LONG).show();
+    public void DryerOnClickFunction(String block) {
+        if (this.isChecked()) {
             this.NotifState.setText(R.string.notification_enabled);
-        } else if (!this.NotifStatus) {
-            Toast.makeText(getContext(), R.string.deactivated_dryer_toast_display, Toast.LENGTH_LONG).show();
+            for (int i = 0; i < 13; i++) {
+                subcriptionsManager.subscribeTopic(block + "_w_" + Integer.toString(i));
+            }
+            Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
+        } else {
             this.NotifState.setText(R.string.notification_disabled);
+            for (int i = 0; i < 13; i++) {
+                subcriptionsManager.unsubscribeTopic(block + "_w_" + Integer.toString(i));
+            }
+            Toast.makeText(getContext(), R.string.deactivated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    public void WasherOnClickFunction() {
-        if (this.NotifStatus) {
-            this.setChecked(true);
-            Toast.makeText(getContext(), R.string.disabled_washer_toast_display, Toast.LENGTH_LONG).show();
-        }
-        if (this.isChecked() && !this.NotifStatus) {
-            Toast.makeText(getContext(), R.string.activated_washer_toast_display, Toast.LENGTH_LONG).show();
+    public void WasherOnClickFunction(String block) {
+        if (this.isChecked()) {
             this.NotifState.setText(R.string.notification_enabled);
-        } else if (!this.NotifStatus) {
-            Toast.makeText(getContext(), R.string.deactivated_washer_toast_display, Toast.LENGTH_LONG).show();
+            for (int i = 0; i < 13; i++) {
+                subcriptionsManager.subscribeTopic(block + "_d_" + Integer.toString(i));
+            }
+            Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
+        } else {
             this.NotifState.setText(R.string.notification_disabled);
+            for (int i = 0; i < 13; i++) {
+                subcriptionsManager.unsubscribeTopic(block + "_d_" + Integer.toString(i));
+            }
+            Toast.makeText(getContext(), R.string.deactivated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         }
 
     }

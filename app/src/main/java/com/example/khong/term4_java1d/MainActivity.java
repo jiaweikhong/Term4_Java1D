@@ -73,39 +73,26 @@ public class MainActivity extends AppCompatActivity {
         gotoWashers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Washer.class);
+                //Intent intent = new Intent(MainActivity.this, Washer.class);
+                Intent intent = new Intent(MainActivity.this, WasherView.class);
                 startActivity(intent);
             }
         });
+
+        // TODO: standardise how to set listener??
 
         gotoDryers = findViewById(R.id.goToDryers);
         gotoDryers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Dryer.class);
+                //Intent intent = new Intent(MainActivity.this, Dryer.class);
+                Intent intent = new Intent(MainActivity.this, DryerView.class);
                 startActivity(intent);
-
             }
         });
 
         washersNotifAllImgBtn = findViewById(R.id.washersNotifAllImgBtn);
         dryersNotifAllImgBtn = findViewById(R.id.dryersNotifAllImgBtn);
-
-        washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                washersNotifAllImgBtn.WasherOnClickFunction();
-            }
-        });
-
-
-        dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dryersNotifAllImgBtn.DryerOnClickFunction();
-
-            }
-        });
 
         // Firebase
 
@@ -127,6 +114,23 @@ public class MainActivity extends AppCompatActivity {
                     String welcomeText = userBlockChoice.replace("_", " ") + " welcomes " + user_displayName;
                     lblWelcome.setText(welcomeText);
                     setupBlockDatabase();
+
+                    washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            washersNotifAllImgBtn.WasherOnClickFunction(userBlockChoice);
+                        }
+                    });
+
+
+                    dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dryersNotifAllImgBtn.DryerOnClickFunction(userBlockChoice);
+
+                        }
+                    });
+
                 }
             }
 
@@ -145,8 +149,6 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener blockDatabaseListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Toast new_data = Toast.makeText(getApplicationContext(), "New data", Toast.LENGTH_SHORT);
-                new_data.show();
                 populateMachinesCount(dataSnapshot);
             }
 
