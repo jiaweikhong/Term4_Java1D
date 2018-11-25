@@ -2,6 +2,7 @@ package com.example.khong.term4_java1d;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,45 +15,39 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Washer extends AppCompatActivity {
+    private long startTimeInMillis = 600000;
+    private CountDownTimer washerCountdownTimer;
 
+    private TextView Washer1st_timevalue;
     private TextView mTextMessage;
     private ImageView Washer1st_notif;
     private Boolean Washer1st_notifstatus = false;
     private SwipeRefreshLayout refreshWasher;
     private ScrollView washerScrollView;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_dryer:
-                    // mTextMessage.setText(R.string.title_home);
-                    Intent intent = new Intent(Washer.this, Dryer.class);
-                    startActivity(intent);
-                    Washer.this.finish();
-
-                    break;
-                case R.id.navigation_washer:
-                    // mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_main:
-                    Intent intentToMain = new Intent(Washer.this, MainActivity.class);
-                    startActivity(intentToMain);
-                    Washer.this.finish();
-
-                    break;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_washer);
+        //testing out setting a countdowntimer
+        Washer1st_timevalue = findViewById(R.id.Washer1st_timevalue);
+        washerCountdownTimer = new CountDownTimer(startTimeInMillis,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                startTimeInMillis=millisUntilFinished;
+                updateCountdownText();
+            }
 
+            @Override
+            public void onFinish() {
+
+            }
+
+        }.start();
+
+        //these are for swiperefresh
         refreshWasher = findViewById(R.id.refreshWasher);
         washerScrollView = findViewById(R.id.washerScrollView);
         refreshWasher.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -62,6 +57,9 @@ public class Washer extends AppCompatActivity {
                 refreshWasher.setRefreshing(false);
             }
         });
+        //these are for swipe refresh
+
+
         // mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_washer);
@@ -151,6 +149,38 @@ public class Washer extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_dryer:
+                    // mTextMessage.setText(R.string.title_home);
+                    Intent intent = new Intent(Washer.this, Dryer.class);
+                    startActivity(intent);
+                    Washer.this.finish();
+
+                    break;
+                case R.id.navigation_washer:
+                    // mTextMessage.setText(R.string.title_dashboard);
+                    return true;
+                case R.id.navigation_main:
+                    Intent intentToMain = new Intent(Washer.this, MainActivity.class);
+                    startActivity(intentToMain);
+                    Washer.this.finish();
+
+                    break;
+            }
+            return false;
+        }
+    };
+    private void updateCountdownText(){
+        int minutes = (int)(startTimeInMillis/1000)/60;
+        int seconds = (int)(startTimeInMillis/1000)%60;
+        String timeleftFormatted = String.format("%02d:%02d",minutes,seconds);
+        Washer1st_timevalue.setText(timeleftFormatted);
     }
 
 }
