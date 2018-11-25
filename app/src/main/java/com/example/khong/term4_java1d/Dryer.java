@@ -18,30 +18,7 @@ public class Dryer extends AppCompatActivity {
     private ScrollView dryerScrollView;
     private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_dryer:
-                    // mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_washer:
-                    // mTextMessage.setText(R.string.title_dashboard);
-                    Intent intent = new Intent(Dryer.this, Washer.class);
-                    startActivity(intent);
-                    Dryer.this.finish();
-                    break;
-                case R.id.navigation_main:
-                    Intent intentToMain = new Intent(Dryer.this, MainActivity.class);
-                    startActivity(intentToMain);
-                    Dryer.this.finish();
-                    break;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,53 +44,61 @@ public class Dryer extends AppCompatActivity {
         MachineClass D01 = new MachineClass();
         D01.notifImage = findViewById(R.id.Dryer1st_notif);
         D01.notifImage.setOnClickListener(D01.machineOnClickListener);
-        D01.Machine_timevalue = findViewById(R.id.Dryer1st_timevalue);
+        D01.machine_timevalue = findViewById(R.id.Dryer1st_timevalue);
+        D01.machine_timestatus = findViewById(R.id.Dryer1st_timestatus);
 
         MachineClass D02 = new MachineClass();
         D02.notifImage = findViewById(R.id.Dryer2nd_notif);
         D02.notifImage.setOnClickListener(D02.machineOnClickListener);
-        D02.Machine_timevalue = findViewById(R.id.Dryer2nd_timevalue);
+        D02.machine_timevalue = findViewById(R.id.Dryer2nd_timevalue);
+        D02.machine_timestatus = findViewById(R.id.Dryer2nd_timestatus);
+
 
         MachineClass D03 = new MachineClass();
         D03.notifImage = findViewById(R.id.Dryer3rd_notif);
         D03.notifImage.setOnClickListener(D03.machineOnClickListener);
+        D03.machine_timevalue = findViewById(R.id.Dryer3rd_timevalue);
+        D03.machine_timestatus = findViewById(R.id.Dryer3rd_timestatus);
 
-        D03.Machine_timevalue = findViewById(R.id.Dryer3rd_timevalue);
 
         MachineClass D04 = new MachineClass();
         D04.notifImage = findViewById(R.id.Dryer4th_notif);
         D04.notifImage.setOnClickListener(D04.machineOnClickListener);
+        D04.machine_timevalue = findViewById(R.id.Dryer4th_timevalue);
+        D04.machine_timestatus = findViewById(R.id.Dryer4th_timestatus);
 
-        D04.Machine_timevalue = findViewById(R.id.Dryer4th_timevalue);
 
         MachineClass D05 = new MachineClass();
         D05.notifImage = findViewById(R.id.Dryer5th_notif);
         D05.notifImage.setOnClickListener(D05.machineOnClickListener);
-        D05.Machine_timevalue = findViewById(R.id.Dryer5th_timevalue);
+        D05.machine_timevalue = findViewById(R.id.Dryer5th_timevalue);
+        D05.machine_timestatus = findViewById(R.id.Dryer5th_timestatus);
 
 
         MachineClass D06 = new MachineClass();
         D06.notifImage = findViewById(R.id.Dryer6th_notif);
         D06.notifImage.setOnClickListener(D06.machineOnClickListener);
-
-        D06.Machine_timevalue = findViewById(R.id.Dryer6th_timevalue);
+        D06.machine_timevalue = findViewById(R.id.Dryer6th_timevalue);
+        D06.machine_timestatus = findViewById(R.id.Dryer6th_timestatus);
 
         MachineClass D07 = new MachineClass();
         D07.notifImage = findViewById(R.id.Dryer7th_notif);
         D07.notifImage.setOnClickListener(D07.machineOnClickListener);
-
-        D07.Machine_timevalue = findViewById(R.id.Dryer7th_timevalue);
+        D07.machine_timevalue = findViewById(R.id.Dryer7th_timevalue);
+        D07.machine_timestatus = findViewById(R.id.Dryer7th_timestatus);
 
         MachineClass D08 = new MachineClass();
         D08.notifImage = findViewById(R.id.Dryer8th_notif);
         D08.notifImage.setOnClickListener(D08.machineOnClickListener);
-        D08.Machine_timevalue = findViewById(R.id.Dryer8th_timevalue);
+        D08.machine_timevalue = findViewById(R.id.Dryer8th_timevalue);
+        D08.machine_timestatus = findViewById(R.id.Dryer8th_timestatus);
 
 
         MachineClass D09 = new MachineClass();
         D09.notifImage = findViewById(R.id.Dryer9th_notif);
         D09.notifImage.setOnClickListener(D09.machineOnClickListener);
-        D09.Machine_timevalue = findViewById(R.id.Dryer9th_timevalue);
+        D09.machine_timevalue = findViewById(R.id.Dryer9th_timevalue);
+        D09.machine_timestatus = findViewById(R.id.Dryer9th_timestatus);
 
 
 
@@ -157,4 +142,28 @@ public class Dryer extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_dryer:
+                    // mTextMessage.setText(R.string.title_home);
+                    return true;
+                case R.id.navigation_washer:
+                    // mTextMessage.setText(R.string.title_dashboard);
+                    Intent intent = new Intent(Dryer.this, Washer.class);
+                    startActivity(intent);
+                    Dryer.this.finish();
+                    break;
+                case R.id.navigation_main:
+                    Intent intentToMain = new Intent(Dryer.this, MainActivity.class);
+                    startActivity(intentToMain);
+                    Dryer.this.finish();
+                    break;
+            }
+            return false;
+        }
+    };
 }

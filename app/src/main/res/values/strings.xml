@@ -34,6 +34,9 @@
 
 
     <!-- Strings related to activity_washer.xml -->
+
+    <string name="occupied_time_status">Remaining Time</string>
+    <string name="available_time_status">Elapsed Time</string>
     <string name="notification_enabled">Notifications Enabled</string>
     <string name="washer_avail">0/12</string>
     <string name="washer1st_name">W01</string>
