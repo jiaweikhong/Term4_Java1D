@@ -6,18 +6,39 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class WasherClass extends AppCompatActivity {
+/**
+ * Created by hojin on 25/11/2018.
+ */
 
-    public long startTimeInMillis = 600000;
+public class MachineClass extends AppCompatActivity{
+
+    long startTimeInMillis = 600000;
     ImageView notifImage;
     Boolean notifStatus;
-    TextView Washer_timevalue;
-    CountDownTimer washerCountdownTimer;
+    TextView Machine_timevalue;
+    CountDownTimer machineCountdownTimer;
 
-    public WasherClass (long startTimeInMilli) {
+
+    public MachineClass () {
+        this.notifStatus = false;
+        machineCountdownTimer = new CountDownTimer(startTimeInMillis,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                startTimeInMillis=millisUntilFinished;
+                updateCountdownText();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+        }.start();
+    }
+    public MachineClass (long startTimeInMilli) {
         this.startTimeInMillis = startTimeInMilli;
         this.notifStatus = false;
-        washerCountdownTimer = new CountDownTimer(startTimeInMillis,1000) {
+        machineCountdownTimer = new CountDownTimer(startTimeInMillis,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 startTimeInMillis=millisUntilFinished;
@@ -31,25 +52,7 @@ public class WasherClass extends AppCompatActivity {
 
         }.start();
     }
-
-    public WasherClass () {
-        this.notifStatus = false;
-        washerCountdownTimer = new CountDownTimer(startTimeInMillis,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                startTimeInMillis=millisUntilFinished;
-                updateCountdownText();
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-
-        }.start();
-    }
-
-    View.OnClickListener washerOnClickListener = new View.OnClickListener() {
+    View.OnClickListener machineOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (notifStatus == true) {
@@ -65,6 +68,6 @@ public class WasherClass extends AppCompatActivity {
         int minutes = (int)(startTimeInMillis/1000)/60;
         int seconds = (int)(startTimeInMillis/1000)%60;
         String timeleftFormatted = String.format("%02d:%02d",minutes,seconds);
-        this.Washer_timevalue.setText(timeleftFormatted);
+        this.Machine_timevalue.setText(timeleftFormatted);
     }
 }

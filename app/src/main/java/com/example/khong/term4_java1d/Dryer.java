@@ -53,6 +53,9 @@ public class Dryer extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 //get firebase values
+                Intent intent = new Intent(Dryer.this, Dryer.class);
+                startActivity(intent);
+                Dryer.this.finish();
                 refreshDryer.setRefreshing(false);
             }
         });
@@ -61,41 +64,58 @@ public class Dryer extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // Instantiate all washers here.
-        DryerClass D01 = new DryerClass();
+        MachineClass D01 = new MachineClass();
         D01.notifImage = findViewById(R.id.Dryer1st_notif);
-        D01.notifImage.setOnClickListener(D01.dryerOnClickListener);
+        D01.notifImage.setOnClickListener(D01.machineOnClickListener);
+        D01.Machine_timevalue = findViewById(R.id.Dryer1st_timevalue);
 
-        DryerClass D02 = new DryerClass();
+        MachineClass D02 = new MachineClass();
         D02.notifImage = findViewById(R.id.Dryer2nd_notif);
-        D02.notifImage.setOnClickListener(D02.dryerOnClickListener);
+        D02.notifImage.setOnClickListener(D02.machineOnClickListener);
+        D02.Machine_timevalue = findViewById(R.id.Dryer2nd_timevalue);
 
-        DryerClass D03 = new DryerClass();
+        MachineClass D03 = new MachineClass();
         D03.notifImage = findViewById(R.id.Dryer3rd_notif);
-        D03.notifImage.setOnClickListener(D03.dryerOnClickListener);
+        D03.notifImage.setOnClickListener(D03.machineOnClickListener);
 
-        DryerClass D04 = new DryerClass();
+        D03.Machine_timevalue = findViewById(R.id.Dryer3rd_timevalue);
+
+        MachineClass D04 = new MachineClass();
         D04.notifImage = findViewById(R.id.Dryer4th_notif);
-        D04.notifImage.setOnClickListener(D04.dryerOnClickListener);
+        D04.notifImage.setOnClickListener(D04.machineOnClickListener);
 
-        DryerClass D05 = new DryerClass();
+        D04.Machine_timevalue = findViewById(R.id.Dryer4th_timevalue);
+
+        MachineClass D05 = new MachineClass();
         D05.notifImage = findViewById(R.id.Dryer5th_notif);
-        D05.notifImage.setOnClickListener(D05.dryerOnClickListener);
+        D05.notifImage.setOnClickListener(D05.machineOnClickListener);
+        D05.Machine_timevalue = findViewById(R.id.Dryer5th_timevalue);
 
-        DryerClass D06 = new DryerClass();
+
+        MachineClass D06 = new MachineClass();
         D06.notifImage = findViewById(R.id.Dryer6th_notif);
-        D06.notifImage.setOnClickListener(D06.dryerOnClickListener);
+        D06.notifImage.setOnClickListener(D06.machineOnClickListener);
 
-        DryerClass D07 = new DryerClass();
+        D06.Machine_timevalue = findViewById(R.id.Dryer6th_timevalue);
+
+        MachineClass D07 = new MachineClass();
         D07.notifImage = findViewById(R.id.Dryer7th_notif);
-        D07.notifImage.setOnClickListener(D07.dryerOnClickListener);
+        D07.notifImage.setOnClickListener(D07.machineOnClickListener);
 
-        DryerClass D08 = new DryerClass();
+        D07.Machine_timevalue = findViewById(R.id.Dryer7th_timevalue);
+
+        MachineClass D08 = new MachineClass();
         D08.notifImage = findViewById(R.id.Dryer8th_notif);
-        D08.notifImage.setOnClickListener(D08.dryerOnClickListener);
+        D08.notifImage.setOnClickListener(D08.machineOnClickListener);
+        D08.Machine_timevalue = findViewById(R.id.Dryer8th_timevalue);
 
-        DryerClass D09 = new DryerClass();
+
+        MachineClass D09 = new MachineClass();
         D09.notifImage = findViewById(R.id.Dryer9th_notif);
-        D09.notifImage.setOnClickListener(D09.dryerOnClickListener);
+        D09.notifImage.setOnClickListener(D09.machineOnClickListener);
+        D09.Machine_timevalue = findViewById(R.id.Dryer9th_timevalue);
+
+
 
     }
     @Override
