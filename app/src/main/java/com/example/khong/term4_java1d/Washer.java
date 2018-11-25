@@ -9,7 +9,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -24,8 +23,26 @@ public class Washer extends AppCompatActivity {
     private Boolean Washer1st_notifstatus = false;
     private SwipeRefreshLayout refreshWasher;
     private ScrollView washerScrollView;
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_dryer:
+                    // mTextMessage.setText(R.string.title_home);
+                    Intent intent = new Intent(Washer.this, Dryer.class);
+                    startActivity(intent);
 
+                    break;
+                case R.id.navigation_washer:
+                    // mTextMessage.setText(R.string.title_dashboard);
+                    return true;
+
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,10 +151,11 @@ public class Washer extends AppCompatActivity {
         W12.machine_timestatus = findViewById(R.id.Washer12th_timestatus);
 
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -169,36 +187,11 @@ public class Washer extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_dryer:
-                    // mTextMessage.setText(R.string.title_home);
-                    Intent intent = new Intent(Washer.this, Dryer.class);
-                    startActivity(intent);
-                    Washer.this.finish();
-
-                    break;
-                case R.id.navigation_washer:
-                    // mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_main:
-                    Intent intentToMain = new Intent(Washer.this, MainActivity.class);
-                    startActivity(intentToMain);
-                    Washer.this.finish();
-
-                    break;
-            }
-            return false;
-        }
-    };
-    private void updateCountdownText(){
-        int minutes = (int)(startTimeInMillis/1000)/60;
-        int seconds = (int)(startTimeInMillis/1000)%60;
-        String timeleftFormatted = String.format("%02d:%02d",minutes,seconds);
+    private void updateCountdownText() {
+        int minutes = (int) (startTimeInMillis / 1000) / 60;
+        int seconds = (int) (startTimeInMillis / 1000) % 60;
+        String timeleftFormatted = String.format("%02d:%02d", minutes, seconds);
         Washer1st_timevalue.setText(timeleftFormatted);
     }
 
