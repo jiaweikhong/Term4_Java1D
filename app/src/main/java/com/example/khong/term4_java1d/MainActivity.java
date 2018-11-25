@@ -171,20 +171,23 @@ public class MainActivity extends AppCompatActivity {
         int washersCountNo = 0;
         int dryersCountNo = 0;
 
+        long totalWashers = washersData.getChildrenCount();
+        long totalDryers = dryersData.getChildrenCount();
+
         long unixTime = System.currentTimeMillis() / 1000L;
 
         for (DataSnapshot i : washersData.getChildren()) {
-            String timecode = i.child("start_time").getValue().toString();
+            String timecode = i.child("startTime").getValue().toString();
             int parsedTimecode = Integer.parseInt(timecode);
-            if (unixTime - parsedTimecode > 2700000) {
+            if (unixTime - parsedTimecode > 2700) {
                 washersCountNo++;
             }
         }
 
         for (DataSnapshot j : dryersData.getChildren()) {
-            String timecode = j.child("start_time").getValue().toString();
+            String timecode = j.child("startTime").getValue().toString();
             int parsedTimecode = Integer.parseInt(timecode);
-            if (unixTime - parsedTimecode > 2700000) {
+            if (unixTime - parsedTimecode > 2700) {
                 dryersCountNo++;
             }
         }
@@ -207,8 +210,8 @@ public class MainActivity extends AppCompatActivity {
         washersNotifAllImgBtn.setUnavailable();
         dryersNotifAllImgBtn.setUnavailable();
 
-        washersCount.setText(Integer.toString(washersCountNo) + "/12");
-        dryersCount.setText(Integer.toString(dryersCountNo) + "/9");
+        washersCount.setText(Integer.toString(washersCountNo) + "/" + Long.toString(totalWashers));
+        dryersCount.setText(Integer.toString(dryersCountNo) + "/" + Long.toString(totalDryers));
 
     }
 

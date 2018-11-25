@@ -15,7 +15,7 @@ public class CustomShineButton extends ShineButton {
     public boolean NotifStatus = true;
     public TextView NotifState;
 
-    private SubcriptionsManager subcriptionsManager = new SubcriptionsManager();
+    private FirebaseController subcriptionsManager = new FirebaseController();
 
     public CustomShineButton(Context context, AttributeSet attrs) {
 
