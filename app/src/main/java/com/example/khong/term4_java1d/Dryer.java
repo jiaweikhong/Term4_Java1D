@@ -1,7 +1,6 @@
 package com.example.khong.term4_java1d;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,8 +16,24 @@ public class Dryer extends AppCompatActivity {
 
     private ScrollView dryerScrollView;
     private TextView mTextMessage;
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_dryer:
+                    // mTextMessage.setText(R.string.title_home);
+                    return true;
+                case R.id.navigation_washer:
+                    // mTextMessage.setText(R.string.title_dashboard);
+                    Intent intent = new Intent(Dryer.this, Washer.class);
+                    startActivity(intent);
+                    break;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,13 +116,14 @@ public class Dryer extends AppCompatActivity {
         D09.machine_timestatus = findViewById(R.id.Dryer9th_timestatus);
 
 
-
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -142,28 +158,4 @@ public class Dryer extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_dryer:
-                    // mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_washer:
-                    // mTextMessage.setText(R.string.title_dashboard);
-                    Intent intent = new Intent(Dryer.this, Washer.class);
-                    startActivity(intent);
-                    Dryer.this.finish();
-                    break;
-                case R.id.navigation_main:
-                    Intent intentToMain = new Intent(Dryer.this, MainActivity.class);
-                    startActivity(intentToMain);
-                    Dryer.this.finish();
-                    break;
-            }
-            return false;
-        }
-    };
 }

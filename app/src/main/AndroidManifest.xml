@@ -24,26 +24,46 @@
         <activity
             android:name=".Washer"
             android:label="@string/title_activity_washer"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Dryer"
             android:label="@string/title_activity_dryer"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ChooseBlock"
-            android:label="ChooseBlock"
+            android:label="@string/title_activity_chooseblock"
             android:screenOrientation="portrait" />
         <activity
             android:name=".LogoutActivity"
             android:label="@string/title_activity_logout"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />
 
         <service android:name=".NotificationsService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".WasherView"
+            android:label="@string/title_activity_washer_view"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khong.term4_java1d.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DryerView"
+            android:label="@string/title_activity_dryer_view"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khong.term4_java1d.MainActivity" />
+        </activity>
+        <activity android:name=".MachineCellView"></activity>
     </application>
 
 </manifest>

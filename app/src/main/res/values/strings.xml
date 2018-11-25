@@ -26,11 +26,13 @@
 
     <!-- Strings related to mainActivity.java -->
     <string name="disabled_washer_toast_display">There are available washers</string>
-    <string name="activated_washer_toast_display">You will now be notified when next washer is available</string>
-    <string name="deactivated_washer_toast_display">You have remove notification for washer</string>
     <string name="disabled_dryer_toast_display">There are available dryers</string>
-    <string name="activated_dryer_toast_display">You will now be notified when next dryer is available</string>
-    <string name="deactivated_dryer_toast_display">You have remove notification for dryer</string>
+
+    <string name="activated_washer_toast_display">Enabled notifications for all washers</string>
+    <string name="deactivated_washer_toast_display">Disabled notifications for all washers</string>
+
+    <string name="activated_dryer_toast_display">Enabled notifications for all dryers</string>
+    <string name="deactivated_dryer_toast_display">Disabled notifications for all dryers</string>
 
 
     <!-- Strings related to activity_washer.xml -->
@@ -38,7 +40,7 @@
     <string name="occupied_time_status">Remaining Time</string>
     <string name="available_time_status">Elapsed Time</string>
     <string name="notification_enabled">Notifications Enabled</string>
-    <string name="washer_avail">0/12</string>
+    <string name="washer_avail">…/…</string>
     <string name="washer1st_name">W01</string>
     <string name="washer1st_time_value">2:35:02</string>
     <string name="washer1st_time_status">Elapsed Time</string>
@@ -80,7 +82,7 @@
     <!-- Strings related to activity_dryer.xml -->
     <string name="notification_disabled">Notifications Disabled</string>
     <string name="notification_unavailable">Notifications Unavailable</string>
-    <string name="dryer_avail">5/9</string>
+    <string name="dryer_avail">…/…</string>
     <string name="dryer1st_name">D01</string>
     <string name="dryer1st_time_value">53:10</string>
     <string name="dryer1st_time_status">Elapsed Time</string>
@@ -108,6 +110,8 @@
     <string name="dryer9th_name">D09</string>
     <string name="dryer9th_time_value">19:06</string>
     <string name="dryer9th_time_status">Remaining Time</string>
+    <string name="title_activity_washer_view">WasherView</string>
+    <string name="title_activity_dryer_view">DryerView</string>
 
 
 </resources>
