@@ -6,11 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Dryer">
-
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/refreshDryer">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintBottom_toTopOf="@+id/refreshDryer"
+        android:id="@+id/dryerScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -660,7 +664,7 @@
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"

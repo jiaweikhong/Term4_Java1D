@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Washer extends AppCompatActivity {
@@ -16,6 +18,8 @@ public class Washer extends AppCompatActivity {
     private TextView mTextMessage;
     private ImageView Washer1st_notif;
     private Boolean Washer1st_notifstatus = false;
+    private SwipeRefreshLayout refreshWasher;
+    private ScrollView washerScrollView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,6 +53,15 @@ public class Washer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_washer);
 
+        refreshWasher = findViewById(R.id.refreshWasher);
+        washerScrollView = findViewById(R.id.washerScrollView);
+        refreshWasher.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //get firebase values
+                refreshWasher.setRefreshing(false);
+            }
+        });
         // mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_washer);

@@ -5,13 +5,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Dryer extends AppCompatActivity {
+    private SwipeRefreshLayout refreshDryer;
 
+    private ScrollView dryerScrollView;
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -43,8 +47,15 @@ public class Dryer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dryer);
-
-        // mTextMessage = (TextView) findViewById(R.id.message);
+        refreshDryer = findViewById(R.id.refreshDryer);
+        dryerScrollView = findViewById(R.id.dryerScrollView);
+        refreshDryer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //get firebase values
+                refreshDryer.setRefreshing(false);
+            }
+        });
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_dryer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
