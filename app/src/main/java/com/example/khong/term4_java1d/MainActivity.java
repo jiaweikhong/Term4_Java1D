@@ -14,6 +14,11 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,8 +29,15 @@ public class MainActivity extends AppCompatActivity {
     // Firebase
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth auth;
+    private DatabaseReference userDatabase;
+    private DatabaseReference blockDatabase;
+    private String userUuid;
+
+    private DatabaseReference userBlockChoiceRef;
+    private String userBlockChoice;
 
     private TextView lblWelcome;
+    private String user_displayName;
 
     private CardView gotoWashers;
     private CardView gotoDryers;
@@ -51,11 +63,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+     * Setup MainActivity here
+     */
     public void setupApp() {
 
-        lblWelcome = findViewById(R.id.lblWelcome);
-        String user_displayName = auth.getCurrentUser().getDisplayName();
-        lblWelcome.setText("Welcome, "+user_displayName);
+        userBlockChoice = "block_XX"; // Placeholder to prevent error
+
+        // Firebase
+        userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+        userUuid = auth.getCurrentUser().getUid();
+
+        userBlockChoiceRef = userDatabase.child(userUuid).child("block_choice");
+        ValueEventListener blockChoiceListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userBlockChoice = dataSnapshot.getValue().toString();
+                // Welcome Text
+                lblWelcome = findViewById(R.id.lblWelcome);
+                user_displayName = auth.getCurrentUser().getDisplayName();
+                lblWelcome.setText(userBlockChoice.replace("_", " ") + " welcomes " + user_displayName);
+                setupBlockDatabase();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast toast_error = Toast.makeText(getApplicationContext(), "Database Error: " + databaseError.toString(), Toast.LENGTH_SHORT);
+                toast_error.show();
+            }
+        };
+        userBlockChoiceRef.addValueEventListener(blockChoiceListener);
+
+        // Others
 
         Random randomNumber = new Random();
         // get next next boolean value
@@ -105,6 +144,58 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void setupBlockDatabase() {
+        blockDatabase = FirebaseDatabase.getInstance().getReference().child(userBlockChoice);
+        ValueEventListener blockDatabaseListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Toast new_data = Toast.makeText(getApplicationContext(), "New data", Toast.LENGTH_SHORT);
+                new_data.show();
+                populateMachinesCount(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast toast_error = Toast.makeText(getApplicationContext(), "Database Error: " + databaseError.toString(), Toast.LENGTH_SHORT);
+                toast_error.show();
+            }
+        };
+        blockDatabase.addValueEventListener(blockDatabaseListener);
+    }
+
+    public void populateMachinesCount(DataSnapshot dataSnapshot) {
+        TextView washersCount = findViewById(R.id.noOfWashers);
+        TextView dryersCount = findViewById(R.id.noOfDryers);
+
+        DataSnapshot washersData = dataSnapshot.child("washers");
+        DataSnapshot dryersData = dataSnapshot.child("dryers");
+
+        int washersCountNo = 0;
+        int dryersCountNo = 0;
+
+        long unixTime = System.currentTimeMillis() / 1000L;
+
+        for (DataSnapshot i : washersData.getChildren()) {
+            String timecode = i.child("start_time").getValue().toString();
+            int parsedTimecode = Integer.parseInt(timecode);
+            if (unixTime - parsedTimecode > 2700000) {
+                washersCountNo++;
+            }
+        }
+
+        for (DataSnapshot j : dryersData.getChildren()) {
+            String timecode = j.child("start_time").getValue().toString();
+            int parsedTimecode = Integer.parseInt(timecode);
+            if (unixTime - parsedTimecode > 2700000) {
+                dryersCountNo++;
+            }
+        }
+
+        washersCount.setText(Integer.toString(washersCountNo) + "/12");
+        dryersCount.setText(Integer.toString(dryersCountNo) + "/9");
 
     }
 
