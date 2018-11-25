@@ -1,11 +1,10 @@
 package com.example.khong.term4_java1d;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 
 import com.firebase.ui.auth.AuthUI;
@@ -14,14 +13,12 @@ import com.google.android.gms.tasks.Task;
 
 public class LogoutActivity extends AppCompatActivity {
 
-    private Button btnSignOut;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
 
-        btnSignOut = findViewById(R.id.btnSignOut);
+        Button btnSignOut = findViewById(R.id.btnSignOut);
 
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
