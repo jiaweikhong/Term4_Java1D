@@ -69,11 +69,18 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="48dp"
+            android:id="@+id/machine_notifButton"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/ic_assets_disabledbell" />
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_assets_lightbluebell"  />
 
     </LinearLayout>
 

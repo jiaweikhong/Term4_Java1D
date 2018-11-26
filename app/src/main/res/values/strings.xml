@@ -6,12 +6,10 @@
 
     <!-- Strings related to titles -->
     <string name="app_name">LaundryApp</string>
-    <string name="title_washing">Washing</string>
-    <string name="title_dryer">Dryer</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_main">Dashboard</string>
-    <string name="title_activity_washer">Washer</string>
-    <string name="title_activity_dryer">Dryer</string>
+    <string name="title_activity_washer_view">Washers</string>
+    <string name="title_activity_dryer_view">Dryers</string>
     <string name="title_activity_chooseblock">Select block</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_logout">Logout</string>
@@ -41,77 +39,11 @@
     <string name="available_time_status">Elapsed Time</string>
     <string name="notification_enabled">Notifications Enabled</string>
     <string name="washer_avail">…/…</string>
-    <string name="washer1st_name">W01</string>
-    <string name="washer1st_time_value">2:35:02</string>
-    <string name="washer1st_time_status">Elapsed Time</string>
-    <string name="washer2nd_name">W02</string>
-    <string name="washer2nd_time_value">1:13:05</string>
-    <string name="washer2nd_time_status">Elapsed Time</string>
-    <string name="washer3rd_name">W03</string>
-    <string name="washer3rd_time_value">13:05</string>
-    <string name="washer3rd_time_status">Remaining Time</string>
-    <string name="washer4th_name">W04</string>
-    <string name="washer4th_time_value">14:05</string>
-    <string name="washer4th_time_status">Remaining Time</string>
-    <string name="washer5th_name">W05</string>
-    <string name="washer5th_time_value">15:05</string>
-    <string name="washer5th_time_status">Elapsed Time</string>
-    <string name="washer6th_name">W06</string>
-    <string name="washer6th_time_value">16:05</string>
-    <string name="washer6th_time_status">Remaining Time</string>
-    <string name="washer7th_name">W07</string>
-    <string name="washer7th_time_value">17:05</string>
-    <string name="washer7th_time_status">Remaining Time</string>
-    <string name="washer8th_name">W08</string>
-    <string name="washer8th_time_value">18:05</string>
-    <string name="washer8th_time_status">Remaining Time</string>
-    <string name="washer9th_name">W09</string>
-    <string name="washer9th_time_value">19:05</string>
-    <string name="washer9th_time_status">Remaining Time</string>
-    <string name="washer10th_name">W10</string>
-    <string name="washer10th_time_value">20:05</string>
-    <string name="washer10th_time_status">Remaining Time</string>
-    <string name="washer11th_name">W11</string>
-    <string name="washer11th_time_value">21:05</string>
-    <string name="washer11th_time_status">Remaining Time</string>
-    <string name="washer12th_name">W12</string>
-    <string name="washer12th_time_value">22:05</string>
-    <string name="washer12th_time_status">Remaining Time</string>
-
 
     <!-- Strings related to activity_dryer.xml -->
     <string name="notification_disabled">Notifications Disabled</string>
     <string name="notification_unavailable">Notifications Unavailable</string>
     <string name="dryer_avail">…/…</string>
-    <string name="dryer1st_name">D01</string>
-    <string name="dryer1st_time_value">53:10</string>
-    <string name="dryer1st_time_status">Elapsed Time</string>
-    <string name="dryer2nd_name">D02</string>
-    <string name="dryer2nd_time_value">10:06</string>
-    <string name="dryer2nd_time_status">Remaining Time</string>
-    <string name="dryer3rd_name">D03</string>
-    <string name="dryer3rd_time_value">10:06</string>
-    <string name="dryer3rd_time_status">Remaining Time</string>
-    <string name="dryer4th_name">D04</string>
-    <string name="dryer4th_time_value">14:06</string>
-    <string name="dryer4th_time_status">Remaining Time</string>
-    <string name="dryer5th_name">D05</string>
-    <string name="dryer5th_time_value">15:06</string>
-    <string name="dryer5th_time_status">Remaining Time</string>
-    <string name="dryer6th_name">D06</string>
-    <string name="dryer6th_time_value">16:06</string>
-    <string name="dryer6th_time_status">Remaining Time</string>
-    <string name="dryer7th_name">D07</string>
-    <string name="dryer7th_time_value">17:06</string>
-    <string name="dryer7th_time_status">Remaining Time</string>
-    <string name="dryer8th_name">D08</string>
-    <string name="dryer8th_time_value">18:06</string>
-    <string name="dryer8th_time_status">Remaining Time</string>
-    <string name="dryer9th_name">D09</string>
-    <string name="dryer9th_time_value">19:06</string>
-    <string name="dryer9th_time_status">Remaining Time</string>
-    <string name="title_activity_washer_view">WasherView</string>
-    <string name="title_activity_dryer_view">DryerView</string>
 
 
 </resources>

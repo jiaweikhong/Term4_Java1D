@@ -69,42 +69,7 @@ public class WasherView extends AppCompatActivity {
                         .setQuery(query, Machine.class)
                         .build();
 
-        FirebaseRecyclerAdapter firebaseAdapter = new FirebaseRecyclerAdapter<Machine, MachineCellHolder>(options) {
-            @Override
-            public MachineCellHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                // Create a new instance of the ViewHolder, in this case we are using a custom
-                // layout called R.layout.message for each item
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_machine_cell_view, parent, false);
-
-                return new MachineCellHolder(view);
-            }
-
-            @Override
-            protected void onBindViewHolder(MachineCellHolder holder, int position, Machine machine) {
-                holder.machineName.setText(machine.getUuid());
-                long unixTime = System.currentTimeMillis() / 1000L;
-                long minutesElapsed = (unixTime - machine.getStartTime())/60;
-                holder.machineTimeData.setText(Long.toString(minutesElapsed)+" mins");
-                if (minutesElapsed < 45) {
-                    holder.machineStatus.setImageResource(R.drawable.ic_assets_redcircle);
-                } else if (minutesElapsed > 60) {
-                    holder.machineStatus.setImageResource(R.drawable.ic_assets_greencircle);
-                }
-
-            }
-
-            @Override
-            public void onDataChanged() {
-                // Called each time there is a new data snapshot. You may want to use this method
-                // to hide a loading spinner or check for the "no documents" state and update your UI.
-                // ...
-            }
-
-            @Override
-            public void onError(DatabaseError e) {
-                Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-            }
-        };
+        FirebaseRecyclerAdapter firebaseAdapter = new FirebaseBlockDatabaseAdapter(options);
 
         firebaseAdapter.startListening();
         rvWasherList.setLayoutManager(new LinearLayoutManager(this));

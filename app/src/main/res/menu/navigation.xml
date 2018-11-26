@@ -4,11 +4,11 @@
     <item
         android:id="@+id/navigation_washer"
         android:icon="@drawable/washing_machine4"
-        android:title="@string/title_activity_washer" />
+        android:title="@string/title_activity_washer_view" />
 
     <item
         android:id="@+id/navigation_dryer"
         android:icon="@drawable/tumble_dryer"
-        android:title="@string/title_dryer" />
+        android:title="@string/title_activity_dryer_view" />
 
 </menu>
