@@ -22,16 +22,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Washer"
-            android:label="@string/title_activity_washer"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Dryer"
-            android:label="@string/title_activity_dryer"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ChooseBlock"
             android:label="@string/title_activity_chooseblock"
             android:screenOrientation="portrait" />
@@ -63,7 +53,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khong.term4_java1d.MainActivity" />
         </activity>
-        <activity android:name=".MachineCellView"></activity>
     </application>
 
 </manifest>
