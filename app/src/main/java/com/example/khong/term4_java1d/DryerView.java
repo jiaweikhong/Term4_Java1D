@@ -35,6 +35,7 @@ public class DryerView extends AppCompatActivity {
                     // mTextMessage.setText(R.string.title_dashboard);
                     Intent intent = new Intent(DryerView.this, WasherView.class);
                     startActivity(intent);
+                    DryerView.this.finish();
                     break;
             }
             return false;
@@ -99,6 +100,11 @@ public class DryerView extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
     }
 
 }

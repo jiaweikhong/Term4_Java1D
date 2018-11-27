@@ -37,6 +37,7 @@ public class WasherView extends AppCompatActivity {
                 case R.id.navigation_dryer:
                     Intent intent = new Intent(WasherView.this, DryerView.class);
                     startActivity(intent);
+                    WasherView.this.finish();
                     break;
                 case R.id.navigation_washer:
                     return true;
@@ -104,6 +105,11 @@ public class WasherView extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
     }
 
 }
