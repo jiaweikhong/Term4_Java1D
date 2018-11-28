@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/machine_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="6dip"
+            app:srcCompat="@drawable/ic_assets_greencircle" />
+
+        <TextView
+            android:id="@+id/machine_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_above="@id/machine_timedata"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/machine_icon"
+            android:gravity="center_vertical"
+            android:text="X0X"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:layout_marginLeft="8dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/machine_timedata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/machine_icon"
+                android:layout_weight="3"
+                android:fontFamily="monospace"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="00:00:00"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/machine_timelabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/machine_icon"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="Time Elapsed"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/machine_notifButton"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_assets_lightbluebell"  />
+
+    </LinearLayout>
+
+</RelativeLayout>

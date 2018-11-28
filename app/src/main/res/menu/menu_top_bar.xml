@@ -10,5 +10,8 @@
     <item
         android:id="@+id/ChooseBlock"
         android:title="@string/title_activity_chooseblock" />
+    <item
+        android:id="@+id/AboutApp"
+        android:title="About" />
 
 </menu>
