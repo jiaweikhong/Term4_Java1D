@@ -16,7 +16,6 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
     private ImageView machineStatus;
     private ImageButton btnMachineNotify;
     private boolean notifyState;
-    private boolean setUnavailable;
 
     MachineCellHolder(final View cellView) {
         super(cellView);
@@ -33,7 +32,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                 if (notifyState == true) {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
                     notifyState = false;
-                } else if (!setUnavailable) {
+                } else  {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
                     notifyState = true;
                 }
@@ -60,7 +59,6 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
             setMachineTimeLabel("since cycle start");
             setMachineStatus("RED");
-            setUnavailable = false;//added this as is needed for pressing button
 
             machineCountdownTimer = new CountDownTimer(timeToComplete * 1000, 1000) {
 
@@ -80,11 +78,9 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
             setMachineTimeLabel("since cycle finished");
             setMachineStatus("YELLOW");
-            setUnavailable = true;
 
             if (secondsElapsed > (60 * 60)) {
                 setMachineStatus("GREEN");
-                setUnavailable = true;
             }
 
             machineCountdownTimer = new CountDownTimer(startMillis - (45 * 60 * 1000), 1000) {
@@ -127,10 +123,13 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
     public void setMachineStatus(String machineStatus) {
         if (machineStatus.equals("GREEN")) {
             this.machineStatus.setImageResource(R.drawable.ic_assets_greencircle);
+            this.btnMachineNotify.setEnabled(false);
         } else if (machineStatus.equals("YELLOW")) {
             this.machineStatus.setImageResource(R.drawable.ic_assets_yellowcircle);
+            this.btnMachineNotify.setEnabled(false);
         } else {
             this.machineStatus.setImageResource(R.drawable.ic_assets_redcircle);
+            this.btnMachineNotify.setEnabled(true);
         }
     }
 
