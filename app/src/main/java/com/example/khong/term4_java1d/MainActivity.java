@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     private CardView gotoWashers;
     private CardView gotoDryers;
-    private CustomShineButton washersNotifAllImgBtn;
-    private CustomShineButton dryersNotifAllImgBtn;
+    private CustomShineButton washersNotifyAllImgBtn;
+    private CustomShineButton dryersNotifyAllImgBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        washersNotifAllImgBtn = findViewById(R.id.washersNotifAllImgBtn);
-        dryersNotifAllImgBtn = findViewById(R.id.dryersNotifAllImgBtn);
+        washersNotifyAllImgBtn = findViewById(R.id.washersNotifyAllImgBtn);
+        dryersNotifyAllImgBtn = findViewById(R.id.dryersNotifyAllImgBtn);
 
         // Firebase
 
@@ -115,18 +115,18 @@ public class MainActivity extends AppCompatActivity {
                     lblWelcome.setText(welcomeText);
                     setupBlockDatabase();
 
-                    washersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
+                    washersNotifyAllImgBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            washersNotifAllImgBtn.washerOnClickFunction(userBlockChoice);
+                            washersNotifyAllImgBtn.washerOnClickFunction(userBlockChoice);
                         }
                     });
 
 
-                    dryersNotifAllImgBtn.setOnClickListener(new View.OnClickListener() {
+                    dryersNotifyAllImgBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            dryersNotifAllImgBtn.dryerOnClickFunction(userBlockChoice);
+                            dryersNotifyAllImgBtn.dryerOnClickFunction(userBlockChoice);
 
                         }
                     });
@@ -194,21 +194,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (washersCountNo > 0) {
-            washersNotifAllImgBtn.NotifStatus = false;
+            washersNotifyAllImgBtn.NotifyStatus = false;
         } else {
-            washersNotifAllImgBtn.NotifStatus = true;
+            washersNotifyAllImgBtn.NotifyStatus = true;
         }
-        washersNotifAllImgBtn.NotifState = findViewById(R.id.washerNotifState);
+        washersNotifyAllImgBtn.NotifyState = findViewById(R.id.washerNotifyState);
 
         if (dryersCountNo > 0) {
-            dryersNotifAllImgBtn.NotifStatus = false;
+            dryersNotifyAllImgBtn.NotifyStatus = false;
         } else {
-            dryersNotifAllImgBtn.NotifStatus = true;
+            dryersNotifyAllImgBtn.NotifyStatus = true;
         }
-        dryersNotifAllImgBtn.NotifState = findViewById(R.id.dryerNotifState);
+        dryersNotifyAllImgBtn.NotifyState = findViewById(R.id.dryerNotifyState);
 
-        washersNotifAllImgBtn.setUnavailable();
-        dryersNotifAllImgBtn.setUnavailable();
+        washersNotifyAllImgBtn.setUnavailable();
+        dryersNotifyAllImgBtn.setUnavailable();
 
         washersCount.setText(Integer.toString(washersCountNo) + "/" + Long.toString(totalWashers));
         dryersCount.setText(Integer.toString(dryersCountNo) + "/" + Long.toString(totalDryers));

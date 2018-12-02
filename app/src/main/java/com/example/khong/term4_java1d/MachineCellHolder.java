@@ -16,6 +16,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
     private ImageView machineStatus;
     private ImageButton btnMachineNotify;
     private boolean notifyState;
+    private boolean setUnavailable;
 
     MachineCellHolder(final View cellView) {
         super(cellView);
@@ -32,7 +33,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                 if (notifyState == true) {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
                     notifyState = false;
-                } else {
+                } else if (!setUnavailable) {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
                     notifyState = true;
                 }
@@ -59,6 +60,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
             setMachineTimeLabel("since cycle start");
             setMachineStatus("RED");
+            setUnavailable = false;//added this as is needed for pressing button
 
             machineCountdownTimer = new CountDownTimer(timeToComplete * 1000, 1000) {
 
@@ -78,9 +80,11 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
             setMachineTimeLabel("since cycle finished");
             setMachineStatus("YELLOW");
+            setUnavailable = true;
 
             if (secondsElapsed > (60 * 60)) {
                 setMachineStatus("GREEN");
+                setUnavailable = true;
             }
 
             machineCountdownTimer = new CountDownTimer(startMillis - (45 * 60 * 1000), 1000) {
