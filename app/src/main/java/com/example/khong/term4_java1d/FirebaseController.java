@@ -70,4 +70,8 @@ class FirebaseController {
                 });
     }
 
+    void getSubscribeStatus(final String topic_name) {
+
+    }
+
 }

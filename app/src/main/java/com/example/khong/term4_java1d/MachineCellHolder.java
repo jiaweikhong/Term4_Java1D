@@ -2,10 +2,18 @@ package com.example.khong.term4_java1d;
 
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MachineCellHolder extends RecyclerView.ViewHolder {
 
@@ -20,6 +28,13 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
     private FirebaseController firebaseController;
 
+    private FirebaseAuth auth;
+    private DatabaseReference userDatabase;
+    private String userUuid;
+    private String userTopicChoice;
+
+    private DatabaseReference userTopicChoiceRef;
+
     MachineCellHolder(final View cellView) {
         super(cellView);
 
@@ -32,17 +47,78 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         machineStatus = cellView.findViewById(R.id.machine_icon);
         btnMachineNotify = cellView.findViewById(R.id.machine_notifButton);
 
+        auth = FirebaseAuth.getInstance();
+
+        userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+        userUuid = auth.getCurrentUser().getUid();
+
+    }
+
+    void setBtnMachineNotifyState() {
+        if (notifyState) {
+            btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
+            firebaseController.subscribeTopic(machineTopic);
+        } else {
+            btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
+            firebaseController.unsubscribeTopic(machineTopic);
+        }
+    }
+
+    String getMachineTopic() {
+        return machineTopic;
+    }
+
+    void setMachineTopic(final String machineTopic) {
+        this.machineTopic = machineTopic;
+
+        Log.e("MachineCellHolder", userUuid);
+        Log.e("MachineCellHolder", machineTopic);
+
+        userTopicChoiceRef = userDatabase.child(userUuid).child("subscriptions").child(machineTopic);
+        ValueEventListener topicChoiceListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                try {
+                    userTopicChoice = dataSnapshot.getValue().toString();
+
+                    if (userTopicChoice.equals("true")) {
+                        notifyState = true;
+                    } else {
+                        notifyState = false;
+                    }
+
+                } catch (NullPointerException e) {
+                    Log.e("MachineCellHolder", "Null preference, set to false");
+                    userTopicChoiceRef.setValue("false");
+                    notifyState = false;
+                } finally {
+                    setBtnMachineNotifyState();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        userTopicChoiceRef.addValueEventListener(topicChoiceListener);
+
+
         View.OnClickListener machineNotifyOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (notifyState == true) {
+
+                if (notifyState) {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
                     notifyState = false;
                     firebaseController.unsubscribeTopic(machineTopic);
+                    userTopicChoiceRef.setValue("false");
                 } else {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
                     notifyState = true;
                     firebaseController.subscribeTopic(machineTopic);
+                    userTopicChoiceRef.setValue("true");
                 }
             }
         };
@@ -51,19 +127,11 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public String getMachineTopic() {
-        return machineTopic;
-    }
-
-    public void setMachineTopic(String machineTopic) {
-        this.machineTopic = machineTopic;
-    }
-
-    public void setMachineName(String machineName) {
+    void setMachineName(String machineName) {
         this.machineName.setText(machineName);
     }
 
-    public void setMachineTimeData(long secondsElapsed) {
+    void setMachineTimeData(long secondsElapsed) {
 
         long startMillis = secondsElapsed * 1000;
 
@@ -127,16 +195,15 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         int hours = mh_raw / 60;
         int minutes = mh_raw % 60;
         int seconds = (int) (secondData) % 60;
-        String timeLeftFormatted = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 
-        return timeLeftFormatted;
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
-    public void setMachineTimeLabel(String machineTimeLabel) {
+    void setMachineTimeLabel(String machineTimeLabel) {
         this.machineTimeLabel.setText(machineTimeLabel);
     }
 
-    public void setMachineStatus(String machineStatus) {
+    void setMachineStatus(String machineStatus) {
         if (machineStatus.equals("GREEN")) {
             this.machineStatus.setImageResource(R.drawable.ic_assets_greencircle);
             this.btnMachineNotify.setEnabled(false);

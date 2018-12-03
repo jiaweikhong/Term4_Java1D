@@ -207,8 +207,13 @@ public class MainActivity extends AppCompatActivity {
         }
         dryersNotifyAllImgBtn.NotifyState = findViewById(R.id.dryerNotifyState);
 
+
+        // TODO: set button state from Firebase
+
         washersNotifyAllImgBtn.setUnavailable();
         dryersNotifyAllImgBtn.setUnavailable();
+
+
 
         washersCount.setText(Integer.toString(washersCountNo) + "/" + Long.toString(totalWashers));
         dryersCount.setText(Integer.toString(dryersCountNo) + "/" + Long.toString(totalDryers));

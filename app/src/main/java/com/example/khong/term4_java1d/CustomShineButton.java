@@ -5,17 +5,21 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sackcentury.shinebuttonlib.ShineButton;
-
-/**
- * Created by hojin on 22/11/2018.
- */
 
 public class CustomShineButton extends ShineButton {
     public boolean NotifyStatus = true;
     public TextView NotifyState;
 
     private FirebaseController subcriptionsManager = new FirebaseController();
+
+    private FirebaseAuth auth;
+    private DatabaseReference userDatabase;
+    private String userUuid;
+    private DatabaseReference userTopicChoiceRef;
 
     public CustomShineButton(Context context, AttributeSet attrs) {
 
@@ -38,16 +42,36 @@ public class CustomShineButton extends ShineButton {
 
     public void dryerOnClickFunction(String block) {
         String block_ = block.substring(6, 8);
+
+        userUuid = subcriptionsManager.getUserUuid();
+        userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+
+        userTopicChoiceRef = userDatabase.child(userUuid).child("subscriptions");
+
         if (this.isChecked()) {
             this.NotifyState.setText(R.string.notification_enabled);
-            for (int i = 0; i < 13; i++) {
-                subcriptionsManager.subscribeTopic(block_ + "_d_" + Integer.toString(i));
+            for (int i = 1; i < 13; i++) {
+                String topic;
+                if (i<10) {
+                    topic = block_ + "_d_0" + Integer.toString(i);
+                } else {
+                    topic = block_ + "_d_" + Integer.toString(i);
+                }
+                subcriptionsManager.subscribeTopic(topic);
+                userTopicChoiceRef.child(topic).setValue("true");
             }
             Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         } else {
             this.NotifyState.setText(R.string.notification_disabled);
-            for (int i = 0; i < 13; i++) {
-                subcriptionsManager.unsubscribeTopic(block_ + "_d_" + Integer.toString(i));
+            for (int i = 1; i < 13; i++) {
+                String topic;
+                if (i<10) {
+                    topic = block_ + "_d_0" + Integer.toString(i);
+                } else {
+                    topic = block_ + "_d_" + Integer.toString(i);
+                }
+                subcriptionsManager.unsubscribeTopic(topic);
+                userTopicChoiceRef.child(topic).setValue("false");
             }
             Toast.makeText(getContext(), R.string.deactivated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         }
@@ -56,16 +80,22 @@ public class CustomShineButton extends ShineButton {
 
     public void washerOnClickFunction(String block) {
         String block_ = block.substring(6, 8);
+        userTopicChoiceRef = userDatabase.child(userUuid).child("subscriptions");
+
         if (this.isChecked()) {
             this.NotifyState.setText(R.string.notification_enabled);
             for (int i = 0; i < 13; i++) {
-                subcriptionsManager.subscribeTopic(block_ + "_w_" + Integer.toString(i));
+                String topic = block_ + "_w_" + Integer.toString(i);
+                subcriptionsManager.subscribeTopic(topic);
+                userTopicChoiceRef.child(topic).setValue("true");
             }
             Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         } else {
             this.NotifyState.setText(R.string.notification_disabled);
             for (int i = 0; i < 13; i++) {
-                subcriptionsManager.unsubscribeTopic(block_ + "_w_" + Integer.toString(i));
+                String topic = block_ + "_w_" + Integer.toString(i);
+                subcriptionsManager.unsubscribeTopic(topic);
+                userTopicChoiceRef.child(topic).setValue("false");
             }
             Toast.makeText(getContext(), R.string.deactivated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         }
