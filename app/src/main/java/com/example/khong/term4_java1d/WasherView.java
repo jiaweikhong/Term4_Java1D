@@ -7,25 +7,18 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 
 public class WasherView extends AppCompatActivity {
 
-    private FirebaseController firebaseController;
     private String userBlockChoice;
-
     private RecyclerView rvWasherList;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -36,6 +29,7 @@ public class WasherView extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_dryer:
                     Intent intent = new Intent(WasherView.this, DryerView.class);
+                    intent.putExtra("block_choice", userBlockChoice);
                     startActivity(intent);
                     WasherView.this.finish();
                     break;
@@ -51,14 +45,12 @@ public class WasherView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_washer_view);
 
-        firebaseController = new FirebaseController();
-
         rvWasherList = findViewById(R.id.rvWasherList);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_washer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        userBlockChoice = firebaseController.getUserBlockChoice();
+        userBlockChoice = getIntent().getStringExtra("block_choice");
 
         Query query = FirebaseDatabase.getInstance()
                 .getReference()
@@ -106,10 +98,11 @@ public class WasherView extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
 }

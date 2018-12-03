@@ -17,9 +17,7 @@ import com.google.firebase.database.Query;
 
 public class DryerView extends AppCompatActivity {
 
-    private FirebaseController firebaseController;
     private String userBlockChoice;
-
     private RecyclerView rvDryerList;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -34,6 +32,7 @@ public class DryerView extends AppCompatActivity {
                 case R.id.navigation_washer:
                     // mTextMessage.setText(R.string.title_dashboard);
                     Intent intent = new Intent(DryerView.this, WasherView.class);
+                    intent.putExtra("block_choice", userBlockChoice);
                     startActivity(intent);
                     DryerView.this.finish();
                     break;
@@ -47,14 +46,12 @@ public class DryerView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dryer_view);
 
-        firebaseController = new FirebaseController();
+        userBlockChoice = getIntent().getStringExtra("block_choice");
 
         rvDryerList = findViewById(R.id.rvDryerList);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_dryer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        userBlockChoice = firebaseController.getUserBlockChoice();
 
         Query query = FirebaseDatabase.getInstance()
                 .getReference()
@@ -101,10 +98,11 @@ public class DryerView extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
 }

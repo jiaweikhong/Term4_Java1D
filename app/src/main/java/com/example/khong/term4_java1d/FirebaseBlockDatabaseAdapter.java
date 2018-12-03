@@ -35,6 +35,7 @@ public class FirebaseBlockDatabaseAdapter extends FirebaseRecyclerAdapter<Machin
         startTime = machine.getStartTime();
         secondsElapsed = (unixTime - startTime);
         holder.setMachineTimeData(secondsElapsed);
+        holder.setMachineTopic(machine.getTopicName());
 
     }
 

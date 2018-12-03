@@ -4,14 +4,18 @@ public class Machine {
 
     private String uuid;
     private int startTime;
+    private String topicName;
 
     public Machine() {
     }  // Needed for Firebase
 
-    public Machine(String uid) {
-        uuid = uid;
+    public String getTopicName() {
+        return topicName;
     }
 
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
 
     public int getStartTime() {
         return this.startTime;
@@ -21,12 +25,12 @@ public class Machine {
         this.startTime = startTime;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
     public String getUuid() {
         return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
 }

@@ -16,9 +16,15 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
     private ImageView machineStatus;
     private ImageButton btnMachineNotify;
     private boolean notifyState;
+    private String machineTopic;
+
+    private FirebaseController firebaseController;
 
     MachineCellHolder(final View cellView) {
         super(cellView);
+
+        firebaseController = new FirebaseController();
+
         machineName = cellView.findViewById(R.id.machine_name);
         machineTimeData = cellView.findViewById(R.id.machine_timedata);
         machineTimeLabel = cellView.findViewById(R.id.machine_timelabel);
@@ -32,15 +38,25 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                 if (notifyState == true) {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
                     notifyState = false;
-                } else  {
+                    firebaseController.unsubscribeTopic(machineTopic);
+                } else {
                     btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
                     notifyState = true;
+                    firebaseController.subscribeTopic(machineTopic);
                 }
             }
         };
 
         btnMachineNotify.setOnClickListener(machineNotifyOnClickListener);
 
+    }
+
+    public String getMachineTopic() {
+        return machineTopic;
+    }
+
+    public void setMachineTopic(String machineTopic) {
+        this.machineTopic = machineTopic;
     }
 
     public void setMachineName(String machineName) {

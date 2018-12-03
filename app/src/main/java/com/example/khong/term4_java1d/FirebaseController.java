@@ -16,29 +16,22 @@ class FirebaseController {
 
     private FirebaseAuth auth;
     private DatabaseReference userDatabase;
-    private DatabaseReference blockDatabase;
     private String userUuid;
     private String userBlockChoice;
 
-    public String getUserUuid() {
-        return userUuid;
-    }
-
-    String getUserBlockChoice() {
-        if (userBlockChoice==null){
-            return "block_55";
-        } else {
-            return userBlockChoice;
-        }
-
-    }
-
-    void FirebaseController() {
+    FirebaseController() {
         auth = FirebaseAuth.getInstance();
 
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
 
+    }
+
+    public String getUserUuid() {
+        return userUuid;
+    }
+
+    void createUserBlockChoiceRef() {
         DatabaseReference userBlockChoiceRef = userDatabase.child(userUuid).child("block_choice");
         ValueEventListener blockChoiceListener = new ValueEventListener() {
             @Override
@@ -53,6 +46,9 @@ class FirebaseController {
         userBlockChoiceRef.addValueEventListener(blockChoiceListener);
     }
 
+    String getUserBlockChoice() {
+        return userBlockChoice;
+    }
 
     void subscribeTopic(final String topic_name) {
         FirebaseMessaging.getInstance().subscribeToTopic(topic_name)

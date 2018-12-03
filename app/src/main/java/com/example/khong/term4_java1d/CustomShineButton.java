@@ -37,16 +37,17 @@ public class CustomShineButton extends ShineButton {
     }
 
     public void dryerOnClickFunction(String block) {
+        String block_ = block.substring(6, 8);
         if (this.isChecked()) {
             this.NotifyState.setText(R.string.notification_enabled);
             for (int i = 0; i < 13; i++) {
-                subcriptionsManager.subscribeTopic(block + "_w_" + Integer.toString(i));
+                subcriptionsManager.subscribeTopic(block_ + "_d_" + Integer.toString(i));
             }
             Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         } else {
             this.NotifyState.setText(R.string.notification_disabled);
             for (int i = 0; i < 13; i++) {
-                subcriptionsManager.unsubscribeTopic(block + "_w_" + Integer.toString(i));
+                subcriptionsManager.unsubscribeTopic(block_ + "_d_" + Integer.toString(i));
             }
             Toast.makeText(getContext(), R.string.deactivated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         }
@@ -54,16 +55,17 @@ public class CustomShineButton extends ShineButton {
     }
 
     public void washerOnClickFunction(String block) {
+        String block_ = block.substring(6, 8);
         if (this.isChecked()) {
             this.NotifyState.setText(R.string.notification_enabled);
             for (int i = 0; i < 13; i++) {
-                subcriptionsManager.subscribeTopic(block + "_d_" + Integer.toString(i));
+                subcriptionsManager.subscribeTopic(block_ + "_w_" + Integer.toString(i));
             }
             Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         } else {
             this.NotifyState.setText(R.string.notification_disabled);
             for (int i = 0; i < 13; i++) {
-                subcriptionsManager.unsubscribeTopic(block + "_d_" + Integer.toString(i));
+                subcriptionsManager.unsubscribeTopic(block_ + "_w_" + Integer.toString(i));
             }
             Toast.makeText(getContext(), R.string.deactivated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         }

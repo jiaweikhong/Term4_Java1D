@@ -70,26 +70,8 @@ public class MainActivity extends AppCompatActivity {
         // Navigation to other machine list
 
         gotoWashers = findViewById(R.id.goToWashers);
-        gotoWashers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(MainActivity.this, Washer.class);
-                Intent intent = new Intent(MainActivity.this, WasherView.class);
-                startActivity(intent);
-            }
-        });
-
-        // TODO: standardise how to set listener??
-
         gotoDryers = findViewById(R.id.goToDryers);
-        gotoDryers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(MainActivity.this, Dryer.class);
-                Intent intent = new Intent(MainActivity.this, DryerView.class);
-                startActivity(intent);
-            }
-        });
+
 
         washersNotifyAllImgBtn = findViewById(R.id.washersNotifyAllImgBtn);
         dryersNotifyAllImgBtn = findViewById(R.id.dryersNotifyAllImgBtn);
@@ -127,7 +109,25 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             dryersNotifyAllImgBtn.dryerOnClickFunction(userBlockChoice);
+                        }
+                    });
 
+                    gotoDryers.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //Intent intent = new Intent(MainActivity.this, Dryer.class);
+                            Intent intent = new Intent(MainActivity.this, DryerView.class);
+                            intent.putExtra("block_choice", userBlockChoice);
+                            startActivity(intent);
+                        }
+                    });
+
+                    gotoWashers.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MainActivity.this, WasherView.class);
+                            intent.putExtra("block_choice", userBlockChoice);
+                            startActivity(intent);
                         }
                     });
 
