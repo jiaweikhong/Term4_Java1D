@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         // Firebase Authentication
         auth = FirebaseAuth.getInstance();
@@ -66,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
      * Setup MainActivity here
      */
     public void setupApp() {
+
+
+        setContentView(R.layout.activity_main);
 
         // Navigation to other machine list
 
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     lblWelcome = findViewById(R.id.lblWelcome);
                     user_displayName = auth.getCurrentUser().getDisplayName();
                     String welcomeText = userBlockChoice.replace("_", " ") + " welcomes " + user_displayName;
+                    welcomeText = capitalizeFirstLetter(welcomeText);
                     lblWelcome.setText(welcomeText);
                     setupBlockDatabase();
 
@@ -293,5 +296,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private String capitalizeFirstLetter(String original) {
+        if (original == null || original.length() == 0) {
+            return original;
+        }
+        return original.substring(0, 1).toUpperCase() + original.substring(1);
     }
 }

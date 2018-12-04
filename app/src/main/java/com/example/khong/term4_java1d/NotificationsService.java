@@ -9,6 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -36,26 +37,15 @@ public class NotificationsService extends FirebaseMessagingService {
         // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
 
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-
-        String payload;
         String message;
-
-        //Toast.makeText(getApplicationContext(), "From: " + remoteMessage.getFrom(), Toast.LENGTH_SHORT).show();
-
-        // Check if message contains a data payload.
-        if (remoteMessage.getData().size() > 0) {
-            payload = remoteMessage.getData().toString();
-            sendNotification(payload);
-        }
+        String title;
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             message = remoteMessage.getNotification().getBody();
-            sendNotification(message);
+            title = remoteMessage.getNotification().getTitle();
+            sendNotification(message, title);
         }
-
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
 
     }
 
@@ -66,7 +56,7 @@ public class NotificationsService extends FirebaseMessagingService {
      */
     @Override
     public void onNewToken(String token) {
-        //Log.d(TAG, "Refreshed token: " + token);
+        Log.d("NotificationsService", "Refreshed token: " + token);
 
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
@@ -77,7 +67,7 @@ public class NotificationsService extends FirebaseMessagingService {
      * Create and show a simple notification containing the received FCM message.
      * @param messageBody FCM message body received.
      */
-    private void sendNotification(String messageBody) {
+    private void sendNotification(String messageBody, String messageTitle) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -88,7 +78,7 @@ public class NotificationsService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.washing_machine4)
-                        .setContentTitle("Notification Content")
+                        .setContentTitle(messageTitle)
                         .setContentText(messageBody)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
