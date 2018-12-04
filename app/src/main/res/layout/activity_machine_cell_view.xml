@@ -5,6 +5,7 @@
     android:padding="6dip" >
 
     <LinearLayout
+        android:id="@+id/machine_to_detailed_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical|center_horizontal"

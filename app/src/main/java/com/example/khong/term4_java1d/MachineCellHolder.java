@@ -1,11 +1,13 @@
 package com.example.khong.term4_java1d;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +25,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
     private TextView machineTimeLabel;
     private ImageView machineStatus;
     private ImageButton btnMachineNotify;
+    private LinearLayout machine_to_detailed_page;
     private boolean notifyState;
     private String machineTopic;
 
@@ -43,7 +46,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         machineName = cellView.findViewById(R.id.machine_name);
         machineTimeData = cellView.findViewById(R.id.machine_timedata);
         machineTimeLabel = cellView.findViewById(R.id.machine_timelabel);
-
+        machine_to_detailed_page = cellView.findViewById(R.id.machine_to_detailed_page);
         machineStatus = cellView.findViewById(R.id.machine_icon);
         btnMachineNotify = cellView.findViewById(R.id.machine_notifButton);
 
@@ -51,6 +54,8 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
+
+
 
     }
 
@@ -125,7 +130,10 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
         btnMachineNotify.setOnClickListener(machineNotifyOnClickListener);
 
+
+
     }
+
 
     void setMachineName(String machineName) {
         this.machineName.setText(machineName);
@@ -154,6 +162,8 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                 @Override
                 public void onFinish() {
                     setMachineTimeLabel("wash cycle finished");
+                    //added by jk
+                    //userDatabase.child(userUuid).child("subscriptions").child(machineTopic).setValue("false");
                 }
 
             }.start();

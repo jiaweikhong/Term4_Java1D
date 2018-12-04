@@ -5,6 +5,8 @@
     <string name="facebook_login_protocol_scheme" translatable="false">fb204038700515929</string>
 
     <!-- Strings related to titles -->
+
+    <string name="title_activity_detailed_view">Machine XX details</string>
     <string name="app_name">LaundryApp</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_main">Dashboard</string>
