@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -211,12 +212,60 @@ public class MainActivity extends AppCompatActivity {
         dryersNotifyAllImgBtn.NotifyState = findViewById(R.id.dryerNotifyState);
 
 
-        // TODO: set button state from Firebase
+        // set button state from Firebase
 
-        washersNotifyAllImgBtn.setUnavailable();
-        dryersNotifyAllImgBtn.setUnavailable();
+        DatabaseReference userBlockChoiceRef = userDatabase.child(userUuid).child("subscriptions");
+        ValueEventListener blockChoiceListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int washerNEnabled = 0;
+                int dryerNEnabled = 0;
 
+                for (DataSnapshot subscription : dataSnapshot.getChildren()) {
+                    String subTopicName = subscription.getKey();
+                    String subBlockName = subTopicName.substring(0,2);
+                    String correctComparison = userBlockChoice.substring(6,8);
 
+                    String subStatus = subscription.getValue().toString();
+                    if (subBlockName.equals(correctComparison)) {
+                        if (subTopicName.substring(3,4).equals("d")) {
+                            if (subStatus.equals("true")) {
+                                dryerNEnabled++;
+                            }
+                        }
+                        if (subTopicName.substring(3,4).equals("w")) {
+                            if (subStatus.equals("true")) {
+                                washerNEnabled++;
+                            }
+                        }
+
+                    }
+
+                }
+
+                Log.e("MainActivity", Integer.toString(washerNEnabled));
+                Log.e("MainActivity", Integer.toString(dryerNEnabled));
+
+                washersNotifyAllImgBtn.setUnavailable();
+                dryersNotifyAllImgBtn.setUnavailable();
+
+                if (washerNEnabled>11) {
+                    washersNotifyAllImgBtn.setChecked(true);
+                    washersNotifyAllImgBtn.washerOnClickFunction(userBlockChoice);
+                }
+
+                if (dryerNEnabled>8) {
+                    dryersNotifyAllImgBtn.setChecked(true);
+                    dryersNotifyAllImgBtn.dryerOnClickFunction(userBlockChoice);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        userBlockChoiceRef.addValueEventListener(blockChoiceListener);
 
         washersCount.setText(Integer.toString(washersCountNo) + "/" + Long.toString(totalWashers));
         dryersCount.setText(Integer.toString(dryersCountNo) + "/" + Long.toString(totalDryers));
