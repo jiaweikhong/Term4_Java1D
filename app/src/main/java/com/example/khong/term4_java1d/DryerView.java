@@ -18,7 +18,6 @@ import com.google.firebase.database.Query;
 public class DryerView extends AppCompatActivity {
 
     private String userBlockChoice;
-    private RecyclerView rvDryerList;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -48,7 +47,7 @@ public class DryerView extends AppCompatActivity {
 
         userBlockChoice = getIntent().getStringExtra("block_choice");
 
-        rvDryerList = findViewById(R.id.rvDryerList);
+        RecyclerView rvDryerList = findViewById(R.id.rvDryerList);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_dryer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

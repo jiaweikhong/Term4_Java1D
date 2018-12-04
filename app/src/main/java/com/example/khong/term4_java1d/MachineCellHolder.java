@@ -29,7 +29,6 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
     private boolean collected;
     private String machineTopic;
     private FirebaseController firebaseController;
-    private FirebaseAuth auth;
     private DatabaseReference userDatabase;
     private String userUuid;
     private String userTopicChoice;
@@ -50,7 +49,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         machineStatus = cellView.findViewById(R.id.machine_icon);
         btnMachineNotify = cellView.findViewById(R.id.machine_notifButton);
 
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
@@ -83,6 +82,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                 public void onTick(long millisUntilFinished) {
                     machineTimeData.setText(formatTimeData(millisUntilFinished));
                 }
+
                 @Override
                 public void onFinish() {
                     setMachineTimeLabel("wash cycle finished");
@@ -107,12 +107,14 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
             machineCountdownTimer = new CountDownTimer(startMillis - (45 * 60 * 1000), 1000) {
                 long counter = 0;
                 long timeData = 0;
+
                 @Override
                 public void onTick(long millisUntilFinished) {
                     counter = counter + 2000;
                     timeData = millisUntilFinished + counter;
                     machineTimeData.setText(formatTimeData(timeData));
                 }
+
                 @Override
                 public void onFinish() {
                     // it's a count up timer, and should never actually finish!

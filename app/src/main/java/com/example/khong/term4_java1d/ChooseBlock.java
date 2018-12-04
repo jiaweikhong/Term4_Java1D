@@ -12,30 +12,24 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ChooseBlock extends AppCompatActivity {
 
-    // Firebase
-    private FirebaseAuth auth;
     private DatabaseReference userDatabase;
     private String user_uuid;
-
-    private CardView blk55Card;
-    private CardView blk57Card;
-    private CardView blk59Card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_block);
 
-        // Firebase Authentication
-        auth = FirebaseAuth.getInstance();
+        // Firebase
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
 
         user_uuid = auth.getCurrentUser().getUid();
 
 
-        blk55Card = findViewById(R.id.blk55Card);
-        blk57Card = findViewById(R.id.blk57Card);
-        blk59Card = findViewById(R.id.blk59Card);
+        CardView blk55Card = findViewById(R.id.blk55Card);
+        CardView blk57Card = findViewById(R.id.blk57Card);
+        CardView blk59Card = findViewById(R.id.blk59Card);
 
         blk55Card.setOnClickListener(new View.OnClickListener() {
             @Override

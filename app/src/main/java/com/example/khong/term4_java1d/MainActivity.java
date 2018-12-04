@@ -30,10 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth auth;
     private DatabaseReference userDatabase;
-    private DatabaseReference blockDatabase;
     private String userUuid;
 
-    private DatabaseReference userBlockChoiceRef;
     private String userBlockChoice;
 
     private TextView lblWelcome;
@@ -84,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
 
-        userBlockChoiceRef = userDatabase.child(userUuid).child("block_choice");
+        DatabaseReference userBlockChoiceRef = userDatabase.child(userUuid).child("block_choice");
         ValueEventListener blockChoiceListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -149,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupBlockDatabase() {
-        blockDatabase = FirebaseDatabase.getInstance().getReference().child(userBlockChoice);
+        DatabaseReference blockDatabase = FirebaseDatabase.getInstance().getReference().child(userBlockChoice);
         ValueEventListener blockDatabaseListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

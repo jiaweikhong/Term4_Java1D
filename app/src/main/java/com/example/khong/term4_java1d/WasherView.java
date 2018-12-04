@@ -19,7 +19,6 @@ import com.google.firebase.database.Query;
 public class WasherView extends AppCompatActivity {
 
     private String userBlockChoice;
-    private RecyclerView rvWasherList;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,7 +44,7 @@ public class WasherView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_washer_view);
 
-        rvWasherList = findViewById(R.id.rvWasherList);
+        RecyclerView rvWasherList = findViewById(R.id.rvWasherList);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_washer);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
