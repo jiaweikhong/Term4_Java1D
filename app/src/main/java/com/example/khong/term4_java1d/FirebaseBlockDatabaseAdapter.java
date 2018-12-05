@@ -1,5 +1,6 @@
 package com.example.khong.term4_java1d;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,7 @@ import com.google.firebase.database.DatabaseError;
 
 public class FirebaseBlockDatabaseAdapter extends FirebaseRecyclerAdapter<Machine, MachineCellHolder> {
 
-    long unixTime;
-    long startTime;
-    long secondsElapsed;
-
-    public FirebaseBlockDatabaseAdapter(FirebaseRecyclerOptions<Machine> options) {
+    FirebaseBlockDatabaseAdapter(FirebaseRecyclerOptions<Machine> options) {
         super(options);
     }
 
@@ -31,11 +28,14 @@ public class FirebaseBlockDatabaseAdapter extends FirebaseRecyclerAdapter<Machin
     protected void onBindViewHolder(MachineCellHolder holder, int position, Machine machine) {
         holder.setMachineName(machine.getUuid());
 
-        unixTime = System.currentTimeMillis() / 1000L;
-        startTime = machine.getStartTime();
-        secondsElapsed = (unixTime - startTime);
-        holder.setMachineTimeData(secondsElapsed);
+        long unixTime = System.currentTimeMillis() / 1000L;
+        long startTime = machine.getStartTime();
+        long secondsElapsed = (unixTime - startTime);
+
+        Log.d("onBindViewHolder", machine.getTopicName());
         holder.setMachineTopic(machine.getTopicName());
+        holder.setMachineTimeData(secondsElapsed);
+        holder.setCollected(Boolean.parseBoolean(machine.getCollected()));
 
     }
 
@@ -48,6 +48,7 @@ public class FirebaseBlockDatabaseAdapter extends FirebaseRecyclerAdapter<Machin
 
     @Override
     public void onError(DatabaseError e) {
+        Log.e("FbBlockAdapter", e.toString());
     }
 
 }

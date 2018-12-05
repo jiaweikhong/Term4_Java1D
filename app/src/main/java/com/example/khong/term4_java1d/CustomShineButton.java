@@ -52,7 +52,7 @@ public class CustomShineButton extends ShineButton {
             this.NotifyState.setText(R.string.notification_enabled);
             for (int i = 1; i < 13; i++) {
                 String topic;
-                if (i<10) {
+                if (i < 10) {
                     topic = block_ + "_d_0" + Integer.toString(i);
                 } else {
                     topic = block_ + "_d_" + Integer.toString(i);
@@ -65,7 +65,7 @@ public class CustomShineButton extends ShineButton {
             this.NotifyState.setText(R.string.notification_disabled);
             for (int i = 1; i < 13; i++) {
                 String topic;
-                if (i<10) {
+                if (i < 10) {
                     topic = block_ + "_d_0" + Integer.toString(i);
                 } else {
                     topic = block_ + "_d_" + Integer.toString(i);

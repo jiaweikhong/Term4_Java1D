@@ -5,9 +5,18 @@ public class Machine {
     private String uuid;
     private int startTime;
     private String topicName;
+    private String collected;
 
     public Machine() {
     }  // Needed for Firebase
+
+    public String getCollected() {
+        return collected;
+    }
+
+    public void setCollected(String collected) {
+        this.collected = collected;
+    }
 
     public String getTopicName() {
         return topicName;

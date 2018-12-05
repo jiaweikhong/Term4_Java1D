@@ -14,13 +14,12 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 class FirebaseController {
 
-    private FirebaseAuth auth;
     private DatabaseReference userDatabase;
     private String userUuid;
     private String userBlockChoice;
 
     FirebaseController() {
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
