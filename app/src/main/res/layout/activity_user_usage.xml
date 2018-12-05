@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserUsage">
+    tools:context="com.example.khong.term4_java1d.UserUsage">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,22 +20,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/userusageuser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello <name>!" />
+            android:text="Hello, user" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/userusageblock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You are currently subscribed to block <x>" />
+            android:text="You are subscribed to block x." />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hmm.. You may want to consider doing your laundry on Wednesdays when there are more machines available!" />
+            android:text="Do your laundry on Mondays for the highest chances of available machines!" />
 
         <ListView
             android:id="@+id/listView1"
@@ -43,6 +46,4 @@
         </ListView>
 
     </LinearLayout>
-
-
 </android.support.constraint.ConstraintLayout>
