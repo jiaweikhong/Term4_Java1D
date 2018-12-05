@@ -14,6 +14,10 @@ public class CustomShineButton extends ShineButton {
     public boolean NotifyStatus = true;
     public TextView NotifyState;
 
+    // hardcode expected number
+    public int numWasher = 12;
+    public int numDryer = 9;
+
     private FirebaseController subcriptionsManager = new FirebaseController();
 
     private FirebaseAuth auth;
@@ -50,7 +54,7 @@ public class CustomShineButton extends ShineButton {
 
         if (this.isChecked()) {
             this.NotifyState.setText(R.string.notification_enabled);
-            for (int i = 1; i < 13; i++) {
+            for (int i = 1; i < (numDryer+1); i++) {
                 String topic;
                 if (i < 10) {
                     topic = block_ + "_d_0" + Integer.toString(i);
@@ -63,7 +67,7 @@ public class CustomShineButton extends ShineButton {
             Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         } else {
             this.NotifyState.setText(R.string.notification_disabled);
-            for (int i = 1; i < 13; i++) {
+            for (int i = 1; i < (numDryer+1); i++) {
                 String topic;
                 if (i < 10) {
                     topic = block_ + "_d_0" + Integer.toString(i);
@@ -84,16 +88,26 @@ public class CustomShineButton extends ShineButton {
 
         if (this.isChecked()) {
             this.NotifyState.setText(R.string.notification_enabled);
-            for (int i = 0; i < 13; i++) {
-                String topic = block_ + "_w_" + Integer.toString(i);
+            for (int i = 0; i < (numWasher+1); i++) {
+                String topic;
+                if (i < 10) {
+                    topic = block_ + "_w_0" + Integer.toString(i);
+                } else {
+                    topic = block_ + "_w_" + Integer.toString(i);
+                }
                 subcriptionsManager.subscribeTopic(topic);
                 userTopicChoiceRef.child(topic).setValue("true");
             }
             Toast.makeText(getContext(), R.string.activated_dryer_toast_display, Toast.LENGTH_SHORT).show();
         } else {
             this.NotifyState.setText(R.string.notification_disabled);
-            for (int i = 0; i < 13; i++) {
-                String topic = block_ + "_w_" + Integer.toString(i);
+            for (int i = 0; i < (numWasher+1); i++) {
+                String topic;
+                if (i < 10) {
+                    topic = block_ + "_w_0" + Integer.toString(i);
+                } else {
+                    topic = block_ + "_w_" + Integer.toString(i);
+                }
                 subcriptionsManager.unsubscribeTopic(topic);
                 userTopicChoiceRef.child(topic).setValue("false");
             }
