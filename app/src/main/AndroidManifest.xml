@@ -57,6 +57,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khong.term4_java1d.MainActivity" />
         </activity>
+        <activity android:name=".UserUsage"></activity>
     </application>
 
 </manifest>

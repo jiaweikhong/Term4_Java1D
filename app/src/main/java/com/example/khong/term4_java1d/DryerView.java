@@ -95,6 +95,13 @@ public class DryerView extends AppCompatActivity {
 
             return true;
         }
+
+        if (id == R.id.Statistics) {
+            Intent intent = new Intent (DryerView.this, UserUsage.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

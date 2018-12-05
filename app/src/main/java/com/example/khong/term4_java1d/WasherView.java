@@ -95,6 +95,13 @@ public class WasherView extends AppCompatActivity {
 
             return true;
         }
+
+        if (id == R.id.Statistics) {
+            Intent intent = new Intent (WasherView.this, UserUsage.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
