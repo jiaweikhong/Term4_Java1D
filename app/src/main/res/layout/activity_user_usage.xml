@@ -23,13 +23,13 @@
             android:id="@+id/userusageuser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello, user" />
+            android:text="Hello Timothy!" />
 
         <TextView
             android:id="@+id/userusageblock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You are subscribed to block x." />
+            android:text="You are currently subscribed to block 57." />
 
         <TextView
             android:id="@+id/textView11"

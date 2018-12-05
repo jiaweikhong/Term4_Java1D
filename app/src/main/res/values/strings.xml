@@ -9,7 +9,7 @@
     <string name="title_activity_detailed_view">Machine XX details</string>
     <string name="app_name">LaundryApp</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_activity_main">Dashboard</string>
+    <string name="title_activity_main">Wash &amp; Go</string>
     <string name="title_activity_washer_view">Washers</string>
     <string name="title_activity_dryer_view">Dryers</string>
     <string name="title_activity_chooseblock">Select block</string>
@@ -17,6 +17,7 @@
     <string name="title_activity_logout">Logout</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_notifications">Notifications</string>
+    <string name="title_activity_userusage">Your Statistics</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
 
