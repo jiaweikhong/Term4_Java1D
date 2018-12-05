@@ -219,6 +219,9 @@ public class MainActivity extends AppCompatActivity {
                 int washerNEnabled = 0;
                 int dryerNEnabled = 0;
 
+                Log.e("MainActivity", Integer.toString(washerNEnabled));
+                Log.e("MainActivity", Integer.toString(dryerNEnabled));
+
                 for (DataSnapshot subscription : dataSnapshot.getChildren()) {
                     String subTopicName = subscription.getKey();
                     String subBlockName = subTopicName.substring(0,2);

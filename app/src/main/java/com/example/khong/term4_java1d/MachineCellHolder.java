@@ -53,6 +53,8 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
         userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
         userUuid = auth.getCurrentUser().getUid();
+
+        this.btnMachineNotify.setEnabled(false);
     }
 
     void turnOnNotifications() {
