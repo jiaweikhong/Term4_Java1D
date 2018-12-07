@@ -59,7 +59,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         firebaseController.unsubscribeTopic(machineTopic);
     }
 
-    void setMachineTimeData(long secondsElapsed) {
+    public void setMachineTimeData(long secondsElapsed) {
         Log.d("MachineCellHolder", "Set Time Data");
         final long startMillis = secondsElapsed * 1000;
         machineCountdownTimer = null;
@@ -113,7 +113,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         }
     }
 
-    void setMachineStatus(String machineStatus) {
+    public void setMachineStatus(String machineStatus) {
         if (machineStatus.equals("GREEN")) {
             Log.d("MachineCellHolder", "Set Status Green");
             this.machineStatus.setImageResource(R.drawable.ic_assets_greencircle);
@@ -131,11 +131,11 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         }
     }
 
-    void setMachineName(String machineName) {
+    public void setMachineName(String machineName) {
         this.machineName.setText(machineName);
     }
 
-    void setMachineTimeLabel(String machineTimeLabel) {
+    public void setMachineTimeLabel(String machineTimeLabel) {
         this.machineTimeLabel.setText(machineTimeLabel);
     }
 
@@ -149,11 +149,11 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
-    String getMachineTopic() {
+    public String getMachineTopic() {
         return machineTopic;
     }
 
-    void setMachineTopic(final String machineTopic) {
+    public void setMachineTopic(final String machineTopic) {
         Log.d("MachineCellHolder", "Set Topic");
         this.machineTopic = machineTopic;
 

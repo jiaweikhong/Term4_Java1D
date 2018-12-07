@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             setupActivity();
         } else {
             // not signed in
-            createSignInIntent();
+            createFirebaseLoginUI();
         }
 
     }
@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
      * Called when auth.getCurrentUser()==null
      * (No user is logged in)
      */
-    private void createSignInIntent() {
+    private void createFirebaseLoginUI() {
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 //new AuthUI.IdpConfig.EmailBuilder().build(),

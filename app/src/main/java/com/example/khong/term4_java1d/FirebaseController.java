@@ -35,7 +35,7 @@ class FirebaseController {
         return (INSTANCE);
     }
 
-    DatabaseReference getUserDatabase() {
+    public DatabaseReference getUserDatabase() {
         return userDatabase;
     }
 
@@ -43,15 +43,15 @@ class FirebaseController {
         Log.e("FirebaseController", "setUserDatabase: Method not allowed.");
     }
 
-    String getUserDisplayName() {
+    public String getUserDisplayName() {
         return userDisplayName;
     }
 
-    String getUserEmail() {
+    public String getUserEmail() {
         return userEmail;
     }
 
-    String getUserUuid() {
+    public String getUserUuid() {
         return userUuid;
     }
 

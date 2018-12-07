@@ -6,9 +6,9 @@
 
 ## Contributors
 
-*  Ho Jin Kind
-*  Myo
-*  Khong Jia Wei
-*  Hong Peng Fei
-*  Faith See Wan Yi
-*  Timothy Liu Kaihui
+* Ho Jin Kind
+* Derrick Yeo
+* Khong Jia Wei
+* Hong Peng Fei
+* Faith See Wan Yi
+* Timothy Liu Kaihui
