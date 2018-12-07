@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseError;
@@ -32,7 +31,7 @@ public class FirebaseBlockDatabaseAdapter extends FirebaseRecyclerAdapter<Machin
         long startTime = machine.getStartTime();
         long secondsElapsed = (unixTime - startTime);
 
-        Log.d("onBindViewHolder", machine.getTopicName());
+        Log.d("FB/onBindViewHolder", machine.getTopicName());
         holder.setMachineTopic(machine.getTopicName());
         holder.setMachineTimeData(secondsElapsed);
         holder.setCollected(Boolean.parseBoolean(machine.getCollected()));
@@ -43,7 +42,7 @@ public class FirebaseBlockDatabaseAdapter extends FirebaseRecyclerAdapter<Machin
     public void onDataChanged() {
         // Called each time there is a new data snapshot. You may want to use this method
         // to hide a loading spinner or check for the "no documents" state and update your UI.
-        // ...
+        Log.d("FB/onDataChanged", "Data changed");
     }
 
     @Override

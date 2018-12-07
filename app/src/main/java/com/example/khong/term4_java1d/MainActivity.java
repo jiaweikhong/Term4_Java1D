@@ -10,16 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,19 +23,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Firebase
     private static final int RC_SIGN_IN = 123;
-    private FirebaseAuth auth;
     private DatabaseReference userDatabase;
-    private String userUuid;
 
     private String userBlockChoice;
 
     private TextView lblWelcome;
-    private String user_displayName;
+    private String userDisplayName;
 
     private CardView gotoWashers;
     private CardView gotoDryers;
     private CustomShineButton washersNotifyAllImgBtn;
     private CustomShineButton dryersNotifyAllImgBtn;
+
+    private FirebaseController firebaseController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Firebase Authentication
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
             // signed in
-            setupApp();
+            setupActivity();
         } else {
             // not signed in
             createSignInIntent();
@@ -63,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     /*
      * Setup MainActivity here
      */
-    public void setupApp() {
+    private void setupActivity() {
 
 
         setContentView(R.layout.activity_main);
@@ -79,10 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Firebase
 
-        userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
-        userUuid = auth.getCurrentUser().getUid();
+        firebaseController = FirebaseController.getInstance();
 
-        DatabaseReference userBlockChoiceRef = userDatabase.child(userUuid).child("block_choice");
+        userDatabase = firebaseController.getUserDatabase();
+
+        DatabaseReference userBlockChoiceRef = userDatabase.child("block_choice");
         ValueEventListener blockChoiceListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -91,10 +87,11 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     userBlockChoice = dataSnapshot.getValue().toString();
+
                     // Welcome Text
                     lblWelcome = findViewById(R.id.lblWelcome);
-                    user_displayName = auth.getCurrentUser().getDisplayName();
-                    String welcomeText = userBlockChoice.replace("_", " ") + " welcomes " + user_displayName;
+                    userDisplayName = firebaseController.getUserDisplayName();
+                    String welcomeText = userBlockChoice.replace("_", " ") + " welcomes " + userDisplayName;
                     welcomeText = capitalizeFirstLetter(welcomeText);
                     lblWelcome.setText(welcomeText);
                     setupBlockDatabase();
@@ -146,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setupBlockDatabase() {
+    private void setupBlockDatabase() {
         DatabaseReference blockDatabase = FirebaseDatabase.getInstance().getReference().child(userBlockChoice);
         ValueEventListener blockDatabaseListener = new ValueEventListener() {
             @Override
@@ -163,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         blockDatabase.addValueEventListener(blockDatabaseListener);
     }
 
-    public void populateMachinesCount(DataSnapshot dataSnapshot) {
+    private void populateMachinesCount(DataSnapshot dataSnapshot) {
         TextView washersCount = findViewById(R.id.noOfWashers);
         TextView dryersCount = findViewById(R.id.noOfDryers);
 
@@ -195,46 +192,38 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        if (washersCountNo > 0) {
-            washersNotifyAllImgBtn.NotifyStatus = false;
-        } else {
-            washersNotifyAllImgBtn.NotifyStatus = true;
-        }
+        washersNotifyAllImgBtn.NotifyStatus = washersCountNo <= 0;
         washersNotifyAllImgBtn.NotifyState = findViewById(R.id.washerNotifyState);
 
-        if (dryersCountNo > 0) {
-            dryersNotifyAllImgBtn.NotifyStatus = false;
-        } else {
-            dryersNotifyAllImgBtn.NotifyStatus = true;
-        }
+        dryersNotifyAllImgBtn.NotifyStatus = dryersCountNo <= 0;
         dryersNotifyAllImgBtn.NotifyState = findViewById(R.id.dryerNotifyState);
 
 
         // set button state from Firebase
 
-        DatabaseReference userBlockChoiceRef = userDatabase.child(userUuid).child("subscriptions");
+        DatabaseReference userBlockChoiceRef = userDatabase.child("subscriptions");
         ValueEventListener blockChoiceListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int washerNEnabled = 0;
                 int dryerNEnabled = 0;
 
-                Log.e("MainActivity", Integer.toString(washerNEnabled));
-                Log.e("MainActivity", Integer.toString(dryerNEnabled));
+                Log.d("MainActivity", Integer.toString(washerNEnabled));
+                Log.d("MainActivity", Integer.toString(dryerNEnabled));
 
                 for (DataSnapshot subscription : dataSnapshot.getChildren()) {
                     String subTopicName = subscription.getKey();
-                    String subBlockName = subTopicName.substring(0,2);
-                    String correctComparison = userBlockChoice.substring(6,8);
+                    String subBlockName = subTopicName.substring(0, 2);
+                    String correctComparison = userBlockChoice.substring(6, 8);
 
                     String subStatus = subscription.getValue().toString();
                     if (subBlockName.equals(correctComparison)) {
-                        if (subTopicName.substring(3,4).equals("d")) {
+                        if (subTopicName.substring(3, 4).equals("d")) {
                             if (subStatus.equals("true")) {
                                 dryerNEnabled++;
                             }
                         }
-                        if (subTopicName.substring(3,4).equals("w")) {
+                        if (subTopicName.substring(3, 4).equals("w")) {
                             if (subStatus.equals("true")) {
                                 washerNEnabled++;
                             }
@@ -244,18 +233,18 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                Log.e("MainActivity", Integer.toString(washerNEnabled));
-                Log.e("MainActivity", Integer.toString(dryerNEnabled));
+                Log.d("MainActivity", Integer.toString(washerNEnabled));
+                Log.d("MainActivity", Integer.toString(dryerNEnabled));
 
                 washersNotifyAllImgBtn.setUnavailable();
                 dryersNotifyAllImgBtn.setUnavailable();
 
-                if (washerNEnabled>11) {
+                if (washerNEnabled > 11) {
                     washersNotifyAllImgBtn.setChecked(true);
                     washersNotifyAllImgBtn.washerOnClickFunction(userBlockChoice);
                 }
 
-                if (dryerNEnabled>8) {
+                if (dryerNEnabled > 8) {
                     dryersNotifyAllImgBtn.setChecked(true);
                     dryersNotifyAllImgBtn.dryerOnClickFunction(userBlockChoice);
                 }
@@ -264,16 +253,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Log.e("blockChoice/DBError", databaseError.toString());
             }
         };
         userBlockChoiceRef.addValueEventListener(blockChoiceListener);
 
-        washersCount.setText(Integer.toString(washersCountNo) + "/" + Long.toString(totalWashers));
-        dryersCount.setText(Integer.toString(dryersCountNo) + "/" + Long.toString(totalDryers));
+        String washersText = washersCountNo + "/" + totalWashers;
+        String dryersText = dryersCountNo + "/" + totalDryers;
+
+        washersCount.setText(washersText);
+        dryersCount.setText(dryersText);
 
     }
 
-    public void createSignInIntent() {
+    /**
+     * Generates the Firebase Login UI
+     * Called when auth.getCurrentUser()==null
+     * (No user is logged in)
+     */
+    private void createSignInIntent() {
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 //new AuthUI.IdpConfig.EmailBuilder().build(),
@@ -294,6 +292,15 @@ public class MainActivity extends AppCompatActivity {
                 RC_SIGN_IN);
     }
 
+
+    /**
+     * Generates the Firebase Login UI
+     * Called Activity is created. Action is only taken with appropriate parameters.
+     * Successful sign in will call setupActivity() method
+     *
+     * @param requestCode RC_SIGN_IN indicates attempted sign-in
+     * @param resultCode  RESULT_OK indicates success
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -310,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast toast_success = Toast.makeText(getApplicationContext(), "Logged in: " + user.getDisplayName(), Toast.LENGTH_SHORT);
                 toast_success.show();
 
-                setupApp();
+                setupActivity();
 
             } else {
                 // Sign in failed. If response is null the user canceled the
@@ -347,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.Statistics) {
-            Intent intent = new Intent (MainActivity.this, UserUsage.class);
+            Intent intent = new Intent(MainActivity.this, UserUsage.class);
             startActivity(intent);
             return true;
         }

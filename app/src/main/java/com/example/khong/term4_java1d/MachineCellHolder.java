@@ -6,15 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 public class MachineCellHolder extends RecyclerView.ViewHolder {
 
@@ -24,49 +17,44 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
     private TextView machineTimeLabel;
     private ImageView machineStatus;
     private ImageButton btnMachineNotify;
-    private LinearLayout machine_to_detailed_page;
     private boolean notifyState;
-    private boolean collected;
-    private String machineTopic;
     private FirebaseController firebaseController;
     private DatabaseReference userDatabase;
-    private String userUuid;
     private String userTopicChoice;
     private DatabaseReference userTopicChoiceRef;
     private boolean btnNotifyBool;
+
+    private boolean collected;
+    private String machineTopic;
 
     MachineCellHolder(final View cellView) {
         super(cellView);
 
         Log.d("MachineCellHolder", "Created");
 
-        firebaseController = new FirebaseController();
+        firebaseController = FirebaseController.getInstance();
 
         machineName = cellView.findViewById(R.id.machine_name);
         machineTimeData = cellView.findViewById(R.id.machine_timedata);
         machineTimeLabel = cellView.findViewById(R.id.machine_timelabel);
-        machine_to_detailed_page = cellView.findViewById(R.id.machine_to_detailed_page);
         machineStatus = cellView.findViewById(R.id.machine_icon);
         btnMachineNotify = cellView.findViewById(R.id.machine_notifButton);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
-        userUuid = auth.getCurrentUser().getUid();
+        userDatabase = firebaseController.getUserDatabase();
 
         this.btnMachineNotify.setEnabled(false);
     }
 
-    void turnOnNotifications() {
+    private void turnOnNotifications() {
         userTopicChoiceRef.setValue("true");
-        Log.e("MachineCellHolder", "Notifications On");
+        Log.d("MachineCellHolder", "Notifications On");
         btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
         firebaseController.subscribeTopic(machineTopic);
     }
 
-    void turnOffNotifications() {
+    private void turnOffNotifications() {
         userTopicChoiceRef.setValue("false");
-        Log.e("MachineCellHolder", "Notifications Off");
+        Log.d("MachineCellHolder", "Notifications Off");
         btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
         firebaseController.unsubscribeTopic(machineTopic);
     }
@@ -169,21 +157,16 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         Log.d("MachineCellHolder", "Set Topic");
         this.machineTopic = machineTopic;
 
-        Log.d("MachineCellHolder", userUuid);
         Log.d("MachineCellHolder", machineTopic);
 
-        userTopicChoiceRef = userDatabase.child(userUuid).child("subscriptions").child(machineTopic);
+        userTopicChoiceRef = userDatabase.child("subscriptions").child(machineTopic);
         ValueEventListener topicChoiceListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 try {
                     userTopicChoice = dataSnapshot.getValue().toString();
-                    if (userTopicChoice.equals("true")) {
-                        notifyState = true;
-                    } else {
-                        notifyState = false;
-                    }
+                    notifyState = userTopicChoice.equals("true");
                 } catch (NullPointerException e) {
                     Log.e("MachineCellHolder", "Null preference, set to false");
                     userTopicChoiceRef.setValue("false");
