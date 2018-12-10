@@ -46,129 +46,6 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         this.btnMachineNotify.setEnabled(false);
     }
 
-    private void turnOnNotifications() {
-        userTopicChoiceRef.setValue("true");
-        Log.d("MachineCellHolder", "Notifications On");
-        btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
-        firebaseController.subscribeTopic(machineTopic);
-    }
-
-    private void turnOffNotifications() {
-        userTopicChoiceRef.setValue("false");
-        Log.d("MachineCellHolder", "Notifications Off");
-        btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
-        firebaseController.unsubscribeTopic(machineTopic);
-    }
-
-    public void setMachineTimeDataOnly(long secondsElapsed) {
-        storedSecondsElapsed = secondsElapsed;
-    }
-
-    public void setMachineTimeData(long secondsElapsed) {
-        storedSecondsElapsed = secondsElapsed;
-
-        Log.d("MachineCellHolder", "Set Time Data");
-
-        try {
-            machineCountdownTimer.cancel();
-        } catch (Exception e) {
-            Log.d("MachineCellHolder", "Timer does not exist");
-        } finally {
-            machineCountdownTimer = null;
-        }
-
-        final long startMillis = secondsElapsed * 1000;
-
-        if (secondsElapsed < (45 * 60)) {
-            long timeToComplete = (45 * 60) - secondsElapsed;
-            setMachineTimeLabel("since cycle start");
-            setMachineStatus("RED");
-            machineCountdownTimer = new CountDownTimer(timeToComplete * 1000, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    machineTimeData.setText(formatTimeData(millisUntilFinished));
-                }
-
-                @Override
-                public void onFinish() {
-                    setMachineTimeLabel("wash cycle finished");
-                    if (collected) {
-                        setMachineStatus("GREEN");
-                    } else {
-                        setMachineStatus("YELLOW");
-                        setMachineTimeData(startMillis / 1000);
-                    }
-                }
-            }.start();
-        } else {
-            setMachineTimeLabel("since cycle finished");
-            setMachineStatus("YELLOW");
-            if (collected) {
-                // confirm collected
-                setMachineStatus("GREEN");
-            } else if (secondsElapsed > (2 * 60 * 60)) {
-                // 2 hours later, probably collected
-                setMachineStatus("GREEN");
-            }
-            machineCountdownTimer = new CountDownTimer(startMillis - (45 * 60 * 1000), 1000) {
-                long counter = 0;
-                long timeData = 0;
-
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    counter = counter + 2000;
-                    timeData = millisUntilFinished + counter;
-                    machineTimeData.setText(formatTimeData(timeData));
-                }
-
-                @Override
-                public void onFinish() {
-                    // it's a count up timer, and should never actually finish!
-                }
-            }.start();
-        }
-    }
-
-    public void setMachineStatus(String machineStatus) {
-        if (machineStatus.equals("GREEN")) {
-            Log.d("MachineCellHolder", "Set Status Green");
-            this.machineStatus.setImageResource(R.drawable.ic_assets_greencircle);
-            this.btnMachineNotify.setEnabled(false);
-            turnOffNotifications();
-            notifyState = false;
-        } else if (machineStatus.equals("YELLOW")) {
-            Log.d("MachineCellHolder", "Set Status Yellow");
-            this.machineStatus.setImageResource(R.drawable.ic_assets_yellowcircle);
-            this.btnMachineNotify.setEnabled(true);
-        } else {
-            Log.d("MachineCellHolder", "Set Status Red");
-            this.machineStatus.setImageResource(R.drawable.ic_assets_redcircle);
-            this.btnMachineNotify.setEnabled(true);
-        }
-    }
-
-    public void setMachineName(String machineName) {
-        this.machineName.setText(machineName);
-    }
-
-    public void setMachineTimeLabel(String machineTimeLabel) {
-        this.machineTimeLabel.setText(machineTimeLabel);
-    }
-
-    private String formatTimeData(long timeData) {
-        long secondData = timeData / 1000;
-        int mh_raw = (int) (secondData) / 60;
-        int hours = mh_raw / 60;
-        int minutes = mh_raw % 60;
-        int seconds = (int) (secondData) % 60;
-
-        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
-    }
-
-    public String getMachineTopic() {
-        return machineTopic;
-    }
-
     public void setMachineTopic(final String machineTopic) {
         Log.d("MachineCellHolder", "Set Topic");
         this.machineTopic = machineTopic;
@@ -228,6 +105,129 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
     }
 
+    public void setMachineTimeData(long secondsElapsed) {
+        storedSecondsElapsed = secondsElapsed;
+
+        Log.d("MachineCellHolder", "Set Time Data");
+
+        try {
+            machineCountdownTimer.cancel();
+        } catch (Exception e) {
+            Log.d("MachineCellHolder", "Timer does not exist");
+        } finally {
+            machineCountdownTimer = null;
+        }
+
+        final long startMillis = secondsElapsed * 1000;
+
+        if (secondsElapsed < (45 * 60)) {
+            long timeToComplete = (45 * 60) - secondsElapsed;
+            setMachineTimeLabel("since cycle start");
+            setMachineStatus("RED");
+            machineCountdownTimer = new CountDownTimer(timeToComplete * 1000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    machineTimeData.setText(formatTimeData(millisUntilFinished));
+                }
+
+                @Override
+                public void onFinish() {
+                    setMachineTimeLabel("wash cycle finished");
+                    if (collected) {
+                        setMachineStatus("GREEN");
+                    } else {
+                        setMachineStatus("YELLOW");
+                    }
+                    setMachineTimeData(10 + (startMillis/1000));
+                }
+            }.start();
+        } else {
+            setMachineTimeLabel("since cycle finished");
+            setMachineStatus("YELLOW");
+            if (collected) {
+                // confirm collected
+                setMachineStatus("GREEN");
+            } else if (secondsElapsed > (2 * 60 * 60)) {
+                // 2 hours later, probably collected
+                setMachineStatus("GREEN");
+            }
+            machineCountdownTimer = new CountDownTimer(startMillis - (45 * 60 * 1000), 1000) {
+                long counter = 0;
+                long timeData = 0;
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    counter = counter + 2000;
+                    timeData = millisUntilFinished + counter;
+                    machineTimeData.setText(formatTimeData(timeData));
+                }
+
+                @Override
+                public void onFinish() {
+                    // it's a count up timer, and should never actually finish!
+                }
+            }.start();
+        }
+    }
+
+    public void setMachineStatus(String machineStatus) {
+        if (machineStatus.equals("GREEN")) {
+            Log.d("MachineCellHolder", "Set Status Green");
+            this.machineStatus.setImageResource(R.drawable.ic_assets_greencircle);
+            this.btnMachineNotify.setEnabled(false);
+            notifyState = false;
+            turnOffNotifications();
+        } else if (machineStatus.equals("YELLOW")) {
+            Log.d("MachineCellHolder", "Set Status Yellow");
+            this.machineStatus.setImageResource(R.drawable.ic_assets_yellowcircle);
+            this.btnMachineNotify.setEnabled(true);
+        } else {
+            Log.d("MachineCellHolder", "Set Status Red");
+            this.machineStatus.setImageResource(R.drawable.ic_assets_redcircle);
+            this.btnMachineNotify.setEnabled(true);
+        }
+    }
+
+    private void turnOnNotifications() {
+        Log.e(machineTopic, "Notifications On");
+        btnMachineNotify.setImageResource(R.drawable.ic_assets_darkbluebell);
+        userTopicChoiceRef.setValue("true");
+        firebaseController.subscribeTopic(machineTopic);
+    }
+
+    private void turnOffNotifications() {
+        Log.e(machineTopic, "Notifications Off");
+        btnMachineNotify.setImageResource(R.drawable.ic_assets_lightbluebell);
+        userTopicChoiceRef.setValue("false");
+        firebaseController.unsubscribeTopic(machineTopic);
+    }
+
+    public void setMachineTimeDataOnly(long secondsElapsed) {
+        storedSecondsElapsed = secondsElapsed;
+    }
+
+    public void setMachineName(String machineName) {
+        this.machineName.setText(machineName);
+    }
+
+    public void setMachineTimeLabel(String machineTimeLabel) {
+        this.machineTimeLabel.setText(machineTimeLabel);
+    }
+
+    private String formatTimeData(long timeData) {
+        long secondData = timeData / 1000;
+        int mh_raw = (int) (secondData) / 60;
+        int hours = mh_raw / 60;
+        int minutes = mh_raw % 60;
+        int seconds = (int) (secondData) % 60;
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    public String getMachineTopic() {
+        return machineTopic;
+    }
+
     public boolean isCollected() {
         return collected;
     }
@@ -238,7 +238,6 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
         if (collected) {
             setMachineStatus("GREEN");
-            turnOffNotifications();
             btnMachineNotify.setEnabled(false);
         } else {
             btnMachineNotify.setEnabled(true);

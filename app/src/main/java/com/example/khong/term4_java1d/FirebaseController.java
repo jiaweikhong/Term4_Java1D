@@ -55,22 +55,32 @@ class FirebaseController {
         return userUuid;
     }
 
-    void subscribeTopic(final String topic_name) {
+    void subscribeTopic(String topic_name) {
+        Log.d(topic_name, "Subscribe On");
         FirebaseMessaging.getInstance().subscribeToTopic(topic_name)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        // success
+                        String msg = "failed";
+                        if (task.isSuccessful()) {
+                            msg = "success";
+                        }
+                        Log.e("FirebaseMessaging", msg);
                     }
                 });
     }
 
-    void unsubscribeTopic(final String topic_name) {
+    void unsubscribeTopic(String topic_name) {
+        Log.d(topic_name, "Subscribe Off");
         FirebaseMessaging.getInstance().unsubscribeFromTopic(topic_name)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        // failure
+                        String msg = "fail";
+                        if (task.isSuccessful()) {
+                            msg = "success";
+                        }
+                        Log.e("FirebaseMessaging", msg);
                     }
                 });
     }
