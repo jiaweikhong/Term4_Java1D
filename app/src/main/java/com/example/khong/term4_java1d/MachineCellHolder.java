@@ -138,7 +138,6 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                     } else {
                         setMachineStatus("YELLOW");
                     }
-                    setMachineTimeData(10 + (startMillis/1000));
                 }
             }.start();
         } else {
