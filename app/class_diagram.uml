@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="180.0" y="291.0">com.example.khong.term4_java1d.NotificationsService</node>
+    <node x="361.0" y="388.0">com.example.khong.term4_java1d.WasherView</node>
+    <node x="0.0" y="97.0">com.example.khong.term4_java1d.CustomShineButton</node>
+    <node x="0.0" y="291.0">com.example.khong.term4_java1d.Machine</node>
+    <node x="0.0" y="0.0">com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter</node>
+    <node x="0.0" y="194.0">com.example.khong.term4_java1d.MachineCellHolder</node>
+    <node x="0.0" y="463.0">com.example.khong.term4_java1d.MainActivity</node>
+    <node x="170.0" y="463.0">com.example.khong.term4_java1d.DryerView</node>
+    <node x="0.0" y="388.0">com.example.khong.term4_java1d.LogoutActivity</node>
+    <node x="185.0" y="388.0">com.example.khong.term4_java1d.ChooseBlock</node>
+    <node x="272.0" y="194.0">com.example.khong.term4_java1d.FirebaseController</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="604.0" y="323.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

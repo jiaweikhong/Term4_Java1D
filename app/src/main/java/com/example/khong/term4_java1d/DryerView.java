@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -97,7 +96,7 @@ public class DryerView extends AppCompatActivity {
         }
 
         if (id == R.id.Statistics) {
-            Intent intent = new Intent (DryerView.this, UserUsage.class);
+            Intent intent = new Intent(DryerView.this, UserUsage.class);
             startActivity(intent);
             return true;
         }

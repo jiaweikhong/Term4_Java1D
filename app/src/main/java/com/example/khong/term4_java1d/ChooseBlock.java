@@ -5,27 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class ChooseBlock extends AppCompatActivity {
 
+    private FirebaseController firebaseController;
+
     private DatabaseReference userDatabase;
-    private String user_uuid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_block);
 
-        // Firebase
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        userDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+        firebaseController = FirebaseController.getInstance();
 
-        user_uuid = auth.getCurrentUser().getUid();
-
+        userDatabase = firebaseController.getUserDatabase();
 
         CardView blk55Card = findViewById(R.id.blk55Card);
         CardView blk57Card = findViewById(R.id.blk57Card);
@@ -63,7 +58,7 @@ public class ChooseBlock extends AppCompatActivity {
     }
 
     private void writeNewUserBlockChoice(String block_choice) {
-        userDatabase.child(user_uuid).child("block_choice").setValue(block_choice);
+        userDatabase.child("block_choice").setValue(block_choice);
     }
 
 }

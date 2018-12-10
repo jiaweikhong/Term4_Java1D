@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -18,6 +17,7 @@ public class NotificationsService extends FirebaseMessagingService {
 
     /**
      * Called when message is received.
+     *
      * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
      */
     @Override
@@ -65,6 +65,7 @@ public class NotificationsService extends FirebaseMessagingService {
 
     /**
      * Create and show a simple notification containing the received FCM message.
+     *
      * @param messageBody FCM message body received.
      */
     private void sendNotification(String messageBody, String messageTitle) {
