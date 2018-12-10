@@ -42,7 +42,6 @@ public class CustomShineButton extends ShineButton {
         String block_ = block.substring(6, 8);
 
         userDatabase = firebaseController.getUserDatabase();
-
         userTopicChoiceRef = userDatabase.child("subscriptions");
 
         if (this.isChecked()) {
@@ -77,6 +76,8 @@ public class CustomShineButton extends ShineButton {
 
     void washerOnClickFunction(String block) {
         String block_ = block.substring(6, 8);
+
+        userDatabase = firebaseController.getUserDatabase();
         userTopicChoiceRef = userDatabase.child("subscriptions");
 
         if (this.isChecked()) {
