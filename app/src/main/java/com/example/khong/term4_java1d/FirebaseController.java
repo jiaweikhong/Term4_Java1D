@@ -62,9 +62,9 @@ class FirebaseController {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Log.d("FirebaseMessaging", "Successfully unsubscribed");
+                            Log.d("FirebaseMessaging", "Successfully subscribed");
                         } else {
-                            Log.e("FirebaseMessaging", "Failed to unsubscribed");
+                            Log.e("FirebaseMessaging", "Failed to subscribed");
                         }
                     }
                 });
