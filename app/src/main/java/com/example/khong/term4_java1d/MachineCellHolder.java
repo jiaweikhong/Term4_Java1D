@@ -26,6 +26,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
     private boolean collected;
     private String machineTopic;
+    private long storedSecondsElapsed;
 
     MachineCellHolder(final View cellView) {
         super(cellView);
@@ -59,10 +60,25 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         firebaseController.unsubscribeTopic(machineTopic);
     }
 
+    public void setMachineTimeDataOnly(long secondsElapsed) {
+        storedSecondsElapsed = secondsElapsed;
+    }
+
     public void setMachineTimeData(long secondsElapsed) {
+        storedSecondsElapsed = secondsElapsed;
+
         Log.d("MachineCellHolder", "Set Time Data");
+
+        try {
+            machineCountdownTimer.cancel();
+        } catch (Exception e) {
+            Log.d("MachineCellHolder", "Timer does not exist");
+        } finally {
+            machineCountdownTimer = null;
+        }
+
         final long startMillis = secondsElapsed * 1000;
-        machineCountdownTimer = null;
+
         if (secondsElapsed < (45 * 60)) {
             long timeToComplete = (45 * 60) - secondsElapsed;
             setMachineTimeLabel("since cycle start");
@@ -117,8 +133,8 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
         if (machineStatus.equals("GREEN")) {
             Log.d("MachineCellHolder", "Set Status Green");
             this.machineStatus.setImageResource(R.drawable.ic_assets_greencircle);
-            turnOffNotifications();
             this.btnMachineNotify.setEnabled(false);
+            turnOffNotifications();
             notifyState = false;
         } else if (machineStatus.equals("YELLOW")) {
             Log.d("MachineCellHolder", "Set Status Yellow");
@@ -159,6 +175,8 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
         Log.d("MachineCellHolder", machineTopic);
 
+        final long timeElapsed = storedSecondsElapsed;
+
         userTopicChoiceRef = userDatabase.child("subscriptions").child(machineTopic);
         ValueEventListener topicChoiceListener = new ValueEventListener() {
             @Override
@@ -179,6 +197,8 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                         btnNotifyBool = false;
                         turnOffNotifications();
                     }
+
+                    setMachineTimeData(timeElapsed);
                 }
             }
 
@@ -218,6 +238,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
 
         if (collected) {
             setMachineStatus("GREEN");
+            turnOffNotifications();
             btnMachineNotify.setEnabled(false);
         } else {
             btnMachineNotify.setEnabled(true);

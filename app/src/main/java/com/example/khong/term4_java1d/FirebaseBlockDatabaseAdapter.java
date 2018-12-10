@@ -32,8 +32,8 @@ public class FirebaseBlockDatabaseAdapter extends FirebaseRecyclerAdapter<Machin
         long secondsElapsed = (unixTime - startTime);
 
         Log.d("FB/onBindViewHolder", machine.getTopicName());
+        holder.setMachineTimeDataOnly(secondsElapsed);
         holder.setMachineTopic(machine.getTopicName());
-        holder.setMachineTimeData(secondsElapsed);
         holder.setCollected(Boolean.parseBoolean(machine.getCollected()));
 
     }
