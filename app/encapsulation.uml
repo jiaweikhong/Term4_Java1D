@@ -3,8 +3,8 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="327.5" y="313.5">com.example.khong.term4_java1d.Machine</node>
-    <node x="0.0" y="560.0">com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter</node>
+    <node x="327.5" y="324.5">com.example.khong.term4_java1d.Machine</node>
+    <node x="0.0" y="582.0">com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter</node>
     <node x="61.5" y="258.0">com.example.khong.term4_java1d.MachineCellHolder</node>
     <node x="46.666666666666686" y="0.0">com.example.khong.term4_java1d.FirebaseController</node>
   </nodes>
@@ -12,22 +12,22 @@
   <edges>
     <edge source="com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter" target="com.example.khong.term4_java1d.MachineCellHolder">
       <point x="-2.8421709430404007E-14" y="-70.5" />
-      <point x="61.5" y="126.0" />
+      <point x="61.5" y="137.0" />
     </edge>
     <edge source="com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter" target="com.example.khong.term4_java1d.Machine">
       <point x="164.33333333333337" y="-70.5" />
-      <point x="410.83333333333337" y="535.0" />
-      <point x="408.0" y="535.0" />
+      <point x="410.83333333333337" y="557.0" />
+      <point x="408.0" y="557.0" />
       <point x="0.0" y="70.5" />
     </edge>
     <edge source="com.example.khong.term4_java1d.MachineCellHolder" target="com.example.khong.term4_java1d.FirebaseController">
-      <point x="-61.5" y="-126.0" />
-      <point x="123.0" y="233.0" />
-      <point x="113.66666666666669" y="233.0" />
-      <point x="-67.0" y="104.0" />
+      <point x="61.5" y="-137.0" />
+      <point x="246.0" y="233.0" />
+      <point x="247.66666666666669" y="233.0" />
+      <point x="67.0" y="104.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.7765814266487214" x="247.0" y="361.5" />
+  <settings layout="Hierarchic Group" zoom="0.9165545087483177" x="246.5" y="361.5" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>

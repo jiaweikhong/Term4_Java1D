@@ -11,7 +11,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 class FirebaseController {
 
-    private static FirebaseController INSTANCE = null;
+    private static FirebaseController SingletonInstance = null;
     private String userUuid;
     private String userDisplayName;
     private String userEmail;
@@ -29,10 +29,10 @@ class FirebaseController {
     }
 
     public static FirebaseController getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new FirebaseController();
+        if (SingletonInstance == null) {
+            SingletonInstance = new FirebaseController();
         }
-        return (INSTANCE);
+        return (SingletonInstance);
     }
 
     public DatabaseReference getUserDatabase() {
@@ -61,11 +61,11 @@ class FirebaseController {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "failed";
                         if (task.isSuccessful()) {
-                            msg = "success";
+                            Log.d("FirebaseMessaging", "Successfully unsubscribed");
+                        } else {
+                            Log.e("FirebaseMessaging", "Failed to unsubscribed");
                         }
-                        Log.e("FirebaseMessaging", msg);
                     }
                 });
     }
@@ -76,11 +76,11 @@ class FirebaseController {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "fail";
                         if (task.isSuccessful()) {
-                            msg = "success";
+                            Log.d("FirebaseMessaging", "Successfully unsubscribed");
+                        } else {
+                            Log.e("FirebaseMessaging", "Failed to unsubscribed");
                         }
-                        Log.e("FirebaseMessaging", msg);
                     }
                 });
     }
