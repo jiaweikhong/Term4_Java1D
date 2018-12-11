@@ -3,6 +3,7 @@ package com.example.khong.term4_java1d;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -67,6 +68,13 @@ class FirebaseController {
                             Log.e("FirebaseMessaging", "Failed to subscribed");
                         }
                     }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("FirebaseMessaging", "Failed to subscribed");
+                        Log.e("FirebaseMessaging", e.toString());
+                    }
                 });
     }
 
@@ -81,6 +89,13 @@ class FirebaseController {
                         } else {
                             Log.e("FirebaseMessaging", "Failed to unsubscribed");
                         }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("FirebaseMessaging", "Failed to unsubscribed");
+                        Log.e("FirebaseMessaging", e.toString());
                     }
                 });
     }

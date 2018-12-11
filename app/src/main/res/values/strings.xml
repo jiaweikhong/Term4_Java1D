@@ -21,6 +21,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
 
+    <string name="statistics">Statistics</string>
+
     <!-- String related to login/logout -->
     <string name="logout_prompt">Sure you want to logout?</string>
     <string name="logout_confirm_btn">Yes</string>
@@ -47,6 +49,7 @@
     <string name="notification_disabled">Notifications Disabled</string>
     <string name="notification_unavailable">Notifications Unavailable</string>
     <string name="dryer_avail">…/…</string>
+
 
 
 </resources>

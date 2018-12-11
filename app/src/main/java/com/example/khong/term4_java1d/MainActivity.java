@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private CustomShineButton washersNotifyAllImgBtn;
     private CustomShineButton dryersNotifyAllImgBtn;
 
+    private int washersCountNo_final;
+    private int dryersCountNo_final;
+
     private FirebaseController firebaseController;
 
     @Override
@@ -139,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 toast_error.show();
             }
         };
-        userBlockChoiceRef.addValueEventListener(blockChoiceListener);
+        userBlockChoiceRef.addListenerForSingleValueEvent(blockChoiceListener);
 
     }
 
@@ -157,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 toast_error.show();
             }
         };
-        blockDatabase.addValueEventListener(blockDatabaseListener);
+        blockDatabase.addListenerForSingleValueEvent(blockDatabaseListener);
     }
 
     private void populateMachinesCount(DataSnapshot dataSnapshot) {
@@ -191,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        washersCountNo_final = washersCountNo;
+        dryersCountNo_final = dryersCountNo;
 
         washersNotifyAllImgBtn.NotifyStatus = washersCountNo <= 0;
         washersNotifyAllImgBtn.NotifyState = findViewById(R.id.washerNotifyState);
@@ -239,14 +244,18 @@ public class MainActivity extends AppCompatActivity {
                 washersNotifyAllImgBtn.setUnavailable();
                 dryersNotifyAllImgBtn.setUnavailable();
 
-                if (washerNEnabled > 11) {
+                if (washersCountNo_final==0 && washerNEnabled > 11) {
                     washersNotifyAllImgBtn.setChecked(true);
                     washersNotifyAllImgBtn.washerOnClickFunction(userBlockChoice);
+                } else {
+                    washersNotifyAllImgBtn.setChecked(false);
                 }
 
-                if (dryerNEnabled > 8) {
+                if (dryersCountNo_final==0 && dryerNEnabled > 8) {
                     dryersNotifyAllImgBtn.setChecked(true);
                     dryersNotifyAllImgBtn.dryerOnClickFunction(userBlockChoice);
+                } else {
+                    dryersNotifyAllImgBtn.setChecked(false);
                 }
 
             }
@@ -256,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("blockChoice/DBError", databaseError.toString());
             }
         };
-        userBlockChoiceRef.addValueEventListener(blockChoiceListener);
+        userBlockChoiceRef.addListenerForSingleValueEvent(blockChoiceListener);
 
         String washersText = washersCountNo + "/" + totalWashers;
         String dryersText = dryersCountNo + "/" + totalDryers;
