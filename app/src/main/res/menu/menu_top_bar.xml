@@ -12,9 +12,6 @@
         android:title="@string/title_activity_chooseblock" />
     <item
         android:id="@+id/Statistics"
-        android:title="Statistics" />
-    <item
-        android:id="@+id/AboutApp"
-        android:title="About" />
+        android:title="@string/statistics" />
 
 </menu>

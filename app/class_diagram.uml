@@ -3,21 +3,178 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="180.0" y="291.0">com.example.khong.term4_java1d.NotificationsService</node>
-    <node x="361.0" y="388.0">com.example.khong.term4_java1d.WasherView</node>
-    <node x="0.0" y="97.0">com.example.khong.term4_java1d.CustomShineButton</node>
-    <node x="0.0" y="291.0">com.example.khong.term4_java1d.Machine</node>
-    <node x="0.0" y="0.0">com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter</node>
-    <node x="0.0" y="194.0">com.example.khong.term4_java1d.MachineCellHolder</node>
-    <node x="0.0" y="463.0">com.example.khong.term4_java1d.MainActivity</node>
-    <node x="170.0" y="463.0">com.example.khong.term4_java1d.DryerView</node>
-    <node x="0.0" y="388.0">com.example.khong.term4_java1d.LogoutActivity</node>
-    <node x="185.0" y="388.0">com.example.khong.term4_java1d.ChooseBlock</node>
-    <node x="272.0" y="194.0">com.example.khong.term4_java1d.FirebaseController</node>
+    <node x="111.50000000000003" y="596.0">com.example.khong.term4_java1d.NotificationsService</node>
+    <node x="135.00000000000003" y="416.0">com.example.khong.term4_java1d.WasherView</node>
+    <node x="719.0" y="122.0">com.example.khong.term4_java1d.CustomShineButton</node>
+    <node x="144.25" y="122.0">com.example.khong.term4_java1d.Machine</node>
+    <node x="226.0" y="224.0">com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter</node>
+    <node x="415.75" y="122.0">com.example.khong.term4_java1d.MachineCellHolder</node>
+    <node x="135.50000000000003" y="516.0">com.example.khong.term4_java1d.MainActivity</node>
+    <node x="173.5" y="326.0">com.example.khong.term4_java1d.DryerView</node>
+    <node x="739.0" y="235.0">com.example.khong.term4_java1d.LogoutActivity</node>
+    <node x="21.5" y="235.0">com.example.khong.term4_java1d.ChooseBlock</node>
+    <node x="175.4722222222223" y="0.0">com.example.khong.term4_java1d.FirebaseController</node>
   </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="604.0" y="323.0" />
+  <edges>
+    <edge source="com.example.khong.term4_java1d.ChooseBlock" target="com.example.khong.term4_java1d.MainActivity">
+      <point x="-16.375" y="15.0" />
+      <point x="70.625" y="466.0" />
+      <point x="184.11111111111111" y="466.0" />
+      <point x="-13.888888888888914" y="-15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter" target="com.example.khong.term4_java1d.MachineCellHolder">
+      <point x="0.0" y="-26.0" />
+      <point x="-56.75" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.DryerView" target="com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter">
+      <point x="14.0" y="-15.0" />
+      <point x="243.5" y="296.0" />
+      <point x="349.25" y="296.0" />
+      <point x="-123.25" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.WasherView" target="com.example.khong.term4_java1d.ChooseBlock">
+      <point x="-52.5" y="-15.0" />
+      <point x="145.50000000000003" y="396.0" />
+      <point x="81.625" y="396.0" />
+      <point x="81.625" y="306.0" />
+      <point x="103.375" y="306.0" />
+      <point x="16.375" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.MainActivity" target="com.example.khong.term4_java1d.ChooseBlock">
+      <point x="-27.77777777777777" y="-15.0" />
+      <point x="170.22222222222226" y="476.0" />
+      <point x="51.84099002849001" y="476.0" />
+      <point x="51.84099002849001" y="306.0" />
+      <point x="37.875" y="306.0" />
+      <point x="-49.125" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.ChooseBlock" target="com.example.khong.term4_java1d.FirebaseController">
+      <point x="32.75" y="-15.0" />
+      <point x="119.75" y="199.0" />
+      <point x="87.15349002849001" y="199.0" />
+      <point x="87.15349002849001" y="102.0" />
+      <point x="261.2222222222223" y="102.0" />
+      <point x="-12.25" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.DryerView" target="com.example.khong.term4_java1d.ChooseBlock">
+      <point x="-42.0" y="-15.0" />
+      <point x="187.5" y="306.0" />
+      <point x="136.125" y="306.0" />
+      <point x="49.125" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.CustomShineButton" target="com.example.khong.term4_java1d.FirebaseController">
+      <point x="85.25" y="-26.0" />
+      <point x="974.75" y="72.0" />
+      <point x="359.2222222222223" y="72.0" />
+      <point x="85.75" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.MainActivity" target="com.example.khong.term4_java1d.WasherView">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.WasherView" target="com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter">
+      <point x="31.5" y="-15.0" />
+      <point x="229.50000000000003" y="386.0" />
+      <point x="595.75" y="386.0" />
+      <point x="123.25" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.MainActivity" target="com.example.khong.term4_java1d.DryerView">
+      <point x="13.888888888888914" y="-15.0" />
+      <point x="211.88888888888894" y="466.0" />
+      <point x="271.5" y="466.0" />
+      <point x="271.5" y="376.0" />
+      <point x="266.83333333333337" y="376.0" />
+      <point x="37.33333333333337" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.MainActivity" target="com.example.khong.term4_java1d.LogoutActivity">
+      <point x="41.66666666666663" y="-15.0" />
+      <point x="239.66666666666666" y="486.0" />
+      <point x="835.4034900284901" y="486.0" />
+      <point x="835.4034900284901" y="306.0" />
+      <point x="861.5" y="306.0" />
+      <point x="52.5" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.MainActivity" target="com.example.khong.term4_java1d.CustomShineButton">
+      <point x="55.55555555555554" y="-15.0" />
+      <point x="253.55555555555557" y="496.0" />
+      <point x="889.5" y="496.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.MachineCellHolder" target="com.example.khong.term4_java1d.FirebaseController">
+      <point x="-56.75" y="-26.0" />
+      <point x="472.5" y="102.0" />
+      <point x="285.7222222222223" y="102.0" />
+      <point x="12.25" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.WasherView" target="com.example.khong.term4_java1d.Machine">
+      <point x="-31.5" y="-15.0" />
+      <point x="166.50000000000003" y="396.0" />
+      <point x="163.0" y="396.0" />
+      <point x="163.0" y="199.0" />
+      <point x="166.75" y="199.0" />
+      <point x="-45.0" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.DryerView" target="com.example.khong.term4_java1d.LogoutActivity">
+      <point x="42.0" y="-15.0" />
+      <point x="271.5" y="306.0" />
+      <point x="756.5" y="306.0" />
+      <point x="-52.5" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.DryerView" target="com.example.khong.term4_java1d.Machine">
+      <point x="-14.0" y="-15.0" />
+      <point x="215.5" y="199.0" />
+      <point x="211.75" y="199.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.WasherView" target="com.example.khong.term4_java1d.DryerView">
+      <point x="-10.5" y="-15.0" />
+      <point x="187.50000000000003" y="396.0" />
+      <point x="192.16666666666669" y="396.0" />
+      <point x="-37.333333333333314" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.NotificationsService" target="com.example.khong.term4_java1d.MainActivity">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.LogoutActivity" target="com.example.khong.term4_java1d.MainActivity">
+      <point x="17.5" y="15.0" />
+      <point x="826.5" y="306.0" />
+      <point x="824.4034900284901" y="306.0" />
+      <point x="824.4034900284901" y="476.0" />
+      <point x="225.77777777777786" y="476.0" />
+      <point x="27.77777777777783" y="-15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.DryerView" target="com.example.khong.term4_java1d.WasherView">
+      <point x="0.0" y="15.0" />
+      <point x="229.5" y="376.0" />
+      <point x="208.50000000000003" y="376.0" />
+      <point x="10.5" y="-15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.MainActivity" target="com.example.khong.term4_java1d.FirebaseController">
+      <point x="-41.66666666666663" y="-15.0" />
+      <point x="156.3333333333334" y="486.0" />
+      <point x="11.0" y="486.0" />
+      <point x="11.0" y="82.0" />
+      <point x="212.2222222222223" y="82.0" />
+      <point x="-61.25" y="26.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.WasherView" target="com.example.khong.term4_java1d.LogoutActivity">
+      <point x="52.5" y="-15.0" />
+      <point x="250.50000000000003" y="396.0" />
+      <point x="813.4034900284901" y="396.0" />
+      <point x="813.4034900284901" y="306.0" />
+      <point x="791.5" y="306.0" />
+      <point x="-17.5" y="15.0" />
+    </edge>
+    <edge source="com.example.khong.term4_java1d.FirebaseBlockDatabaseAdapter" target="com.example.khong.term4_java1d.Machine">
+      <point x="-164.33333333333337" y="-26.0" />
+      <point x="308.16666666666663" y="199.0" />
+      <point x="256.75" y="199.0" />
+      <point x="45.0" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="530.0" y="313.0" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>

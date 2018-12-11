@@ -62,6 +62,7 @@ public class MachineCellHolder extends RecyclerView.ViewHolder {
                 try {
                     userTopicChoice = dataSnapshot.getValue().toString();
                     notifyState = userTopicChoice.equals("true");
+                    Log.d("MachineCellHolder", userTopicChoice);
                 } catch (NullPointerException e) {
                     Log.e("MachineCellHolder", "Null preference, set to false");
                     userTopicChoiceRef.setValue("false");

@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private CustomShineButton washersNotifyAllImgBtn;
     private CustomShineButton dryersNotifyAllImgBtn;
 
+    private int washersCountNo_final;
+    private int dryersCountNo_final;
+
     private FirebaseController firebaseController;
 
     @Override
@@ -191,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        washersCountNo_final = washersCountNo;
+        dryersCountNo_final = dryersCountNo;
 
         washersNotifyAllImgBtn.NotifyStatus = washersCountNo <= 0;
         washersNotifyAllImgBtn.NotifyState = findViewById(R.id.washerNotifyState);
@@ -239,12 +244,12 @@ public class MainActivity extends AppCompatActivity {
                 washersNotifyAllImgBtn.setUnavailable();
                 dryersNotifyAllImgBtn.setUnavailable();
 
-                if (washerNEnabled > 11) {
+                if (washersCountNo_final==0 && washerNEnabled > 11) {
                     washersNotifyAllImgBtn.setChecked(true);
                     washersNotifyAllImgBtn.washerOnClickFunction(userBlockChoice);
                 }
 
-                if (dryerNEnabled > 8) {
+                if (dryersCountNo_final==0 && dryerNEnabled > 8) {
                     dryersNotifyAllImgBtn.setChecked(true);
                     dryersNotifyAllImgBtn.dryerOnClickFunction(userBlockChoice);
                 }
